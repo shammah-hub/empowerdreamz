@@ -68,11 +68,11 @@ function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
                 <Phone className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+                <span className="text-gray-400">+1 305-724-1176</span>
               </div>
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
                 <Mail className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-black break-all sm:break-normal">info@empowerdreamz.org</span>
+                <span className="text-black break-all sm:break-normal">admin@empowerdreamz.org</span>
               </div>
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
                 <MapPin className="w-5 h-5 text-gray-800 flex-shrink-0" />
