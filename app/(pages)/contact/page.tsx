@@ -226,7 +226,13 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               </p>
               <button className="gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
                 Visit Page
-                 <Image src="/grl.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
+                 <Image
+                    src="/grl.png"
+                    alt="Parofund Logo"
+                    width={30}
+                    height={30}
+                  />
+
               </button>
             </div>
 
@@ -240,7 +246,13 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               </p>
               <button className=" gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
                 Donation Page
-                <Image src="/grl.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
+                <Image
+                    src="/grl.png"
+                    alt="Parofund Logo"
+                    width={30}
+                    height={30}
+                  />
+
               </button>
             </div>
           </div>
@@ -271,7 +283,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             </p>
            <button className="gap-2 flex items-center justify-center px-4 py-[10px] mx-auto font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base w-full sm:w-auto">                
                 Donate Now
-                <Image src="/wb.png" alt="Parofund Logo" className="h-6 w-6 sm:h-[30px] sm:w-[30px]" />
+                <Image src="/wb.png" width={30} height={30} alt="Parofund Logo" className="h-6 w-6 sm:h-[30px] sm:w-[30px]" />
             </button>
           </div>
         </div>

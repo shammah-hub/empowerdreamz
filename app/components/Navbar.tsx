@@ -16,12 +16,17 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="border bg-white border-gray-300 rounded-[15px] px-4 sm:px-6 md:pl-[30px] md:pr-[50px] py-2 md:p-[10px] fixed left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-[1400px] top-4 shadow-lg">      
+    <nav className="border bg-white border-gray-300 rounded-[15px] px-4 sm:px-6 md:pl-[30px] md:pr-[50px] py-2 md:p-[10px] fixed left-1/2 transform -translate-x-1/2 z-50 w-[95%] max-w-[1700px] top-4 shadow-lg">      
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-white text-2xl font-bold">
-          <Image src="/Ad.png" alt="Logo" className="h-8 sm:h-10 md:h-[40px] w-auto"/>        
-        </Link>
+          <Image
+            src="/Ad.png"
+            width={200}
+            height={100}
+            alt="Logo"
+          />
+  </Link>
 
         {/* Mobile Menu Button */}
         <button
@@ -63,7 +68,14 @@ export default function Navbar() {
         <div className="hidden md:flex gap-4">
           <button className="gap-2 flex items-center px-4 py-[10px] font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
             Donate Now
-            <Image src="/wb.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
+            <Image 
+                src="/wb.png" 
+                width={30} 
+                height={30} 
+                quality={90}
+                alt="empowerdreams Logo" 
+                className="h-[30px] w-[30px]" 
+              />
           </button>
         </div>
       </div>
@@ -92,8 +104,14 @@ export default function Navbar() {
           {/* Mobile Donate Button */}
           <div className="px-4 py-3 border-t border-gray-100">
             <button className="w-full gap-2 flex items-center justify-center px-4 py-3 font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-lg hover:shadow-xl transition-all duration-300 transform active:scale-95">                
-              Donate Now
-              <Image src="/wb.png" alt="Parofund Logo" className="h-6 w-6" />
+                Donate Now
+              <Image 
+                src="/wb.png" 
+                width={30} 
+                height={30} 
+                alt="Parofund Logo" 
+                className="h-[30px] w-[30px]" 
+              />
             </button>
           </div>
         </div>

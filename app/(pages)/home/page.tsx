@@ -36,7 +36,7 @@ const CharityHomepage = () => {
 ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white ml-5 mr-5">
       
       <HeroSlider />
 
@@ -47,6 +47,8 @@ const CharityHomepage = () => {
       <div className="relative">
         <Image
             src="/g.gif"
+            width={30} 
+            height={30}
             alt="Community help"
             className="rounded-lg shadow-lg w-full h-96 object-cover"
         />
@@ -73,7 +75,8 @@ const CharityHomepage = () => {
         </p>
         <div className="flex items-center space-x-4 mb-6">
           <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center">
-            <Image src="/nobg.png" alt="Parofund Logo" className="w-auto h-8" />
+            <Image src="/nobg.png" width={30} 
+                height={30} alt="Parofund Logo" className="w-auto h-8" />
           </div>
           <span className="text-gray-700">Compassionate Care</span>
         </div>
@@ -132,14 +135,16 @@ const CharityHomepage = () => {
               </p>
              <button className="gap-2 flex px-6 py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
                        Get Involved
-                       <Image src="/wb.png" alt="Parofund Logo" className=" h-[30px] w-[30px]" />
+                       <Image src="/wb.png" width={30} 
+                height={30} alt="Parofund Logo" className=" h-[30px] w-[30px]" />
                 </button>
             </div>
-            <div className="relative">
+            <div className="relative w-full h-72 rounded-lg shadow-lg overflow-hidden">
               <Image
                 src="/c4.jpg"
                 alt="Happy children"
-                className="rounded-lg shadow-lg w-full h-72 object-cover"
+                fill
+                className="object-cover"
               />
             </div>
           </div>
@@ -162,11 +167,14 @@ const CharityHomepage = () => {
     <div className="grid md:grid-cols-3 gap-8">
       {campaigns.map((campaign) => (
         <div key={campaign.id} className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow duration-300">
-          <Image
-            src={campaign.image}
-            alt={campaign.title}
-            className="w-full h-48 object-cover"
-          />
+           <div className="relative w-full h-48">
+    <Image
+      src={campaign.image}
+      alt={campaign.title}
+      fill
+      className="object-cover"
+    />
+  </div>
           <div className="p-6">
             <h3 className="text-xl font-semibold text-gray-800 mb-3">
               {campaign.title}

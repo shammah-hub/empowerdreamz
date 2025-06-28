@@ -70,7 +70,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <section className="bg-gray-50 py-14 h-screen relative overflow-hidden">
+    <section className="bg-gray-50 py-16 h-screen relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 h-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center h-full">
           {/* Left Content */}
@@ -91,7 +91,13 @@ const HeroSlider = () => {
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 animate-slideInLeft delay-500 justify-center md:justify-start">
                 <button className="font-bold gap-2 flex items-center justify-center px-6 py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
                   Donate Now
-                  <Image src="/wb.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
+                  <Image 
+                    src="/wb.png" 
+                    width={30} 
+                    height={30} 
+                    alt="Parofund Logo" 
+                    className="h-[30px] w-[30px]" 
+                  />
                 </button>
                 <button className="border border-gray-300 text-gray-700 px-6 sm:px-8 py-3 rounded-lg hover:border-green-500 hover:shadow-xl transition-colors duration-300">
                   Learn More
@@ -101,7 +107,7 @@ const HeroSlider = () => {
           </div>
 
           {/* Right Image Slider */}
-          <div className="relative h-64 sm:h-80 md:h-96 lg:h-[400px] xl:h-[500px] w-full md:w-164 rounded-lg overflow-hidden shadow-2xl order-1 md:order-2">
+          <div className="relative h-96 sm:h-80 md:h-96 lg:h-[600px] xl:h-[600px] w-full md:w-164 rounded-lg overflow-hidden shadow-2xl order-1 md:order-2">
             {/* Curtain Animation Container */}
             <div className="relative w-full h-full">
               {slides.map((slide, index) => (
@@ -114,8 +120,12 @@ const HeroSlider = () => {
                   <div className="relative w-full h-full overflow-hidden">
                     <Image
                       src={slide.image}
+                      fill
+                      priority={index === 0} // Prioritize loading the first image
                       alt={slide.title}
-                      className="w-full h-full object-cover"
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      quality={90} // Higher quality for crisp images
                     />
                     {/* Curtain Reveal Animation */}
                     <div 
