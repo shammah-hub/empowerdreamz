@@ -1,7 +1,6 @@
 "use client"
 import CounterSection from '@/app/components/counter';
 import CircularProgress from '@/app/components/cprogressbar';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -143,7 +142,7 @@ const AboutPage = () => {
       <div className="bg-white rounded-xl p-8 shadow-lg">
         <h3 className="text-xl font-semibold mb-4">Healthcare Support</h3>
         <p className="text-gray-600 text-sm mb-6">
-          Providing essential medical assistance and organizing blood drives to support our community's health needs.
+          Providing essential medical assistance and organizing blood drives to support our community health needs.
         </p>
         <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
           <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

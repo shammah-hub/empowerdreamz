@@ -1,29 +1,30 @@
 "use client"
+import Image from 'next/image'
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
 
 export default function CharityContactPage() {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
+ const [formData, setFormData] = useState({
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  message: ''
+});
 
-  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const { name, value } = e.target;
+  setFormData(prev => ({
+    ...prev,
+    [name]: value
+  }));
+};
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
-  };
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  console.log('Form submitted:', formData);
+  // Handle form submission here
+};
 
   return (
     <div className="min-h-screen bg-white">
@@ -34,8 +35,8 @@ export default function CharityContactPage() {
             We Would Love to Hear from You
           </h1>
           <p className="text-lg text-white max-w-3xl mx-auto mb-8">
-            Have a question about helping support children in need? We're here to help. 
-            Reach out, and we'll do our best to guide you.
+            Have a question about helping support children in need? Always here to help. 
+            Reach out, and we &apos; ll do our best to guide you.
           </p>
           
           {/* Social Media Icons */}
@@ -225,7 +226,7 @@ export default function CharityContactPage() {
               </p>
               <button className="gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
                 Visit Page
-                 <img src="/grl.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
+                 <Image src="/grl.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
               </button>
             </div>
 
@@ -239,7 +240,7 @@ export default function CharityContactPage() {
               </p>
               <button className=" gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
                 Donation Page
-                <img src="/grl.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
+                <Image src="/grl.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
               </button>
             </div>
           </div>
@@ -270,7 +271,7 @@ export default function CharityContactPage() {
             </p>
            <button className="gap-2 flex items-center justify-center px-4 py-[10px] mx-auto font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base w-full sm:w-auto">                
                 Donate Now
-                <img src="/wb.png" alt="Parofund Logo" className="h-6 w-6 sm:h-[30px] sm:w-[30px]" />
+                <Image src="/wb.png" alt="Parofund Logo" className="h-6 w-6 sm:h-[30px] sm:w-[30px]" />
             </button>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React, { useState, useEffect } from 'react';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 
@@ -88,7 +89,7 @@ const BlogSection = () => {
             >
               {/* Image Container */}
               <div className="relative overflow-hidden">
-                <img
+                <Image
                   src={post.image}
                   alt={post.title}
                   className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"

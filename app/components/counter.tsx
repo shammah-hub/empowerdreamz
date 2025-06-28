@@ -13,6 +13,13 @@ interface TargetValues {
   effectiveness: number;
 }
 
+// Move targets outside the component to avoid recreating on every render
+const targets: TargetValues = {
+  lives: 3200,
+  partners: 30,
+  effectiveness: 98
+};
+
 const CounterSection: React.FC = () => {
   const [counters, setCounters] = useState<CounterState>({
     lives: 0,
@@ -21,13 +28,6 @@ const CounterSection: React.FC = () => {
   });
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const sectionRef = useRef<HTMLElement>(null);
-
-  // Target values for each counter
-  const targets: TargetValues = {
-    lives: 3200,
-    partners: 30,
-    effectiveness: 98
-  };
 
   // Intersection Observer to trigger animation when section comes into view
   useEffect(() => {
@@ -80,7 +80,7 @@ const CounterSection: React.FC = () => {
     return () => {
       Object.values(intervals).forEach(interval => clearInterval(interval));
     };
-  }, [isVisible]); // Removed targets from dependency array
+  }, [isVisible]); // Now we can safely omit targets from dependencies
 
   const formatNumber = (num: number, suffix: string = ''): string => {
     if (num >= 1000) {

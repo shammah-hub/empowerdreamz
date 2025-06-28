@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -90,7 +91,7 @@ const HeroSlider = () => {
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 animate-slideInLeft delay-500 justify-center md:justify-start">
                 <button className="font-bold gap-2 flex items-center justify-center px-6 py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
                   Donate Now
-                  <img src="/wb.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
+                  <Image src="/wb.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
                 </button>
                 <button className="border border-gray-300 text-gray-700 px-6 sm:px-8 py-3 rounded-lg hover:border-green-500 hover:shadow-xl transition-colors duration-300">
                   Learn More
@@ -111,7 +112,7 @@ const HeroSlider = () => {
                   }`}
                 >
                   <div className="relative w-full h-full overflow-hidden">
-                    <img
+                    <Image
                       src={slide.image}
                       alt={slide.title}
                       className="w-full h-full object-cover"

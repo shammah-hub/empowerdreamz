@@ -1,6 +1,7 @@
+import Image from 'next/image'
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
-import { Heart, Users, Globe, Award, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, Play, Calendar, User, ArrowRight } from 'lucide-react';
+import {  Phone, Mail, MapPin, } from 'lucide-react';
 
 function Footer() {
   return (
@@ -8,7 +9,13 @@ function Footer() {
       {/* Logo Container */}
       <div className="w-full flex justify-center items-center mb-6 sm:mb-8 px-4">
         <div className="relative">
-          <img src="/Ad.png" alt="Parofund Logo" className="w-auto max-w-[250px] sm:max-w-none" />
+          <Image 
+            src="/Ad.png" alt="Parofund Logo" 
+            width={250}  
+            height={100} 
+            className="w-auto max-w-[250px] sm:max-w-none"
+            priority // Add this if it's above the fold
+/>
           {/* Non-absolute blur effect - using a div with background gradient */}
           <div className="h-15 w-full bg-gradient-to-t from-gray-600 to-transparent -mt-6 blur-lg"></div>
         </div>
@@ -19,7 +26,7 @@ function Footer() {
           {/* Logo and Sign In Section */}
           <div className="flex flex-col space-y-4 text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start">
-              <img src="/Ad.png" alt="Parofund Logo" className='h-[25px] sm:h-[30px] w-auto max-w-[200px] sm:w-[250px]'/>
+              <Image src="/Ad.png" alt="Parofund Logo" className='h-[25px] sm:h-[30px] w-auto max-w-[200px] sm:w-[250px]'/>
             </div>
             <div className="flex flex-col sm:flex-row pt-4 sm:pt-[20px] space-y-2 sm:space-y-0 sm:space-x-2">
               <button className="px-4 py-2 rounded-lg font-extrabold border border-gray-300 hover:border-green-300 hover:shadow-xl transition-colors">
@@ -96,7 +103,7 @@ function Footer() {
                 />
                 <button className="flex gap-2 bg-gradient-to-r from-[#2d8f00] text-white to-[#85e065] font-bold px-8 py-2 rounded-lg sm:rounded-r-lg sm:rounded-l-none hover:shadow-lg transition-shadow">
                   Subscribe
-                  <img src="/wb.png" alt="Parofund Logo" className="h-6 w-6" />
+                  <Image src="/wb.png" alt="Parofund Logo" className="h-6 w-6" />
                 </button>
               </div>
             </div>

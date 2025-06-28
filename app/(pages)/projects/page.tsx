@@ -1,6 +1,7 @@
 "use client"
+import Image from 'next/image'
 import React, { useState } from 'react';
-import { Heart, Play, ChevronLeft, ChevronRight, Users, Target, Award } from 'lucide-react';
+import { Heart, ChevronLeft, ChevronRight, Users, Target, Award } from 'lucide-react';
 
 const CharityProjectsPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -129,7 +130,7 @@ const CharityProjectsPage = () => {
           <div className="hidden lg:flex flex-col sm:flex-row gap-3">
             <button className="gap-2 flex items-center justify-center px-4 py-[10px] font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">                
                  Donate Now
-                 <img src="/wb.png" alt="Parofund Logo" className="h-6 w-6 sm:h-[30px] sm:w-[30px]" />
+                 <Image src="/wb.png" alt="Parofund Logo" className="h-6 w-6 sm:h-[30px] sm:w-[30px]" />
             </button>
           </div>
         </div>
@@ -140,12 +141,12 @@ const CharityProjectsPage = () => {
         <div className="space-y-3 sm:space-y-4">
           {/* Top Row */}
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <img
+            <Image
               src="/c1.jpg"
               alt="Community outreach"
               className="rounded-2xl shadow-lg h-32 sm:h-36 lg:h-40 w-full object-cover"
             />
-            <img
+            <Image
               src="/c2.jpg"
               alt="Educational programs"
               className="rounded-2xl shadow-lg h-32 sm:h-36 lg:h-40 w-full object-cover mt-4 sm:mt-6 lg:mt-8"
@@ -154,12 +155,12 @@ const CharityProjectsPage = () => {
           
           {/* Middle Row */}
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <img
+            <Image
               src="/c9.jpg"
               alt="Volunteers working"
               className="rounded-2xl shadow-lg h-32 sm:h-36 lg:h-40 w-full object-cover"
             />
-            <img
+            <Image
               src="/cf.jpg"
               alt="Community impact"
               className="rounded-2xl shadow-lg h-32 sm:h-36 lg:h-40 w-full object-cover mt-4 sm:mt-6 lg:mt-8"
@@ -168,12 +169,12 @@ const CharityProjectsPage = () => {
           
           {/* Bottom Row */}
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <img
+            <Image
               src="/c3.jpg"
               alt="Healthcare initiatives"
               className="rounded-2xl shadow-lg h-32 sm:h-36 lg:h-40 w-full object-cover mt-2 sm:mt-3 lg:mt-4"
             />
-            <img
+            <Image
               src="/c4.jpg"
               alt="Sustainable development"
               className="rounded-2xl shadow-lg h-32 sm:h-36 lg:h-40 w-full object-cover"
@@ -183,7 +184,7 @@ const CharityProjectsPage = () => {
         
         {/* Floating Card - Responsive positioning */}
         <div className="absolute top-4 sm:top-6 -right-2 sm:-right-4 bg-white rounded-xl p-2 sm:p-3 w-[120px] sm:w-[140px] shadow-xl z-20">
-          <img
+          <Image
             src="/c8.jpg"
             alt="Project impact"
             className="rounded-lg w-full mb-2"
@@ -224,7 +225,7 @@ const CharityProjectsPage = () => {
         <div className="flex flex-col sm:flex-row gap-3">
           <button className="gap-2 flex items-center justify-center px-4 py-[10px] font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">                
                Donate Now
-               <img src="/wb.png" alt="Parofund Logo" className="h-6 w-6 sm:h-[30px] sm:w-[30px]" />
+               <Image src="/wb.png" alt="Parofund Logo" className="h-6 w-6 sm:h-[30px] sm:w-[30px]" />
           </button>
         </div>
       </div>
@@ -239,12 +240,12 @@ const CharityProjectsPage = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="grid grid-cols-2 gap-4">
-                <img
+                <Image
                   src="/c9.jpg"
                   alt="Volunteers working"
                   className="rounded-2xl shadow-lg"
                 />
-                <img
+                <Image
                   src="/cf.jpg"
                   alt="Community impact"
                   className="rounded-2xl shadow-lg mt-8"
@@ -286,7 +287,7 @@ const CharityProjectsPage = () => {
 
               <button className=" gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
                 Next Project
-                <img src="/grl.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
+                <Image src="/grl.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
               </button>
             </div>
           </div>
@@ -313,7 +314,7 @@ const CharityProjectsPage = () => {
             {projects.slice(currentSlide * 3, currentSlide * 3 + 6).map((project, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
                 <div className="relative">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
                     className="w-full h-48 object-cover"
@@ -352,7 +353,7 @@ const CharityProjectsPage = () => {
                     </div>
                     <div className="flex -space-x-2">
                       {donorImages.slice(0, 3).map((img, i) => (
-                        <img
+                        <Image
                           key={i}
                           src={img}
                           alt={`Supporter ${i + 1}`}

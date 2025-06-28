@@ -1,5 +1,5 @@
 "use client";
-
+import Image from 'next/image'
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="text-white text-2xl font-bold">
-          <img src="/Ad.png" alt="Logo" className="h-8 sm:h-10 md:h-[40px] w-auto"/>        
+          <Image src="/Ad.png" alt="Logo" className="h-8 sm:h-10 md:h-[40px] w-auto"/>        
         </Link>
 
         {/* Mobile Menu Button */}
@@ -63,7 +63,7 @@ export default function Navbar() {
         <div className="hidden md:flex gap-4">
           <button className="gap-2 flex items-center px-4 py-[10px] font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
             Donate Now
-            <img src="/wb.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
+            <Image src="/wb.png" alt="Parofund Logo" className="h-[30px] w-[30px]" />
           </button>
         </div>
       </div>
@@ -93,7 +93,7 @@ export default function Navbar() {
           <div className="px-4 py-3 border-t border-gray-100">
             <button className="w-full gap-2 flex items-center justify-center px-4 py-3 font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-lg hover:shadow-xl transition-all duration-300 transform active:scale-95">                
               Donate Now
-              <img src="/wb.png" alt="Parofund Logo" className="h-6 w-6" />
+              <Image src="/wb.png" alt="Parofund Logo" className="h-6 w-6" />
             </button>
           </div>
         </div>
