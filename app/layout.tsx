@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable}`}>
-      <body className={`bg-white ${nunitoSans.className}`} >
+      <body className={`bg-white ${nunitoSans.className}`} data-cjcrx="addYes" >
         <Loader>
           <>
             <Navbar />
