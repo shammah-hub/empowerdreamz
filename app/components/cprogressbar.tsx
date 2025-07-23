@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const CircularProgress = ({ 
+const CircularProgres = ({ 
   percentage = 75, 
   size = 48, 
   strokeWidth = 4,
@@ -39,8 +39,8 @@ const CircularProgress = ({
   const strokeDashoffset = circumference - (progress / 100) * circumference;
   
   return (
-    <div className="bg-[#1a344b] rounded-lg p-4 text-white flex items-center space-x-4">
-      <div className="relative" style={{ width: size, height: size }}>
+    <div className="bg-[#1a344b] rounded-lg p-3 sm:p-4 text-white flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 w-full max-w-sm mx-auto">
+      <div className="relative flex-shrink-0" style={{ width: size, height: size }}>
         <svg
           width={size}
           height={size}
@@ -71,19 +71,19 @@ const CircularProgress = ({
         </svg>
         {/* Number in center */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className=" text-sm font-bold">
+          <span className="text-xs sm:text-sm font-bold">
             {displayNumber}
           </span>
         </div>
       </div>
       
       {/* Text content in column */}
-      <div className="flex flex-col">
-        <p className="text-lg  font-bold">Since 2020</p>
-        <p className="text-sm ">Years of Experience</p>
+      <div className="flex flex-col text-center sm:text-left">
+        <p className="text-base sm:text-lg font-bold">Since 2020</p>
+        <p className="text-xs sm:text-sm">Years of Experience</p>
       </div>
     </div>
   );
 };
 
-export default CircularProgress;
+export default CircularProgres;

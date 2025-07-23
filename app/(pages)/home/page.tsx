@@ -4,6 +4,7 @@ import React from 'react';
 import { GoArrowRight } from "react-icons/go";
 import { Heart, Users, Globe, Award, } from 'lucide-react';
 import HeroSlider from '@/app/components/heroslider';
+import Link from 'next/link';
 
 
 const CharityHomepage = () => {
@@ -36,12 +37,12 @@ const CharityHomepage = () => {
 ];
 
   return (
-    <div className="min-h-screen bg-white ml-5 mr-5">
+    <div className="min-h-screen bg-white ">
       
       <HeroSlider />
 
       {/* Belief Section */}
-<section className="py-25 bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/mm.png')"}}>
+<section className="py-25 bg-cover bg-white bg-center bg-no-repeat" style={{backgroundImage: "url('/mm.png')"}}>
   <div className="container mx-auto px-6">
     <div className="grid md:grid-cols-2 gap-12 items-center">
       <div className="relative">
@@ -81,7 +82,7 @@ const CharityHomepage = () => {
           <span className="text-gray-700">Compassionate Care</span>
         </div>
         <button className="text-green-600 hover:text-green-700 flex items-center space-x-2">
-          <span>Learn More About Us</span>
+          <span> <Link href={"/contact"}> Learn More About Us</Link></span>
           <GoArrowRight className="w-4 h-4" />
         </button>
       </div>
@@ -90,26 +91,26 @@ const CharityHomepage = () => {
 </section>
 
       {/* Impact Cards */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-gray-50 text-white py-16">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-6">
             <div className="bg-gray-800 text-white p-8 rounded-lg text-center">
-              <Users className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Community Support</h3>
+              <Users className="w-12 text-white h-12 mx-auto mb-4" />
+              <h3 className="text-xl text-white font-semibold mb-2">Community Support</h3>
               <p className="text-gray-300">Building stronger communities</p>
             </div>
             <div className="bg-gradient-to-r from-[#2d8f00] to-[#5fa347] text-white p-8 rounded-lg text-center">
-              <Globe className="w-12 h-12 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Global Reach</h3>
+              <Globe className="w-12 text-white h-12 mx-auto mb-4" />
+              <h3 className="text-xl text-white font-semibold mb-2">Global Reach</h3>
               <p className="text-white">Helping communities worldwide</p>
             </div>
             <div className="bg-gray-700 text-white p-8 rounded-lg text-center">
-              <Heart className="w-12 h-12 mx-auto mb-4" />
+              <Heart className="w-12 text-white h-12 mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-2">Health Care</h3>
               <p className="text-gray-300">Medical support for all</p>
             </div>
             <div className="bg-gray-900 text-white p-8 rounded-lg text-center">
-              <Award className="w-12 h-12 mx-auto mb-4" />
+              <Award className="w-12 text-white h-12 mx-auto mb-4" />
               <h3 className="text-xl font-semibold mb-2">Education</h3>
               <p className="text-gray-300">Learning opportunities</p>
             </div>
@@ -118,7 +119,7 @@ const CharityHomepage = () => {
       </section>
 
       {/* Mission Statement */}
-      <section className="py-16 bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/l.png')"}}>
+      <section className="py-16 text-white bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/l.png')"}}>
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -202,7 +203,7 @@ const CharityHomepage = () => {
                 ${campaign.raised.toLocaleString()} raised
               </span>
               <button className="text-green-600 hover:text-green-700 font-semibold transition-colors duration-200">
-                Donate →
+                <Link href={"#"}>Donate →</Link>
               </button>
             </div>
           </div>

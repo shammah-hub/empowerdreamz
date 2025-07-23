@@ -70,7 +70,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <section className="bg-gray-50 py-16 h-screen relative overflow-hidden">
+    <section className="bg-white py-16 h-screen text-gray-800 relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 h-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center h-full">
           {/* Left Content */}
@@ -148,13 +148,13 @@ const HeroSlider = () => {
               onClick={prevSlide}
               className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 backdrop-blur-sm p-2 md:p-3 rounded-full hover:bg-opacity-30 transition-all duration-300 z-10"
             >
-              <ChevronLeft className="w-4 h-4 md:w-6 md:h-6 text-green" />
+              <ChevronLeft className="w-4 h-4 md:w-6 md:h-6 text-black" />
             </button>
             <button
               onClick={nextSlide}
               className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 backdrop-blur-sm p-2 md:p-3 rounded-full hover:bg-opacity-30 transition-all duration-300 z-10"
             >
-              <ChevronRight className="w-4 h-4 md:w-6 md:h-6 text-green" />
+              <ChevronRight className="w-4 h-4 md:w-6 md:h-6 text-black" />
             </button>
 
             {/* Slide Indicators */}

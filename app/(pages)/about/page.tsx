@@ -1,6 +1,6 @@
 "use client"
 import CounterSection from '@/app/components/counter';
-import CircularProgress from '@/app/components/cprogressbar';
+import CircularProgres from '@/app/components/cprogressbar';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -86,7 +86,7 @@ const AboutPage = () => {
 
 
   return (
-    <div className="min-h-screen pt-12 bg-gray-50 ml-5 mr-5 ">
+    <div className="min-h-screen pt-12 bg-white ">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-green-50 to-green-50 py-12 sm:py-16 lg:py-20">
   <div className="container mx-auto px-4 sm:px-6">
@@ -94,8 +94,8 @@ const AboutPage = () => {
       {/* Visual elements now on the left */}
       <div className="relative">
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
-          <div className="space-y-3 sm:space-y-4">
-            <CircularProgress/>
+          <div className="space-y-1 sm:space-y-2">
+            <CircularProgres/>
 
             <div className="bg-[#1a344b] text-white rounded-lg p-3 sm:p-4">
                 <p className="text-sm sm:text-base">
@@ -111,7 +111,7 @@ const AboutPage = () => {
       </div>
       {/* Text and button now on the right */}
       <div>
-        <p className="font-medium mb-3 sm:mb-4 text-sm sm:text-base">About Our Organization</p>
+        <p className="font-medium mb-3 text-black sm:mb-4 text-sm sm:text-base">About Our Organization</p>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1a344b] mb-4 sm:mb-6 leading-tight">
           Transforming Lives
           <br />
@@ -120,16 +120,17 @@ const AboutPage = () => {
         <p className="text-gray-600 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
           Building stronger communities through compassion, dedication, and sustainable impact.
         </p>
-        <button className="gap-2 flex px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">                
-          Learn Our Story
+       <Link href={"/projects"}> <button className="gap-2 flex px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">                
+           Learn Our Story
         </button>
+        </Link>
       </div>
     </div>
   </div>
 </section>
 
       {/* Our Services Section */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
   <div className="container mx-auto px-6">
     <div className="text-center mb-16">
       <h2 className="text-5xl font-extrabold text-gray-900 mb-4">What We Do</h2>
@@ -140,7 +141,7 @@ const AboutPage = () => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {/* Medical & Blood */}
       <div className="bg-white rounded-xl p-8 shadow-lg">
-        <h3 className="text-xl font-semibold mb-4">Healthcare Support</h3>
+        <h3 className="text-xl text-gray-900  font-semibold mb-4">Healthcare Support</h3>
         <p className="text-gray-600 text-sm mb-6">
           Providing essential medical assistance and organizing blood drives to support our community health needs.
         </p>
@@ -149,7 +150,7 @@ const AboutPage = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
           </svg>
         </div>
-        <Link href="/medical" className="text-sm text-green-600 font-medium hover:text-green-700">
+        <Link href="/projects" className="text-sm text-green-600 font-medium hover:text-green-700">
           Learn More →
         </Link>
       </div>
@@ -172,7 +173,7 @@ const AboutPage = () => {
 
       {/* Pure Water */}
       <div className="bg-white rounded-xl p-8 shadow-lg">
-        <h3 className="text-xl font-semibold mb-4">Clean Water Access</h3>
+        <h3 className="text-xl text-gray-900 font-semibold mb-4">Clean Water Access</h3>
         <p className="text-gray-600 text-sm mb-6">
           Ensuring communities have reliable access to clean, safe drinking water through sustainable solutions.
         </p>
@@ -181,14 +182,14 @@ const AboutPage = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
           </svg>
         </div>
-        <Link href="/water" className="text-sm text-green-600 font-medium hover:text-green-700">
+        <Link href="/projects" className="text-sm text-green-600 font-medium hover:text-green-700">
           Learn More →
         </Link>
       </div>
 
       {/* Give Education */}
       <div className="bg-white rounded-xl p-8 shadow-lg">
-        <h3 className="text-xl font-semibold mb-4">Educational Empowerment</h3>
+        <h3 className="text-xl text-gray-900 font-semibold mb-4">Educational Empowerment</h3>
         <p className="text-gray-600 text-sm mb-6">
           Building brighter futures through educational programs, scholarships, and skill development initiatives.
         </p>
@@ -197,7 +198,7 @@ const AboutPage = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
           </svg>
         </div>
-        <Link href="/education" className="text-sm text-green-600 font-medium hover:text-green-700">
+        <Link href="/projects" className="text-sm text-green-600 font-medium hover:text-green-700">
           Learn More →
         </Link>
       </div>

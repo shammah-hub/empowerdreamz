@@ -1,7 +1,8 @@
 "use client"
 import Image from 'next/image'
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import Link from 'next/link';
+import { Phone, Mail, MapPin, Clock, Send, } from 'lucide-react';
 
 export default function CharityContactPage() {
  const [formData, setFormData] = useState({
@@ -71,7 +72,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                 <Mail className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">You Got Email from</h3>
-              <p className="text-gray-600 text-sm">support@thishelp.com</p>
+              <p className="text-gray-600 text-sm">admin@empowerdreamz.org</p>
             </div>
             
             <div className="text-center">
@@ -79,7 +80,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                 <Phone className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Call us on</h3>
-              <p className="text-gray-600 text-sm">+95 000-00-000</p>
+              <p className="text-gray-600 text-sm">+1 305 724 1176</p>
             </div>
             
             <div className="text-center">
@@ -108,7 +109,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               </div>
               <div className="absolute -bottom-4 -left-4 bg-[#1a344b] text-white px-4 py-2 rounded-lg">
                 <p className="text-sm">Email us directly at:</p>
-                <p className="font-semibold">contact@thishelp.com</p>
+                <p className="font-semibold">admin@empowerdreamz.org</p>
               </div>
             </div>
 
@@ -126,7 +127,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                       value={formData.firstName}
                       onChange={handleInputChange}
                       placeholder="Enter First Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
+                      className="w-full px-4 py-3 border text-gray-600 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
                     />
                   </div>
                   <div>
@@ -139,7 +140,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                       value={formData.lastName}
                       onChange={handleInputChange}
                       placeholder="Enter Last Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
+                      className="w-full px-4 py-3 text-gray-600 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
                     />
                   </div>
                 </div>
@@ -155,7 +156,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Enter your Email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
+                      className="w-full px-4 text-gray-600 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
                     />
                   </div>
                   <div>
@@ -168,7 +169,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       placeholder="Enter Phone Number"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
+                      className="w-full px-4 py-3 text-gray-600 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
                     />
                   </div>
                 </div>
@@ -183,7 +184,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                     onChange={handleInputChange}
                     placeholder="Enter your Message"
                     rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none resize-none"
+                    className="w-full px-4 py-3 text-gray-600 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none resize-none"
                   ></textarea>
                 </div>
 
@@ -224,6 +225,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                 Interested in becoming a volunteer and making a hands-on difference? Please visit 
                 our volunteer page for more information about how to get signed up.
               </p>
+              <Link href={'/Contact'}>
               <button className="gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
                 Visit Page
                  <Image
@@ -234,6 +236,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                   />
 
               </button>
+              </Link>
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-sm">
@@ -244,6 +247,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                 For more information or have contact about our various giving options, visit our Donation 
                 Information page.
               </p>
+              <Link href={'/#'}>
               <button className=" gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
                 Donation Page
                 <Image
@@ -254,6 +258,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                   />
 
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -281,10 +286,13 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
             <p className="text-black mb-3 sm:mb-4 text-sm sm:text-base">
               Click here to donate now and help get all the lives of children in need
             </p>
+
+            <Link href={"#"}>
            <button className="gap-2 flex items-center justify-center px-4 py-[10px] mx-auto font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base w-full sm:w-auto">                
                 Donate Now
                 <Image src="/wb.png" width={30} height={30} alt="Parofund Logo" className="h-6 w-6 sm:h-[30px] sm:w-[30px]" />
             </button>
+            </Link>
           </div>
         </div>
       </div>

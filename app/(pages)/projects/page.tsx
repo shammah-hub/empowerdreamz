@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import React, { useState } from 'react';
 import { Heart, ChevronLeft, ChevronRight, Users, Target, Award } from 'lucide-react';
+import Link from 'next/link';
 
 const CharityProjectsPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -142,12 +143,14 @@ const CharityProjectsPage = () => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex flex-col sm:flex-row gap-3">
+            <Link href={"#"}>
             <button className="gap-2 flex items-center justify-center px-4 py-[10px] font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">                
               Donate Now
               <div className="relative w-6 h-6 sm:w-[30px] sm:h-[30px]">
                 <Image src="/wb.png" alt="Parofund Logo" fill className="object-contain" />
               </div>
             </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -231,12 +234,14 @@ const CharityProjectsPage = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3">
+          <Link href={"#"}> 
           <button className="gap-2 flex items-center justify-center px-4 py-[10px] font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">                
             Donate Now
             <div className="relative w-6 h-6 sm:w-[30px] sm:h-[30px]">
               <Image src="/wb.png" alt="Parofund Logo" fill className="object-contain" />
             </div>
           </button>
+          </Link>
         </div>
       </div>
     </div>
@@ -298,10 +303,12 @@ const CharityProjectsPage = () => {
                 </div>
               </div>
 
+              <Link href={"/contact"} className="mt-6 inline-block">
               <button className=" gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
                 Next Project
                 <Image src="/grl.png" width={50} height={50} alt="Parofund Logo" className="h-[30px] w-[30px]" />
-              </button>
+              </button> 
+              </Link>
             </div>
           </div>
         </div>
@@ -380,9 +387,11 @@ const CharityProjectsPage = () => {
                   </div>
 
                   <div className="flex space-x-3">
+                    <Link href={"/contact"}>
                     <button className="flex-1 bg-[#369612] text-white py-2 px-4 rounded hover:bg-green-700 transition-colors font-medium">
                       Donate Now
                     </button>
+                    </Link>
                     <button className="px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors">
                       <Heart className="h-4 w-4 text-gray-500" />
                     </button>
@@ -433,12 +442,12 @@ const CharityProjectsPage = () => {
             Join thousands of supporters who are already making an impact. Every contribution, no matter the size, helps us create positive change in communities worldwide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-[#1a344b] px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
+            <Link href={"#"}><button className="bg-white text-[#1a344b] px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
               Start Supporting Today
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-[#1a344b] transition-all">
+            </button></Link>
+            <Link href={"/about"}><button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-[#1a344b] transition-all">
               Learn More About Us
-            </button>
+            </button></Link>
           </div>
         </div>
       </section>
