@@ -37,7 +37,7 @@ const CharityHomepage = () => {
 ];
 
   return (
-    <div className="min-h-screen bg-white ">
+    <>
       
       <HeroSlider />
 
@@ -134,11 +134,13 @@ const CharityHomepage = () => {
                 Through sustainable programs and community partnerships, we&apos;re creating 
                 lasting change that empowers individuals and families to build better futures.
               </p>
+              <Link href={"/contact"}>
              <button className="gap-2 flex px-6 py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
                        Get Involved
                        <Image src="/wb.png" width={30} 
                 height={30} alt="Parofund Logo" className=" h-[30px] w-[30px]" />
                 </button>
+                </Link>
             </div>
             <div className="relative w-full h-72 rounded-lg shadow-lg overflow-hidden">
               <Image
@@ -212,7 +214,7 @@ const CharityHomepage = () => {
     </div>
   </div>
 </section>
-    </div>
+    </>
   );
 };
 

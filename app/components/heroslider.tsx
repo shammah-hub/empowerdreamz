@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from "next/link"
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -70,7 +71,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <section className="bg-white py-16 h-screen text-gray-800 relative overflow-hidden">
+    <section className="bg-white py-16 h-screen mb-20 text-gray-800 ">
       <div className="container mx-auto px-4 sm:px-6 h-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center h-full">
           {/* Left Content */}
@@ -88,21 +89,23 @@ const HeroSlider = () => {
               <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 md:mb-8 animate-slideInLeft delay-300 max-w-lg mx-auto md:mx-0">
                 {slides[currentSlide].description}
               </p>
-              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 animate-slideInLeft delay-500 justify-center md:justify-start">
-                <button className="font-bold gap-2 flex items-center justify-center px-6 py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
-                  Donate Now
-                  <Image 
-                    src="/wb.png" 
-                    width={30} 
-                    height={30} 
-                    alt="Parofund Logo" 
-                    className="h-[30px] w-[30px]" 
-                  />
-                </button>
-                <button className="border border-gray-300 text-gray-700 px-6 sm:px-8 py-3 rounded-lg hover:border-green-500 hover:shadow-xl transition-colors duration-300">
+              <div className="flex flex-col sm:flex-row gap-4 animate-slideInLeft delay-500 justify-center md:justify-start">
+              <button className="w-full sm:w-auto font-bold gap-2 flex items-center justify-center px-6 py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
+                Donate Now
+                <Image 
+                  src="/wb.png" 
+                  width={30} 
+                  height={30} 
+                  alt="Parofund Logo" 
+                  className="h-[30px] w-[30px]" 
+                />
+              </button>
+              <Link href={"/about"} className="w-full sm:w-auto">
+                <button className="w-full border border-gray-300 text-gray-700 px-6 sm:px-8 py-3 rounded-lg hover:border-green-500 hover:shadow-xl transition-colors duration-300">
                   Learn More
                 </button>
-              </div>
+              </Link>
+            </div>
             </div>
           </div>
 

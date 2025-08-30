@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from "next/link"
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import {  Phone, Mail, MapPin, } from 'lucide-react';
@@ -30,9 +31,11 @@ function Footer() {
                 height={30} alt="Parofund Logo" className='h-[25px] sm:h-[30px] w-auto max-w-[200px] sm:w-[250px]'/> */}
             </div>
             <div className="flex flex-col sm:flex-row pt-4 sm:pt-[20px] space-y-2 sm:space-y-0 sm:space-x-2">
+              <Link href={"/about"}>
               <button className="px-4 py-2 rounded-lg font-extrabold border border-gray-300 hover:border-green-300 hover:shadow-xl transition-colors">
                 Learn More
               </button>
+              </Link>
               <button className="px-3 py-2 font-extrabold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
                 Donate Now
               </button>
@@ -60,36 +63,45 @@ function Footer() {
 
           {/* Quick Links Section */}
           <div className="text-center sm:text-left">
-            <h4 className="text-lg font-extrabold mb-4 sm:mb-6">Quick Links</h4>
+            <h4 className="text-xl font-extrabold mb-4 sm:mb-6">Quick Links</h4>
             <ul className="space-y-2 sm:space-y-3">
-              <li><a href="#" className="text-black hover:text-gray-500 transition-colors">About Us</a></li>
-              <li><a href="#" className="text-black hover:text-gray-500 transition-colors">Our Causes</a></li>
-              <li><a href="#" className="text-black hover:text-gray-500 transition-colors">Get Involved</a></li>
-              <li><a href="#" className="text-black hover:text-gray-500 transition-colors">Events</a></li>
-              <li><a href="#" className="text-black hover:text-gray-500 transition-colors">News</a></li>
+              <li><a href="/about" className="text-black text-xl hover:text-gray-500 transition-colors">About Us</a></li>
+              <li><a href="/projects" className="text-black text-xl hover:text-gray-500 transition-colors">Our Causes</a></li>
+              <li><a href="/contact" className="text-black text-xl hover:text-gray-500 transition-colors">Get Involved</a></li>
+              <li><a href="/projects" className="text-black text-xl hover:text-gray-500 transition-colors">Events</a></li>
+              {/* <li><a href="#" className="text-black hover:text-gray-500 transition-colors">News</a></li> */}
             </ul>
           </div>
 
           {/* Contact Information Section */}
           <div className="text-center sm:text-left">
-            <h4 className="text-lg font-extrabold mb-4 sm:mb-6">Contact Info</h4>
+            <h4 className="text-xl font-extrabold mb-4 sm:mb-6">Contact Info</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
                 <Phone className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-gray-400">+1 305-724-1176</span>
+                <span className="text-black text-xl">+1 305-724-1176</span>
               </div>
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
-                <Mail className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-black break-all sm:break-normal">admin@empowerdreamz.org</span>
+                <Mail className="w-5 h-5 text-black flex-shrink-0" />
+                <span className="text-black text-xl break-all sm:break-normal">support@empowerdreamz.org</span>
               </div>
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
                 <MapPin className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-black text-sm sm:text-base">123 Hope Street, City, State 12345</span>
+                <span className="text-black text-xl sm:text-base">123 Hope Street, City, State 12345</span>
               </div>
             </div>
           </div>
 
-          {/* Newsletter Section */}
+          <div className="text-center sm:text-left">
+            <h4 className="text-xl font-extrabold text-black mb-4 sm:mb-6">EmpowerDreamz</h4>
+            <p className="text-black mb-4 text-xl sm:text-base">
+              Subscribe to making the world a better place by helping others
+            </p>
+            
+          </div>
+        </div>
+
+          {/* Newsletter Section
           <div className="text-center sm:text-left">
             <h4 className="text-lg font-semibold mb-4 sm:mb-6">Newsletter</h4>
             <p className="text-black mb-4 text-sm sm:text-base">
@@ -113,7 +125,7 @@ function Footer() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         
         {/* Copyright Section */}
         <div className="border-t border-gray-200 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-gray-400">

@@ -5,27 +5,7 @@ import Link from 'next/link';
 import { Phone, Mail, MapPin, Clock, Send, } from 'lucide-react';
 
 export default function CharityContactPage() {
- const [formData, setFormData] = useState({
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  message: ''
-});
 
-const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  const { name, value } = e.target;
-  setFormData(prev => ({
-    ...prev,
-    [name]: value
-  }));
-};
-
-const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  console.log('Form submitted:', formData);
-  // Handle form submission here
-};
 
   return (
     <div className="min-h-screen bg-white">
@@ -59,12 +39,14 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       <div className="py-16 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
+            <div className="text-center ">
               <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Address</h3>
-              <p className="text-gray-600 text-sm">Somewhere in the World</p>
+              <p className="text-gray-600 text-sm">6545 Market Ave. North STE 100, North Canton, OH 44721 USA</p>
+              <p className="text-gray-600 text-sm mt-3">
+                <span className='font-bold text-black'>Mailing Address: </span>6545 Market Ave. North STE 100, North Canton, OH 44721 USA</p>
             </div>
             
             <div className="text-center">
@@ -72,7 +54,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
                 <Mail className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">You Got Email from</h3>
-              <p className="text-gray-600 text-sm">admin@empowerdreamz.org</p>
+              <p className="text-gray-600 text-sm">support@empowerdreamz.org</p>
             </div>
             
             <div className="text-center">
@@ -109,106 +91,12 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               </div>
               <div className="absolute -bottom-4 -left-4 bg-[#1a344b] text-white px-4 py-2 rounded-lg">
                 <p className="text-sm">Email us directly at:</p>
-                <p className="font-semibold">admin@empowerdreamz.org</p>
+                <p className="font-semibold">support@empowerdreamz.org</p>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      First Name
-                    </label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      placeholder="Enter First Name"
-                      className="w-full px-4 py-3 border text-gray-600 border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Last Name
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      placeholder="Enter Last Name"
-                      className="w-full px-4 py-3 text-gray-600 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="Enter your Email"
-                      className="w-full px-4 text-gray-600 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="Enter Phone Number"
-                      className="w-full px-4 py-3 text-gray-600 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Enter your Message"
-                    rows={5}
-                    className="w-full px-4 py-3 text-gray-600 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#369612] focus:border-transparent outline-none resize-none"
-                  ></textarea>
-                </div>
-
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    id="privacy"
-                    className="w-4 h-4 text-lime-400 border-gray-300 rounded focus:ring-[#369612]"
-                  />
-                  <label htmlFor="privacy" className="text-sm text-gray-600">
-                    I agree with Terms of Use and Privacy Policy
-                  </label>
-                </div>
-
-                <button
-                     type="submit"
-                        className="bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2"
-                        >
-                    <span>Send your Message</span>
-                    <Send className="w-4 h-4" />
-                </button>
-
-              </form>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -227,7 +115,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               </p>
               <Link href={'/Contact'}>
               <button className="gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
-                Visit Page
+                Contact Us
                  <Image
                     src="/grl.png"
                     alt="Parofund Logo"

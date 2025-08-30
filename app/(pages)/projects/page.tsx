@@ -82,11 +82,16 @@ const CharityProjectsPage = () => {
   };
 
   const donorImages = [
+    
+    "/da.jpg",
+    "/db.jpg",
+    "/dc.jpg",
+    "/dd.jpg",
     "/ca.jpg",
     "/cb.jpg", 
     "/cc.jpg",
     "/cd.jpg",
-    "/ce.jpg"
+    "/ce.jpg",
   ];
 
   return (
@@ -298,7 +303,7 @@ const CharityProjectsPage = () => {
                 </div>
                 <div className="text-center">
                   <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-gray-900">12</div>
+                  <div className="text-2xl font-bold text-gray-900">5</div>
                   <div className="text-sm text-gray-600">Countries</div>
                 </div>
               </div>
@@ -334,16 +339,16 @@ const CharityProjectsPage = () => {
             {projects.slice(currentSlide * 3, currentSlide * 3 + 6).map((project, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
                 <div className="relative w-full h-48">
-  <Image
-    src={project.image}
-    alt={project.title}
-    fill
-    className="object-cover"
-  />
-  <div className="absolute top-4 right-4 bg-white rounded-full px-3 py-1 text-sm font-semibold text-green-600">
-    {project.progress}% Funded
-  </div>
-</div>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute top-4 right-4 bg-white rounded-full px-3 py-1 text-sm font-semibold text-green-600">
+                    {project.progress}% Funded
+                  </div>
+                </div>
 
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
@@ -442,7 +447,7 @@ const CharityProjectsPage = () => {
             Join thousands of supporters who are already making an impact. Every contribution, no matter the size, helps us create positive change in communities worldwide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={"#"}><button className="bg-white text-[#1a344b] px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
+            <Link href={"/contact"}><button className="bg-white text-[#1a344b] px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
               Start Supporting Today
             </button></Link>
             <Link href={"/about"}><button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-[#1a344b] transition-all">
