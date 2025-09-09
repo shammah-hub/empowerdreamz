@@ -65,10 +65,10 @@ function Footer() {
           <div className="text-center sm:text-left">
             <h4 className="text-xl font-extrabold mb-4 sm:mb-6">Quick Links</h4>
             <ul className="space-y-2 sm:space-y-3">
-              <li><a href="/about" className="text-black text-xl hover:text-gray-500 transition-colors">About Us</a></li>
-              <li><a href="/projects" className="text-black text-xl hover:text-gray-500 transition-colors">Our Causes</a></li>
-              <li><a href="/contact" className="text-black text-xl hover:text-gray-500 transition-colors">Get Involved</a></li>
-              <li><a href="/projects" className="text-black text-xl hover:text-gray-500 transition-colors">Events</a></li>
+              <li><a href="/about" className="text-black text-xl font-bold hover:text-gray-500 transition-colors">About Us</a></li>
+              <li><a href="/projects" className="text-black text-xl font-bold hover:text-gray-500 transition-colors">Our Causes</a></li>
+              <li><a href="/contact" className="text-black text-xl font-bold hover:text-gray-500 transition-colors">Get Involved</a></li>
+              <li><a href="/projects" className="text-black text-xl font-bold hover:text-gray-500 transition-colors">Events</a></li>
               {/* <li><a href="#" className="text-black hover:text-gray-500 transition-colors">News</a></li> */}
             </ul>
           </div>
@@ -79,20 +79,20 @@ function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
                 <Phone className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-black text-xl">+1 305-724-1176</span>
+                <span className="text-black font-bold text-xl">+1 305-724-1176</span>
               </div>
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
                 <Mail className="w-5 h-5 text-black flex-shrink-0" />
-                <span className="text-black text-xl break-all sm:break-normal">support@empowerdreamz.org</span>
+                <span className="text-black font-bold text-xl break-all sm:break-normal">support@empowerdreamz.org</span>
               </div>
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
                 <MapPin className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-black text-xl sm:text-base">123 Hope Street, City, State 12345</span>
+                <span className="text-black font-bold text-xl sm:text-base">123 Hope Street, City, State 12345</span>
               </div>
             </div>
           </div>
 
-          <div className="text-center sm:text-left">
+          <div className="text-center font-bold sm:text-left">
             <h4 className="text-xl font-extrabold text-black mb-4 sm:mb-6">EmpowerDreamz</h4>
             <p className="text-black mb-4 text-xl sm:text-base">
               Subscribe to making the world a better place by helping others

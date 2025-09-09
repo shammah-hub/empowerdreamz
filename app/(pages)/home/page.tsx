@@ -119,7 +119,7 @@ const CharityHomepage = () => {
       </section>
 
       {/* Mission Statement */}
-      <section className="py-16 text-white bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/l.png')"}}>
+      <section className="py-16 text-white bg-white bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/l.png')"}}>
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>

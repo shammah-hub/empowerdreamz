@@ -93,8 +93,6 @@ export default function CharityContactPage() {
                 <p className="font-semibold">support@empowerdreamz.org</p>
               </div>
             </div>
-
-            {/* Contact Form */}
             
           </div>
         </div>
@@ -112,7 +110,7 @@ export default function CharityContactPage() {
                 Interested in becoming a volunteer and making a hands-on difference? Please visit 
                 our volunteer page for more information about how to get signed up.
               </p>
-              <Link href={'/Contact'}>
+              <Link href={'/contact'}>
               <button className="gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
                 Contact Us
                  <Image
@@ -134,7 +132,7 @@ export default function CharityContactPage() {
                 For more information or have contact about our various giving options, visit our Donation 
                 Information page.
               </p>
-              <Link href={'/#'}>
+              <Link href={'#'}>
               <button className=" gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
                 Donation Page
                 <Image
