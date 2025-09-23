@@ -79,15 +79,17 @@ function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
                 <Phone className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-black font-bold text-xl">+1 305-724-1176</span>
+                <span className="text-black font-bold text-xl">+1 330-862-4221</span>
               </div>
               <div className="flex items-center space-x-3 justify-center sm:justify-start">
                 <Mail className="w-5 h-5 text-black flex-shrink-0" />
                 <span className="text-black font-bold text-xl break-all sm:break-normal">support@empowerdreamz.org</span>
               </div>
-              <div className="flex items-center space-x-3 justify-center sm:justify-start">
+              <div className="flex  space-x-3 justify-center sm:justify-start">
                 <MapPin className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-black font-bold text-xl sm:text-base">123 Hope Street, City, State 12345</span>
+                <span className="text-black font-bold text-xl sm:text-base">6545 Market Ave. North STE 100, North Canton, OH 44721 USA
+                  <br /> <br/>Mailing Address: 6545 Market Ave. North STE 100, North Canton, OH 44721 USA
+                </span>
               </div>
             </div>
           </div>

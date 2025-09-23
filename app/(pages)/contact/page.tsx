@@ -45,7 +45,8 @@ export default function CharityContactPage() {
               <h3 className="font-semibold text-gray-800 mb-2">Address</h3>
               <p className="text-gray-600 text-sm">6545 Market Ave. North STE 100, North Canton, OH 44721 USA</p>
               <p className="text-gray-600 text-sm mt-3">
-                <span className='font-bold text-black'>Mailing Address: </span>6545 Market Ave. North STE 100, North Canton, OH 44721 USA</p>
+                <span className='font-bold text-black'>Mailing Address: </span>6545 Market Ave. North STE 100, North Canton, OH 44721 USA
+                </p>
             </div>
             
             <div className="text-center">
@@ -61,7 +62,7 @@ export default function CharityContactPage() {
                 <Phone className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Call us on</h3>
-              <p className="text-gray-600 text-sm">+1 305 724 1176</p>
+              <p className="text-gray-600 text-sm">+1 330-862-4221</p>
             </div>
             
             <div className="text-center">
