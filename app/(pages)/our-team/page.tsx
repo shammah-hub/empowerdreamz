@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import React, { useState } from 'react';
-import { Heart, Mail, Linkedin, Twitter, Facebook, Quote, Award, Users, Target, ChevronRight } from 'lucide-react';
+import { Heart, Quote, Award, Users, Target, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
 interface TeamMember {
