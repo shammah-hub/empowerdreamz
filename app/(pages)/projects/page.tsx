@@ -104,10 +104,10 @@ const CharityProjectsPage = () => {
 
 
               <div>
-                <p className="font-semibold text-gray-900 text-sm">1000+ Donor Amative Members</p>
-                <p className="text-xs text-gray-600">
-                  It is a long established fact that a reader will be distracted by the readable content of a page.
-                </p>
+                <p className="font-semibold text-gray-900 text-sm">Be Part of Our Mission</p>
+                  <p className="text-xs text-gray-600">
+                    Together, we can create lasting change and empower those in need to achieve their dreams.
+                  </p>
               </div>
             </div>
           </div>
@@ -190,9 +190,9 @@ const CharityProjectsPage = () => {
               </div>
 
             <div>
-              <p className="font-semibold text-gray-900 text-sm">1000+ Donor Amative Members</p>
+              <p className="font-semibold text-gray-900 text-sm">Be Part of Our Mission</p>
               <p className="text-xs text-gray-600">
-                It is a long established fact that a reader will be distracted by the readable content of a page.
+                Together, we can create lasting change and empower those in need to achieve their dreams.
               </p>
             </div>
           </div>

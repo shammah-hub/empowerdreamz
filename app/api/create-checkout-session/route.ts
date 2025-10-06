@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       ],
       mode: 'payment',
       success_url: `${request.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${request.headers.get('origin')}/cancel`,
+      cancel_url: `${request.headers.get('origin')}`, // Goes back to homepage when user clicks back
     });
 
     return NextResponse.json({ url: session.url });

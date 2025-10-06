@@ -9,30 +9,30 @@ import Link from 'next/link';
 
 const CharityHomepage = () => {
 
-  const campaigns = [
+ const campaigns = [
   {
     id: 1,
     title: "Help Children Get Education",
     description: "Supporting education initiatives in underserved communities.",
     image: "/1.jpg",
-    raised: 25000,
-    goal: 50000,
+    raised: 1200,
+    goal: 10000,
   },
   {
     id: 2,
     title: "Clean Water Project",
     description: "Providing clean water access to rural communities in need.",
     image: "/2.jpg",
-    raised: 18500,
-    goal: 35000,
+    raised: 1850,
+    goal: 8500,
   },
   {
     id: 3,
     title: "Medical Care Support",
     description: "Emergency medical assistance for families in crisis.",
     image: "/12.jpg",
-    raised: 32000,
-    goal: 45000,
+    raised: 2700,
+    goal: 12000,
   },
 ];
 
