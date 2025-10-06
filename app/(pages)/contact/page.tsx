@@ -109,8 +109,8 @@ export default function CharityContactPage() {
                 Volunteer Opportunities
               </h3>
               <p className="text-gray-600 mb-6">
-                Interested in becoming a volunteer and making a hands-on difference? Please visit 
-                our volunteer page for more information about how to get signed up.
+                Have questions or want to learn more about our work?
+                 We will love to hear from you! Please visit our contact page to get in touch with our team.
               </p>
               <Link href={'/contact'}>
               <button className="gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
