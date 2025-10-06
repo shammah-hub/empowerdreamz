@@ -44,12 +44,12 @@ export default function SuccessPage() {
           />
         </div>
 
-        {/* Additional Info */}
+        {/* Additional Info
         <div className="bg-green-50 rounded-lg p-4 mb-6">
           <p className="text-sm text-gray-700">
             A confirmation email has been sent to your email address with the donation receipt.
           </p>
-        </div>
+        </div> */}
 
         {/* Back to Home Button */}
         <Link 
