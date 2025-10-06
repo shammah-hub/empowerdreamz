@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { loadStripe } from '@stripe/stripe-js';
 
 // Initialize Stripe with your publishable key from environment variable
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const DonateButton: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);

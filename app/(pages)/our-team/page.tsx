@@ -13,7 +13,6 @@ interface TeamMember {
   linkedin: string;
   twitter: string;
   quote: string;
-  achievements: string[];
 }
 
 interface Stat {
@@ -35,7 +34,6 @@ const TeamPage: React.FC = () => {
       linkedin: "#",
       twitter: "#",
       quote: "Every life we touch is a step towards a better world.",
-      achievements: ["Global Humanitarian Award 2023", "Featured in Forbes 30 Under 30"]
     },
     {
       name: "Michael Chen",
@@ -46,7 +44,6 @@ const TeamPage: React.FC = () => {
       linkedin: "#",
       twitter: "#",
       quote: "Excellence in execution creates excellence in impact.",
-      achievements: ["PMP Certified", "Led 50+ successful projects"]
     },
     {
       name: "Aisha Okonkwo",
@@ -57,7 +54,6 @@ const TeamPage: React.FC = () => {
       linkedin: "#",
       twitter: "#",
       quote: "True change comes from listening to those we serve.",
-      achievements: ["Community Leadership Award", "10+ years in grassroots organizing"]
     },
     {
       name: "David Rodriguez",
@@ -68,7 +64,6 @@ const TeamPage: React.FC = () => {
       linkedin: "#",
       twitter: "#",
       quote: "Generosity multiplied creates miracles.",
-      achievements: ["Raised $10M+ in 3 years", "Nonprofit Fundraiser of the Year"]
     },
     {
       name: "Emily Thompson",
@@ -79,7 +74,6 @@ const TeamPage: React.FC = () => {
       linkedin: "#",
       twitter: "#",
       quote: "Sustainable programs create sustainable change.",
-      achievements: ["PhD in International Development", "Published researcher"]
     },
     {
       name: "James Okafor",
@@ -90,7 +84,6 @@ const TeamPage: React.FC = () => {
       linkedin: "#",
       twitter: "#",
       quote: "The field is where dreams become reality.",
-      achievements: ["15 countries served", "Fluent in 5 languages"]
     },
     {
       name: "Maria Santos",
@@ -101,7 +94,6 @@ const TeamPage: React.FC = () => {
       linkedin: "#",
       twitter: "#",
       quote: "Every story has the power to inspire action.",
-      achievements: ["Award-winning journalist", "TEDx speaker"]
     },
     {
       name: "Robert Kim",
@@ -112,7 +104,6 @@ const TeamPage: React.FC = () => {
       linkedin: "#",
       twitter: "#",
       quote: "Transparency builds trust, trust enables impact.",
-      achievements: ["CPA with 20 years experience", "99% audit score"]
     },
     {
       name: "Fatima Hassan",
@@ -123,16 +114,10 @@ const TeamPage: React.FC = () => {
       linkedin: "#",
       twitter: "#",
       quote: "Education is the foundation of all progress.",
-      achievements: ["Former UNESCO consultant", "Master's in Education Policy"]
     }
   ];
 
-  const stats: Stat[] = [
-    { icon: Users, value: "50+", label: "Team Members" },
-    { icon: Target, value: "25+", label: "Active Projects" },
-    { icon: Award, value: "15+", label: "Awards Won" },
-    { icon: Heart, value: "150K+", label: "Lives Changed" }
-  ];
+ 
 
   return (
     <div className="min-h-screen bg-white">
@@ -345,7 +330,7 @@ const TeamPage: React.FC = () => {
             Want to Join Our Team?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            We're always looking for passionate individuals who want to make a difference. Explore our current openings and become part of our mission.
+            We&apos;re always looking for passionate individuals who want to make a difference. Explore our current openings and become part of our mission.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
@@ -401,17 +386,7 @@ const TeamPage: React.FC = () => {
 
               <p className="text-gray-600 mb-6 leading-relaxed">{selectedMember.bio}</p>
 
-              <div className="mb-6">
-                <h4 className="font-bold text-gray-900 mb-3">Key Achievements</h4>
-                <ul className="space-y-2">
-                  {selectedMember.achievements.map((achievement, i) => (
-                    <li key={i} className="flex items-start space-x-2">
-                      <Award className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-600">{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              
 
               {/* <div className="flex items-center space-x-4 pt-6 border-t border-gray-200">
                 <a 
