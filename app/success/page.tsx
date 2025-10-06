@@ -8,14 +8,7 @@ import Link from 'next/link';
 export default function SuccessPage() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session_id');
-  const [isVerified, setIsVerified] = useState(false);
-
-  useEffect(() => {
-    // Optional: Verify the session on the backend
-    if (sessionId) {
-      setIsVerified(true);
-    }
-  }, [sessionId]);
+ 
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-green-100 p-4">
@@ -45,7 +38,7 @@ export default function SuccessPage() {
         </h1>
         
         <p className="text-gray-600 mb-6 text-lg">
-          Your generosity makes a real difference. We've received your donation and truly appreciate your support.
+          Your generosity makes a real difference. We&apos;ve received your donation and truly appreciate your support.
         </p>
 
         {/* Logo */}
