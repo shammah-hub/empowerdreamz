@@ -15,11 +15,7 @@ interface TeamMember {
   quote: string;
 }
 
-interface Stat {
-  icon: React.ComponentType<{ className?: string }>;
-  value: string;
-  label: string;
-}
+
 
 const TeamPage: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
@@ -380,7 +376,7 @@ const TeamPage: React.FC = () => {
               <div className="bg-green-50 border-l-4 border-green-600 p-4 mb-6 rounded-r-lg">
                 <div className="flex items-start space-x-3">
                   <Quote className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
-                  <p className="text-gray-700 italic">"{selectedMember.quote}"</p>
+                  <p className="text-gray-700 italic">&quot;{selectedMember.quote}&quot;</p>
                 </div>
               </div>
 
