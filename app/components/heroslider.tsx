@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from "next/link"
+import DonateButton from './donateButton';
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -10,25 +11,26 @@ const HeroSlider = () => {
   const slides = [
     {
       id: 1,
-      image: "/ca.jpg",
+      image: "/1.jpg",
       title: "Help the Poor",
       subtitle: "in Need",
       description: "Together we can make a difference in the lives of those who need it most. Join our mission to bring hope and support to communities worldwide."
     },
     {
       id: 2,
-      image: "/cb.jpg",
+      image: "/3.jpg",
       title: "Clean Water",
       subtitle: "for All",
       description: "Providing access to clean, safe drinking water for communities that need it most. Every drop counts in saving lives."
     },
     {
       id: 3,
-      image: "/cc.jpg",
+      image: "/10.jpg",
       title: "Education",
       subtitle: "Changes Lives",
       description: "Empowering children and adults through education initiatives that create lasting impact in underserved communities."
-    }
+    },
+   
   ];
 
   const nextSlide = () => {
@@ -71,7 +73,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <section className="bg-white py-16 h-screen mb-20 text-gray-800 ">
+    <section className="bg-white py-20 h-screen mb-20 text-gray-800 ">
       <div className="container mx-auto px-4 sm:px-6 h-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center h-full">
           {/* Left Content */}
@@ -90,16 +92,7 @@ const HeroSlider = () => {
                 {slides[currentSlide].description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 animate-slideInLeft delay-500 justify-center md:justify-start">
-              <button className="w-full sm:w-auto font-bold gap-2 flex items-center justify-center px-6 py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
-                Donate Now
-                <Image 
-                  src="/wb.png" 
-                  width={30} 
-                  height={30} 
-                  alt="Parofund Logo" 
-                  className="h-[30px] w-[30px]" 
-                />
-              </button>
+              <DonateButton />
               <Link href={"/about"} className="w-full sm:w-auto">
                 <button className="w-full border border-gray-300 text-gray-700 px-6 sm:px-8 py-3 rounded-lg hover:border-green-500 hover:shadow-xl transition-colors duration-300">
                   Learn More
@@ -122,14 +115,14 @@ const HeroSlider = () => {
                 >
                   <div className="relative w-full h-full overflow-hidden">
                     <Image
-                      src={slide.image}
-                      fill
-                      priority={index === 0} // Prioritize loading the first image
-                      alt={slide.title}
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      quality={90} // Higher quality for crisp images
-                    />
+                        src={slide.image}
+                        fill
+                        priority={index === 0}
+                        alt={slide.title}
+                        className="object-cover object-top" // Added object-top
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={90}
+                      />
                     {/* Curtain Reveal Animation */}
                     <div 
                       className={`absolute inset-0 bg-gradient-to-b from-gray-900 to-transparent transform transition-transform duration-1000 ease-out ${

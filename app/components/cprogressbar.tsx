@@ -79,7 +79,7 @@ const CircularProgres = ({
       
       {/* Text content in column */}
       <div className="flex flex-col text-center sm:text-left">
-        <p className="text-base sm:text-lg font-bold">Since 2020</p>
+        <p className="text-base sm:text-lg font-bold">Since 2023</p>
         <p className="text-xs sm:text-sm">Years of Experience</p>
       </div>
     </div>

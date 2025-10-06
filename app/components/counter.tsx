@@ -15,8 +15,8 @@ interface TargetValues {
 
 // Move targets outside the component to avoid recreating on every render
 const targets: TargetValues = {
-  lives: 3200,
-  partners: 30,
+  lives: 800,
+  partners: 3,
   effectiveness: 98
 };
 
@@ -84,7 +84,7 @@ const CounterSection: React.FC = () => {
 
   const formatNumber = (num: number, suffix: string = ''): string => {
     if (num >= 1000) {
-      return `${(num / 1000).toFixed(1)}k${suffix}`;
+      return `${(num / 1000).toFixed(1)}${suffix}`;
     }
     return `${num}${suffix}`;
   };

@@ -3,74 +3,40 @@ import Image from 'next/image'
 import React, { useState } from 'react';
 import { Heart, ChevronLeft, ChevronRight, Users, Target, Award } from 'lucide-react';
 import Link from 'next/link';
+import DonateButton from '@/app/components/donateButton';
 
 const CharityProjectsPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const projects = [
     {
-      image: "/c1.jpg",
+      image: "/11.jpg",
       title: "Build Schools for Needy Kids",
       description: "Providing quality education infrastructure for underprivileged children in rural communities. Our goal is to build sustainable learning environments.",
-      raised: "$45,000",
+      raised: "$1,000",
       goal: "$75,000",
-      progress: 60,
+      progress: 6,
       supporters: 324
     },
     {
       image: "/c2.jpg", 
       title: "Clean Water for Rural Communities",
       description: "Installing water pumps and purification systems in remote villages to ensure access to clean, safe drinking water for families.",
-      raised: "$28,500",
+      raised: "$2.800",
       goal: "$50,000",
-      progress: 57,
+      progress: 12,
       supporters: 189
     },
     {
-      image: "/c3.jpg",
+      image: "/7.jpg",
       title: "Emergency Food Relief Program", 
       description: "Providing nutritious meals and food packages to families affected by natural disasters and economic hardship.",
-      raised: "$62,300",
+      raised: "$6,300",
       goal: "$80,000",
-      progress: 78,
+      progress: 20,
       supporters: 456
     },
-    {
-      image: "/c4.jpg",
-      title: "Medical Care for Children", 
-      description: "Funding medical treatments, vaccines, and healthcare services for children in underserved communities.",
-      raised: "$35,750",
-      goal: "$60,000",
-      progress: 60,
-      supporters: 267
-    },
-    {
-      image: "/c5.jpg",
-      title: "Women Empowerment Initiative", 
-      description: "Supporting skills training and microfinance programs to help women become financially independent.",
-      raised: "$41,200",
-      goal: "$55,000",
-      progress: 75,
-      supporters: 312
-    },
-    {
-      image: "/c6.jpg",
-      title: "Disaster Relief Fund", 
-      description: "Emergency response fund for communities affected by natural disasters, providing immediate aid and rebuilding support.",
-      raised: "$78,900",
-      goal: "$100,000",
-      progress: 79,
-      supporters: 623
-    },
-    {
-      image: "/c9.jpg",
-      title: "Medical Care for Children", 
-      description: "Supporting healthy childhoods through access to safe water and quality medical care in remote areas.",
-      raised: "$22,750",
-      goal: "$40,000",
-      progress: 64,
-      supporters: 297
-    },
+   
   ];
 
   const nextSlide = () => {
@@ -149,12 +115,7 @@ const CharityProjectsPage = () => {
           {/* Action Buttons */}
           <div className="hidden lg:flex flex-col sm:flex-row gap-3">
             <Link href={"#"}>
-            <button className="gap-2 flex items-center justify-center px-4 py-[10px] font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">                
-              Donate Now
-              <div className="relative w-6 h-6 sm:w-[30px] sm:h-[30px]">
-                <Image src="/wb.png" alt="Parofund Logo" fill className="object-contain" />
-              </div>
-            </button>
+           <DonateButton />
             </Link>
           </div>
         </div>
@@ -200,8 +161,8 @@ const CharityProjectsPage = () => {
           <div className="relative w-full h-[80px] rounded-lg overflow-hidden mb-2">
             <Image src="/c8.jpg" alt="Project impact" fill className="object-cover" />
           </div>
-          <p className="text-green-600 font-semibold text-xs">Let us stand by the poor</p>
-          <p className="text-xs text-gray-600">It is a long established fact that</p>
+          <p className="text-green-600 font-semibold text-xs">Stand With Us</p>
+          <p className="text-xs text-gray-600">Join our mission to create positive change</p>
         </div>
 
         {/* Background Decoration */}
@@ -240,12 +201,7 @@ const CharityProjectsPage = () => {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3">
           <Link href={"#"}> 
-          <button className="gap-2 flex items-center justify-center px-4 py-[10px] font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">                
-            Donate Now
-            <div className="relative w-6 h-6 sm:w-[30px] sm:h-[30px]">
-              <Image src="/wb.png" alt="Parofund Logo" fill className="object-contain" />
-            </div>
-          </button>
+          <DonateButton />
           </Link>
         </div>
       </div>
@@ -263,7 +219,7 @@ const CharityProjectsPage = () => {
               <div className="grid grid-cols-2 gap-4">
                 <Image
                   width={900} height={900}
-                  src="/c9.jpg"
+                  src="/6.jpg"
                   alt="Volunteers working"
                   className="rounded-2xl shadow-lg"
                 />
@@ -338,12 +294,12 @@ const CharityProjectsPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {projects.slice(currentSlide * 3, currentSlide * 3 + 6).map((project, index) => (
               <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                <div className="relative w-full h-48">
+                <div className="relative w-full  h-48">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover"
+                    className=""
                   />
                   <div className="absolute top-4 right-4 bg-white rounded-full px-3 py-1 text-sm font-semibold text-green-600">
                     {project.progress}% Funded
@@ -393,9 +349,7 @@ const CharityProjectsPage = () => {
 
                   <div className="flex space-x-3">
                     <Link href={"/contact"}>
-                    <button className="flex-1 bg-[#369612] text-white py-2 px-4 rounded hover:bg-green-700 transition-colors font-medium">
-                      Donate Now
-                    </button>
+                    <DonateButton />
                     </Link>
                     <button className="px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors">
                       <Heart className="h-4 w-4 text-gray-500" />

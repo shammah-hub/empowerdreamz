@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import DonateButton from "./donateButton";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +13,7 @@ export default function Navbar() {
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
     { name: "Projects", path: "/projects" },
+    { name: "Our Team", path: "/our-team" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -84,16 +86,7 @@ export default function Navbar() {
 
         {/* Donate Button (Desktop) */}
         <div className="hidden md:flex gap-4">
-          <button className="gap-2 flex items-center px-4 py-2 font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl hover:shadow-xl transition-transform duration-300 transform hover:scale-105">
-            Donate Now
-            <Image
-              src="/wb.png"
-              width={24}
-              height={24}
-              alt="empowerdreams Logo"
-              className="h-6 w-6"
-            />
-          </button>
+          <DonateButton />
         </div>
       </div>
 
@@ -120,16 +113,7 @@ export default function Navbar() {
             </li>
           ))}
           <li className="border-t border-gray-100 px-4 py-3">
-            <button className="w-full gap-2 flex items-center justify-center px-4 py-3 font-bold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-lg hover:shadow-xl transition-transform duration-300 transform active:scale-95">
-              Donate Now
-              <Image
-                src="/wb.png"
-                width={20}
-                height={20}
-                alt="Parofund Logo"
-                className="h-5 w-5"
-              />
-            </button>
+            <DonateButton />
           </li>
         </ul>
       </div>

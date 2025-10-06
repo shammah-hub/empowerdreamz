@@ -33,9 +33,9 @@ const AboutPage = () => {
       description: "Our Mission Drive",
       story: "We exist to create meaningful change in communities by connecting resources with real needs. Our mission-driven approach ensures every initiative has a clear purpose and measurable impact.",
       stats: [
-        { number: "500+", label: "Families Helped" },
-        { number: "50+", label: "Active Volunteers" },
-        { number: "15+", label: "Communities Served" }
+        { number: "160+", label: "Families Helped" },
+        { number: "13", label: "Active Volunteers" },
+        { number: "4", label: "Communities Served" }
       ]
     },
     values: {
@@ -54,7 +54,7 @@ const AboutPage = () => {
       stats: [
         { number: "100%", label: "Transparency" },
         { number: "24/7", label: "Community Support" },
-        { number: "10+", label: "Years Experience" }
+        { number: "3+", label: "Years Experience" }
       ]
     },
     team: {
@@ -71,17 +71,14 @@ const AboutPage = () => {
       description: "Our Amazing Team",
       story: "Our team brings together passionate individuals from diverse backgrounds, united by a common goal of creating positive change in communities around the world.",
       stats: [
-        { number: "25+", label: "Team Members" },
-        { number: "8", label: "Countries" },
-        { number: "12", label: "Languages Spoken" }
+        { number: "8", label: "Team Members" },
+        { number: "2", label: "Countries" },
+        { number: "4", label: "Languages Spoken" }
       ]
     }
   };
 
   const currentContent = content[activeTab];
-
-
-
 
 
 
@@ -105,7 +102,10 @@ const AboutPage = () => {
             </div>
           </div>
           <div className="bg-green-100 rounded-lg p-4 sm:p-6 lg:p-8 aspect-square">
-            <div className="w-full h-full bg-gradient-to-br from-green-300 to-green-400 rounded-lg bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/cg.jpeg')"}}></div>
+            <div className="w-full h-full bg-gradient-to-br from-green-300 to-green-400 rounded-lg bg-cover bg-top bg-no-repeat" 
+            style={{backgroundImage: "url('/7.jpg')"}}>
+
+            </div>
           </div>
         </div>
       </div>

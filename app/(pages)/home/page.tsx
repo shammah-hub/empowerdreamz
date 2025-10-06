@@ -14,7 +14,7 @@ const CharityHomepage = () => {
     id: 1,
     title: "Help Children Get Education",
     description: "Supporting education initiatives in underserved communities.",
-    image: "/c1.jpg",
+    image: "/1.jpg",
     raised: 25000,
     goal: 50000,
   },
@@ -22,7 +22,7 @@ const CharityHomepage = () => {
     id: 2,
     title: "Clean Water Project",
     description: "Providing clean water access to rural communities in need.",
-    image: "/c2.jpg",
+    image: "/2.jpg",
     raised: 18500,
     goal: 35000,
   },
@@ -30,7 +30,7 @@ const CharityHomepage = () => {
     id: 3,
     title: "Medical Care Support",
     description: "Emergency medical assistance for families in crisis.",
-    image: "/c3.jpg",
+    image: "/12.jpg",
     raised: 32000,
     goal: 45000,
   },
@@ -175,7 +175,7 @@ const CharityHomepage = () => {
       src={campaign.image}
       alt={campaign.title}
       fill
-      className="object-cover"
+      className="object-cover object-center"
     />
   </div>
           <div className="p-6">

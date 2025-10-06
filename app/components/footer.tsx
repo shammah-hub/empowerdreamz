@@ -3,6 +3,7 @@ import Link from "next/link"
 import React from 'react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 import {  Phone, Mail, MapPin, } from 'lucide-react';
+import DonateButton from './donateButton';
 
 function Footer() {
   return (
@@ -36,9 +37,8 @@ function Footer() {
                 Learn More
               </button>
               </Link>
-              <button className="px-3 py-2 font-extrabold rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
-                Donate Now
-              </button>
+              <DonateButton />
+              
             </div>
             
             {/* Social Media Icons */}
