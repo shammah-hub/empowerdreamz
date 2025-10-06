@@ -128,10 +128,10 @@ const DonateButton: React.FC = () => {
                 <button
                   key={quickAmount}
                   onClick={() => handleQuickAmount(quickAmount)}
-                  className={`py-2 px-3 rounded-lg border-2 transition-all font-semibold ${
+                  className={`py-2 px-3 rounded-lg border-2 transition-all font-semibold text-base ${
                     amount === quickAmount.toString()
                       ? 'border-green-600 bg-green-50 text-green-600'
-                      : 'border-gray-300 hover:border-green-400 text-gray-700'
+                      : 'border-gray-300 hover:border-green-400 text-black'
                   }`}
                 >
                   ${quickAmount}
@@ -145,7 +145,7 @@ const DonateButton: React.FC = () => {
                 Donation Amount
               </label>
               <div className="relative">
-                <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 text-lg font-semibold">
+                <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-black text-2xl font-bold">
                   $
                 </span>
                 <input
@@ -153,7 +153,7 @@ const DonateButton: React.FC = () => {
                   value={amount}
                   onChange={handleAmountChange}
                   placeholder="5.00"
-                  className="w-full pl-8 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-600 focus:outline-none text-lg"
+                  className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:border-green-600 focus:outline-none text-2xl font-bold text-black placeholder:text-gray-400 placeholder:font-normal"
                 />
               </div>
               {error && (
