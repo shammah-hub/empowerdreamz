@@ -1,14 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { CheckCircle, AlertCircle, Heart, HeartPulse, Share2 } from 'lucide-react';
+import { CheckCircle, AlertCircle, Heart, ArrowRight, Share2 } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import Link from 'next/link';
 
-// Load Stripe outside of component to avoid recreating on each render
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
 interface CheckoutFormProps {
@@ -47,36 +45,30 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, onSuccess, onError 
         onSuccess();
       }
     } catch (err) {
-     onError(`${err} Please try again.`);
+      onError(`${err} Please try again.`);
       setIsProcessing(false);
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+      <div className="bg-white rounded-lg p-6 border border-gray-200">
         <PaymentElement />
       </div>
 
       <button
         type="submit"
         disabled={!stripe || isProcessing}
-        className="w-full font-bold gap-2 flex items-center justify-center px-6 py-4 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-lg"
+        className="group w-full px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none font-light"
       >
         {isProcessing ? 'Processing...' : `Donate $${amount}`}
         {!isProcessing && (
-          <Image 
-            src="/wb.png" 
-            width={28} 
-            height={28} 
-            alt="Donate Icon" 
-            className="h-[28px] w-[28px]" 
-          />
+          <Heart className="w-4 h-4 group-hover:scale-110 transition-transform" />
         )}
       </button>
 
       <p className="text-center text-sm text-gray-500">
-        🔒 Secure payment powered by Stripe. Your information is encrypted and secure.
+        Secure payment powered by Stripe
       </p>
     </form>
   );
@@ -92,7 +84,6 @@ const DonatePage: React.FC = () => {
 
   const quickAmounts = [5, 10, 25, 50, 100, 250];
 
-  // Card loading effect
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsCardLoading(false);
@@ -176,103 +167,103 @@ const DonatePage: React.FC = () => {
   };
 
   const shareUrl = typeof window !== 'undefined' ? window.location.origin + '/donate' : '';
-  const shareText = 'Support EmpowerDreamz and help transform lives in our communities!';
+  const shareText = 'Support our charity and help transform lives in our communities!';
 
   const options: StripeElementsOptions = {
     clientSecret,
     appearance: {
       theme: 'stripe',
       variables: {
-        colorPrimary: '#2d8f00',
+        colorPrimary: '#16a34a',
         colorBackground: '#ffffff',
         colorText: '#1a1a1a',
-        colorDanger: '#df1b41',
+        colorDanger: '#dc2626',
         fontFamily: 'system-ui, sans-serif',
         spacingUnit: '4px',
-        borderRadius: '8px',
+        borderRadius: '12px',
       },
     },
   };
 
   if (paymentSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-green-50 to-white pt-24 pb-16">
-        <div className="container mx-auto px-4 max-w-2xl">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center">
-            <div className="flex justify-center mb-6">
-              <div className="bg-green-100 rounded-full p-4">
-                <CheckCircle className="w-16 h-16 text-green-600" />
-              </div>
+      <div className="min-h-screen bg-white pt-32 pb-16 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="mb-8">
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-600/10 mb-6">
+              <CheckCircle className="w-10 h-10 text-green-600" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
-              Thank You for Your Generosity!
+            <h1 className="text-5xl md:text-6xl font-light text-gray-900 mb-4">
+              Thank <span className="font-semibold text-green-600">you</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Your donation of <span className="font-bold text-green-600">${amount}</span> has been successfully processed.
+            <p className="text-xl text-gray-500 mb-2">
+              Your donation of <span className="font-semibold text-green-600">${amount}</span> has been received
             </p>
-            <div className="bg-green-50 rounded-lg p-6 mb-8">
-              <p className="text-gray-700 leading-relaxed">
-                Your support helps us continue our mission to transform lives and build stronger communities. 
-                You will receive a confirmation email shortly with your donation receipt for tax purposes.
-              </p>
-            </div>
+            <p className="text-sm text-gray-400">
+              You will receive a confirmation email shortly
+            </p>
+          </div>
 
-            {/* Share Section */}
-            <div className="mb-8">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Share2 className="w-5 h-5 text-gray-600" />
-                <p className="text-gray-700 font-semibold">Share the Love</p>
-              </div>
-              <div className="flex justify-center gap-3">
-                <a
-                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#1877f2] hover:bg-[#166fe5] text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <FaFacebook size={20} />
-                </a>
-                <a
-                  href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#1da1f2] hover:bg-[#1a91da] text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <FaTwitter size={20} />
-                </a>
-                <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#0077b5] hover:bg-[#006399] text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <FaLinkedin size={20} />
-                </a>
-                <a
-                  href={`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#25d366] hover:bg-[#20bd5a] text-white rounded-full w-12 h-12 flex items-center justify-center transition-all duration-300 hover:scale-110"
-                >
-                  <FaWhatsapp size={20} />
-                </a>
-              </div>
-            </div>
+          <div className="mb-12 py-8 border-t border-b border-gray-200">
+            <p className="text-gray-600 leading-relaxed max-w-xl mx-auto">
+              Your support helps us continue our mission to transform lives and build stronger communities.
+            </p>
+          </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={handleNewDonation}
-                className="px-6 py-3 bg-gradient-to-r from-[#2d8f00] to-[#85e065] text-white font-bold rounded-lg hover:shadow-xl transition-all duration-300"
-              >
-                Make Another Donation
-              </button>
-              <Link
-                href="/"
-                className="px-6 py-3 border-2 border-gray-300 text-gray-700 font-bold rounded-lg hover:border-green-600 hover:text-green-600 transition-all duration-300 flex items-center justify-center"
-              >
-                Return to Home
-              </Link>
+          <div className="mb-12">
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <Share2 className="w-4 h-4 text-gray-500" />
+              <span className="text-sm text-gray-500 uppercase tracking-wider">Share</span>
             </div>
+            <div className="flex justify-center gap-3">
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
+              >
+                <FaFacebook size={18} />
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
+              >
+                <FaTwitter size={18} />
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
+              >
+                <FaLinkedin size={18} />
+              </a>
+              <a
+                href={`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
+              >
+                <FaWhatsapp size={18} />
+              </a>
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={handleNewDonation}
+              className="px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 hover:scale-105 font-light"
+            >
+              Make Another Donation
+            </button>
+            <Link
+              href="/"
+              className="px-8 py-4 text-green-600 hover:text-green-700 transition-colors font-light"
+            >
+              Return to Home
+            </Link>
           </div>
         </div>
       </div>
@@ -280,100 +271,98 @@ const DonatePage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white pt-24 pb-16">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <div className="min-h-screen bg-white pt-32 pb-16 px-6">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex justify-center mb-4">
-            <div className="bg-green-100 rounded-full p-4">
-              <Heart className="w-16 h-16 text-green-600" />
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-            Make a Difference Today
+        <div className="text-center mb-20">
+          <span className="text-sm text-gray-500 uppercase tracking-wider">Donate</span>
+          <h1 className="text-5xl md:text-7xl font-light text-gray-900 mt-4 mb-6">
+            Make a <span className="font-semibold text-green-600">difference</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Your generous donation helps us continue our mission to empower communities and transform lives.
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto font-light">
+            Your generous donation helps us continue our mission to empower communities
           </p>
-        </div> 
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Donation Form */}
+        {/* Tech Donation Banner */}
+        <div className="mb-20">
+          <div className="bg-green-600 rounded-2xl p-12 relative overflow-hidden">
+            <div className="relative z-10 max-w-3xl">
+              <h2 className="text-3xl md:text-4xl  text-white mb-4">
+                Donate Your <span className="font-bold">Technology</span>
+              </h2>
+              <p className="text-green-100 text-lg mb-6 font-light leading-relaxed">
+                Your old computers and laptops can transform lives. Many students lack access to essential technology. Help bridge the digital divide.
+              </p>
+              <a 
+                href="tel:+13308624221"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-green-600 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 "
+              >
+                Call +1 330-862-4221
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full opacity-5"></div>
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-12">
+          {/* Main Form */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl shadow-2xl p-8">
+            <div className="bg-white border border-gray-200 rounded-2xl p-8">
               {isCardLoading ? (
-                // Loader inside the card
                 <div className="flex flex-col items-center justify-center py-32">
-                  <div className="inline-block animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-600 mb-4"></div>
-                  <p className="text-lg font-semibold text-gray-700">Loading donation form...</p>
+                  <div className="w-12 h-12 border-2 border-green-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+                  <p className="text-gray-500 font-light">Loading...</p>
                 </div>
               ) : (
                 <>
-                  {/* Step Indicator */}
-                  <div className="mb-8">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className={`flex items-center justify-center w-10 h-10 rounded-full font-bold ${!showPaymentForm ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-600'}`}>
-                          1
-                        </div>
-                        <div>
-                          <p className={`font-bold ${!showPaymentForm ? 'text-green-600' : 'text-gray-400'}`}>
-                            Select Amount
-                          </p>
-                        </div>
+                  {/* Progress */}
+                  <div className="mb-12 flex items-center justify-center gap-8">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center font-light ${!showPaymentForm ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-500'}`}>
+                        1
                       </div>
-                      <div className="flex-1 h-1 mx-4 bg-gray-200">
-                        <div className={`h-full ${showPaymentForm ? 'bg-green-600' : 'bg-gray-200'} transition-all duration-300`}></div>
+                      <span className={`text-sm ${!showPaymentForm ? 'text-green-600' : 'text-gray-400'}`}>Amount</span>
+                    </div>
+                    <div className="w-24 h-px bg-gray-200">
+                      <div className={`h-full ${showPaymentForm ? 'bg-green-600' : 'bg-gray-200'} transition-all duration-300`}></div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center font-light ${showPaymentForm ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-500'}`}>
+                        2
                       </div>
-                      <div className="flex items-center gap-3">
-                        <div className={`flex items-center justify-center w-10 h-10 rounded-full font-bold ${showPaymentForm ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-600'}`}>
-                          2
-                        </div>
-                        <div>
-                          <p className={`font-bold ${showPaymentForm ? 'text-green-600' : 'text-gray-400'}`}>
-                            Payment Details
-                          </p>
-                        </div>
-                      </div>
+                      <span className={`text-sm ${showPaymentForm ? 'text-green-600' : 'text-gray-400'}`}>Payment</span>
                     </div>
                   </div>
 
                   {!showPaymentForm ? (
                     <>
-                      <div className="mb-6">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Select Donation Amount</h2>
-                        <p className="text-gray-600">Choose a preset amount or enter your own</p>
-                      </div>
-                      
-                      {/* Quick Amount Buttons */}
-                      <div className="mb-6">
-                        <label className="block text-base font-bold text-gray-700 mb-3">
-                          Quick Select
+                      <div className="mb-8">
+                        <label className="block text-sm text-gray-500 uppercase tracking-wider mb-4">
+                          Select Amount
                         </label>
-                        <div className="grid grid-cols-3 gap-3">
-                        {quickAmounts.map((quickAmount) => (
-                          <button
-                            key={quickAmount}
-                            onClick={() => handleQuickAmount(quickAmount)}
-                            className={`py-4 px-4 rounded-lg border-2 transition-all font-bold text-lg ${
-                              amount === quickAmount.toString()
-                                ? 'border-green-600 bg-green-50 text-green-600 shadow-lg'
-                                : 'border-gray-300 hover:border-green-400 text-gray-700 hover:shadow-md'
-                            }`}
-                          >
-                            ${quickAmount}
-                          </button>
-                        ))}
-                      </div>
-                      </div>
+                        <div className="grid grid-cols-3 gap-3 mb-8">
+                          {quickAmounts.map((quickAmount) => (
+                            <button
+                              key={quickAmount}
+                              onClick={() => handleQuickAmount(quickAmount)}
+                              className={`py-4 rounded-full border transition-all font-light ${
+                                amount === quickAmount.toString()
+                                  ? 'border-green-600 bg-green-50 text-green-600'
+                                  : 'border-gray-200 hover:border-green-600 text-gray-600'
+                              }`}
+                            >
+                              ${quickAmount}
+                            </button>
+                          ))}
+                        </div>
 
-                      {/* Custom Amount */}
-                      <div className="mb-6">
-                        <label className="block text-base font-bold text-gray-700 mb-3">
-                          Or Enter Custom Amount
+                        <label className="block text-sm text-gray-500 uppercase tracking-wider mb-4">
+                          Custom Amount
                         </label>
-                        <div className="relative">
-                          <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 text-3xl font-bold">
+                        <div className="relative mb-2">
+                          <span className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 text-2xl font-light">
                             $
                           </span>
                           <input
@@ -381,55 +370,48 @@ const DonatePage: React.FC = () => {
                             value={amount}
                             onChange={handleAmountChange}
                             placeholder="0.00"
-                            className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-lg focus:border-green-600 focus:outline-none text-3xl font-bold text-gray-900 placeholder:text-gray-400"
+                            className="w-full pl-12 pr-6 py-4 border border-gray-200 rounded-full focus:border-green-600 focus:outline-none text-2xl font-light text-gray-900 placeholder:text-gray-300"
                           />
                         </div>
                         {error && (
-                          <div className="flex items-center gap-2 mt-3 text-red-600">
-                            <AlertCircle className="w-5 h-5" />
-                            <p className="text-sm font-medium">{error}</p>
+                          <div className="flex items-center gap-2 text-red-600 text-sm">
+                            <AlertCircle className="w-4 h-4" />
+                            <p>{error}</p>
                           </div>
                         )}
-                        <p className="text-gray-500 text-sm mt-2">Minimum donation: $5.00</p>
+                        <p className="text-gray-400 text-sm mt-2">Minimum donation: $5.00</p>
                       </div>
 
                       <button
                         onClick={handleContinue}
                         disabled={!amount}
-                        className="w-full font-bold gap-2 flex items-center justify-center px-6 py-4 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-lg"
+                        className="group w-full px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none font-light"
                       >
-                        Continue to Payment
-                        <Image 
-                          src="/wb.png" 
-                          width={28} 
-                          height={28} 
-                          alt="Continue Icon" 
-                          className="h-[28px] w-[28px]" 
-                        />
+                        Continue
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </button>
                     </>
                   ) : (
                     <>
-                      <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl font-bold text-gray-900">Payment Details</h2>
+                      <div className="flex items-center justify-between mb-8">
+                        <h2 className="text-2xl font-light text-gray-900">Payment Details</h2>
                         <button
                           onClick={() => setShowPaymentForm(false)}
-                          className="text-gray-600 hover:text-gray-900 font-medium"
+                          className="text-gray-500 hover:text-gray-900 font-light text-sm"
                         >
                           ← Back
                         </button>
                       </div>
 
-                      <div className="bg-green-50 rounded-lg p-4 mb-6">
-                        <p className="text-gray-700">
-                          Donation Amount: <span className="font-bold text-green-600 text-2xl">${amount}</span>
-                        </p>
+                      <div className="bg-gray-50 rounded-2xl p-6 mb-8">
+                        <p className="text-gray-500 text-sm mb-1">Donation Amount</p>
+                        <p className="text-3xl font-light text-green-600">${amount}</p>
                       </div>
 
                       {error && (
                         <div className="flex items-center gap-2 mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
                           <AlertCircle className="w-5 h-5 text-red-600" />
-                          <p className="text-sm font-medium text-red-600">{error}</p>
+                          <p className="text-sm text-red-600">{error}</p>
                         </div>
                       )}
 
@@ -449,44 +431,28 @@ const DonatePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Impact Sidebar */}
+          {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl shadow-2xl p-6 text-white sticky top-24">
-              <h3 className="text-2xl font-bold mb-6">Your Impact</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="bg-white rounded-full p-3 flex-shrink-0">
-                    <HeartPulse className="w-6 h-6 text-green-600" />
+            <div className="bg-gray-50 rounded-2xl p-8 sticky top-32">
+              <span className="text-sm text-gray-500 uppercase tracking-wider">Your Impact</span>
+              <h3 className="text-2xl font-light text-gray-900 mt-4 mb-8">
+                Every dollar <span className="font-semibold text-green-600">matters</span>
+              </h3>
+              <div className="space-y-6">
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-green-600/10 flex items-center justify-center mb-3">
+                    <CheckCircle className="w-5 h-5 text-green-600" />
                   </div>
-                  <div>
-                    <p className="font-semibold">Tax Deductible</p>
-                    <p className="text-sm text-green-100">EmpowerDreamz is a 501(c)(3) nonprofit</p>
-                  </div>
+                  <p className="text-gray-900 font-light mb-1">Tax Deductible</p>
+                  <p className="text-sm text-gray-500">501(c)(3) nonprofit</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="bg-white rounded-full p-3 flex-shrink-0">
-                    <CheckCircle className="w-6 h-6 text-green-600" />
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-green-600/10 flex items-center justify-center mb-3">
+                    <Heart className="w-5 h-5 text-green-600" />
                   </div>
-                  <div>
-                    <p className="font-semibold">100% Secure</p>
-                    <p className="text-sm text-green-100">Your payment information is encrypted</p>
-                  </div>
+                  <p className="text-gray-900 font-light mb-1">Direct Impact</p>
+                  <p className="text-sm text-gray-500">Every dollar supports our mission</p>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="bg-white rounded-full p-3 flex-shrink-0">
-                    <Heart className="w-6 h-6 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Direct Impact</p>
-                    <p className="text-sm text-green-100">Every dollar goes toward our mission</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 pt-6 border-t border-white border-opacity-20">
-                <p className="text-sm text-green-100 leading-relaxed">
-                  Your donation helps provide healthcare, education, nutrition, and clean water to communities in need.
-                </p>
               </div>
             </div>
           </div>

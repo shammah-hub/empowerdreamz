@@ -1,9 +1,8 @@
 "use client"
-import Image from 'next/image'
 import React, { useState } from 'react';
-import { Heart, ChevronLeft, ChevronRight, Users, Target, Award } from 'lucide-react';
+import { Heart, ChevronLeft, ChevronRight, Users, } from 'lucide-react';
 import Link from 'next/link';
-import DonateButton from '@/app/components/donateButton';
+import Image from 'next/image';
 
 const CharityProjectsPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -19,10 +18,10 @@ const CharityProjectsPage = () => {
       supporters: 324
     },
     {
-      image: "/c2.jpg", 
+      image: "/nnn.jpg", 
       title: "Clean Water for Rural Communities",
       description: "Installing water pumps and purification systems in remote villages to ensure access to clean, safe drinking water for families.",
-      raised: "$2.800",
+      raised: "$2,800",
       goal: "$50,000",
       progress: 12,
       supporters: 189
@@ -36,7 +35,6 @@ const CharityProjectsPage = () => {
       progress: 20,
       supporters: 456
     },
-   
   ];
 
   const nextSlide = () => {
@@ -48,310 +46,287 @@ const CharityProjectsPage = () => {
   };
 
   const donorImages = [
-    
     "/da.jpg",
     "/db.jpg",
     "/dc.jpg",
     "/dd.jpg",
     "/ca.jpg",
-    "/cb.jpg", 
-    "/cc.jpg",
-    "/cd.jpg",
-    "/ce.jpg",
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
+      {/* HERO - Keeping your grid layout but minimalist */}
+      <section className="min-h-screen flex items-center px-6 py-20 relative overflow-hidden">
+        {/* Subtle background */}
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(22 163 74) 1px, transparent 0)',
+            backgroundSize: '40px 40px'
+          }} />
+        </div>
 
-      {/* Hero Section */}
-<section className="relative overflow-hidden pt-8 sm:pt-12 bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
-    <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-center min-h-[400px] sm:min-h-[500px]">
-      
-      {/* Left Content */}
-      <div className="lg:absolute lg:left-0 lg:top-1/2 lg:transform lg:-translate-y-1/2 z-20 max-w-md mb-8 lg:mb-0">
-        <div className="space-y-4 sm:space-y-6">
-          <div className="space-y-2 sm:space-y-3">
-            <h1 className="text-4xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
-              We stand by the
-              <span className="text-green-600 block">helpless Children</span>
-            </h1>
-            <p className="text-base sm:text-lg text-gray-600">
-              There are many variations of passages available, but the majority have suffered alteration in some form.
-            </p>
-          </div>
-
-          {/* Donor Section */}
-          <div className="hidden lg:block bg-green-50 rounded-xl p-3 sm:p-4 border border-green-100">
-            <div className="flex items-center space-x-3 mb-3">
-             <div className="flex -space-x-2">
-               <div className="flex -space-x-2">
-                {donorImages.slice(0, 5).map((img, i) => (
-                  <div
-                    key={i}
-                    className="relative w-8 h-8 rounded-full border-2 border-white overflow-hidden"
-                  >
-                    <Image
-                      src={img}
-                      alt={`Donor ${i + 1}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                ))}
-              </div>
-              </div>
-
-
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
               <div>
-                <p className="font-semibold text-gray-900 text-sm">Be Part of Our Mission</p>
-                  <p className="text-xs text-gray-600">
-                    Together, we can create lasting change and empower those in need to achieve their dreams.
-                  </p>
+                <span className="text-sm text-gray-500 uppercase tracking-wider">Our Projects</span>
+                <h1 className="text-6xl md:text-7xl font-light text-gray-900 mt-4 mb-6 leading-tight">
+                  We stand by the
+                  <br />
+                  <span className="font-semibold text-green-600">helpless children</span>
+                </h1>
+                <p className="text-xl text-gray-500 font-light leading-relaxed">
+                  There are many variations of passages available, but the majority have suffered alteration in some form.
+                </p>
               </div>
-            </div>
-          </div>
 
-          {/* Action Buttons */}
-          <div className="hidden lg:flex flex-col sm:flex-row gap-3">
-            <Link href={"#"}>
-           <DonateButton />
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Hero Images Grid */}
-      <div className="relative z-10 w-full max-w-sm sm:max-w-md lg:max-w-lg mx-auto lg:ml-auto lg:mr-8">
-        <div className="space-y-3 sm:space-y-4">
-
-          {/* Top Row */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <div className="relative w-full h-32 sm:h-36 lg:h-40 rounded-2xl shadow-lg overflow-hidden">
-              <Image src="/c1.jpg" alt="Community outreach" fill className="object-cover" />
-            </div>
-            <div className="relative w-full h-32 sm:h-36 lg:h-40 rounded-2xl shadow-lg overflow-hidden mt-4 sm:mt-6 lg:mt-8">
-              <Image src="/c2.jpg" alt="Educational programs" fill className="object-cover" />
-            </div>
-          </div>
-
-          {/* Middle Row */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <div className="relative w-full h-32 sm:h-36 lg:h-40 rounded-2xl shadow-lg overflow-hidden">
-              <Image src="/c9.jpg" alt="Volunteers working" fill className="object-cover" />
-            </div>
-            <div className="relative w-full h-32 sm:h-36 lg:h-40 rounded-2xl shadow-lg overflow-hidden mt-4 sm:mt-6 lg:mt-8">
-              <Image src="/cf.jpg" alt="Community impact" fill className="object-cover" />
-            </div>
-          </div>
-
-          {/* Bottom Row */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            <div className="relative w-full h-32 sm:h-36 lg:h-40 rounded-2xl shadow-lg overflow-hidden mt-2 sm:mt-3 lg:mt-4">
-              <Image src="/c3.jpg" alt="Healthcare initiatives" fill className="object-cover" />
-            </div>
-            <div className="relative w-full h-32 sm:h-36 lg:h-40 rounded-2xl shadow-lg overflow-hidden">
-              <Image src="/c4.jpg" alt="Sustainable development" fill className="object-cover" />
-            </div>
-          </div>
-        </div>
-
-        {/* Floating Card */}
-        <div className="absolute top-4 sm:top-6 -right-2 sm:-right-4 bg-white rounded-xl p-2 sm:p-3 w-[120px] sm:w-[140px] shadow-xl z-20">
-          <div className="relative w-full h-[80px] rounded-lg overflow-hidden mb-2">
-            <Image src="/c8.jpg" alt="Project impact" fill className="object-cover" />
-          </div>
-          <p className="text-green-600 font-semibold text-xs">Stand With Us</p>
-          <p className="text-xs text-gray-600">Join our mission to create positive change</p>
-        </div>
-
-        {/* Background Decoration */}
-        <div className="absolute inset-0 bg-gradient-to-r from-green-200 to-emerald-200 rounded-full blur-3xl opacity-20 scale-150"></div>
-      </div>
-
-      {/* Mobile-only Donor Section and Button */}
-      <div className="lg:hidden mt-8 space-y-4 max-w-md mx-auto">
-        <div className="bg-green-50 rounded-xl p-3 sm:p-4 border border-green-100">
-          <div className="flex items-center space-x-3 mb-3">
-            <div className="flex -space-x-2">
-                {donorImages.slice(0, 5).map((img, i) => (
-                  <div
-                    key={i}
-                    className="relative w-8 h-8 rounded-full border-2 border-white overflow-hidden"
-                  >
-                    <Image
-                      src={img}
-                      alt={`Donor ${i + 1}`}
-                      fill
-                      className="object-cover"
-                    />
+              {/* Donor Section */}
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="flex -space-x-2">
+                    {donorImages.slice(0, 5).map((img, i) => (
+                      <div
+                        key={i}
+                        className="relative w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-gray-200"
+                      >
+                        <Image
+                                        width={1}
+                                        height={1}
+                          src={img}
+                          alt={`Donor ${i + 1}`}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
                   </div>
-                ))}
+                  <div>
+                    <p className="font-light text-gray-900">Be Part of Our Mission</p>
+                    <p className="text-sm text-gray-500">
+                      Together, we can create lasting change.
+                    </p>
+                  </div>
+                </div>
               </div>
 
-            <div>
-              <p className="font-semibold text-gray-900 text-sm">Be Part of Our Mission</p>
-              <p className="text-xs text-gray-600">
-                Together, we can create lasting change and empower those in need to achieve their dreams.
-              </p>
+              {/* Action Button */}
+              <Link href="/donate">
+                <button className="px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300">
+                  Support a Project
+                </button>
+              </Link>
+            </div>
+
+            {/* Right - Image Grid (keeping your structure) */}
+            <div className="relative">
+              <div className="space-y-4">
+                {/* Top Row */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100">
+                    <Image
+                                    width={1}
+                                    height={1} src="/c1.jpg" alt="Community" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100 mt-8">
+                    <Image
+                                    width={1}
+                                    height={1} src="/c2.jpg" alt="Education" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+
+                {/* Middle Row */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100">
+                    <Image
+                                  width={1}
+                                  height={1}
+                                   src="/c9.jpg" alt="Volunteers" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100 mt-8">
+                    <Image
+                                  width={1}
+                                  height={1} 
+                    src="/cf.jpg" alt="Impact" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+
+                {/* Bottom Row */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100 mt-4">
+                    <Image
+                                    width={1}
+                                    height={1}
+                                     src="/c3.jpg" alt="Healthcare" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100">
+                    <Image
+                                    width={1}
+                                    height={1} src="/c4.jpg" alt="Development" className="w-full h-full object-cover" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Card */}
+              <div className="absolute top-6 -right-4 bg-white rounded-2xl p-4 w-[140px] shadow-xl z-20">
+                <div className="relative w-full h-[80px] rounded-lg overflow-hidden mb-2 bg-gray-100">
+                  <Image
+                                  width={1}
+                                  height={1}
+                   src="/c8.jpg" alt="Project" className="w-full h-full object-cover" />
+                </div>
+                <p className="text-green-600 font-light text-sm">Stand With Us</p>
+                <p className="text-xs text-gray-500">Join our mission</p>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <Link href={"#"}> 
-          <DonateButton />
-          </Link>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-      {/* Mission Section */}
-      <section id="about" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="grid grid-cols-2 gap-4">
+      {/* MISSION SECTION */}
+      <section className="py-32 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Images */}
+            <div className="grid grid-cols-2 gap-6">
+              <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100">
                 <Image
-                  width={900} height={900}
-                  src="/6.jpg"
-                  alt="Volunteers working"
-                  className="rounded-2xl shadow-lg"
-                />
+                              width={1}
+                              height={1} src="/6.jpg" alt="Volunteers" className="w-full h-full object-cover" />
+              </div>
+              <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 mt-8">
                 <Image
-                width={900} height={900}
-                  src="/cf.jpg"
-                  alt="Community impact"
-                  className="rounded-2xl shadow-lg mt-8"
-                />
+                              width={1}
+                              height={1} src="/cf.jpg" alt="Community" className="w-full h-full object-cover" />
               </div>
             </div>
 
-            <div className="space-y-6">
-
-              <h2 className="text-4xl font-bold text-gray-900">
-                Our Mission: Creating Sustainable Impact Through Community-Driven Projects.
+            {/* Content */}
+            <div>
+              <span className="text-sm text-gray-500 uppercase tracking-wider">Our Mission</span>
+              <h2 className="text-4xl md:text-5xl font-light text-gray-900 mt-4 mb-6 leading-tight">
+                Creating sustainable <span className="font-semibold text-green-600">impact</span>
               </h2>
-
-              <p className="text-gray-600 leading-relaxed">
-                Every project we undertake is designed with sustainability and community ownership in mind. We work directly with local leaders and organizations to ensure that our initiatives create lasting positive change that continues long after our initial involvement.
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                Every project we undertake is designed with sustainability and community ownership in mind. We work directly with local leaders and organizations to ensure that our initiatives create lasting positive change.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                Our approach focuses on empowerment rather than dependency, providing communities with the tools, resources, and knowledge they need to thrive independently.
               </p>
 
-              <p className="text-gray-600 leading-relaxed">
-                Our approach focuses on empowerment rather than dependency, providing communities with the tools, resources, and knowledge they need to thrive independently. From education and healthcare to economic development and disaster relief, each project addresses critical needs while building local capacity.
-              </p>
-
-              <div className="grid grid-cols-3 gap-6 pt-6">
-                <div className="text-center">
-                  <Users className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-gray-900">25+</div>
-                  <div className="text-sm text-gray-600">Active Projects</div>
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-6 mb-8">
+                <div>
+                  <div className="text-4xl font-light text-green-600 mb-1">25+</div>
+                  <div className="text-sm text-gray-500">Active Projects</div>
                 </div>
-                <div className="text-center">
-                  <Target className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-gray-900">150K+</div>
-                  <div className="text-sm text-gray-600">Lives Impacted</div>
+                <div>
+                  <div className="text-4xl font-light text-green-600 mb-1">150K+</div>
+                  <div className="text-sm text-gray-500">Lives Impacted</div>
                 </div>
-                <div className="text-center">
-                  <Award className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-gray-900">5</div>
-                  <div className="text-sm text-gray-600">Countries</div>
+                <div>
+                  <div className="text-4xl font-light text-green-600 mb-1">5</div>
+                  <div className="text-sm text-gray-500">Countries</div>
                 </div>
               </div>
 
-              <Link href={"/contact"} className="mt-6 inline-block">
-              <button className=" gap-2 bg-[#1a344b] shadow-2xl shadow-gray-500 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2">
-                Next Project
-                <Image src="/grl.png" width={50} height={50} alt="Parofund Logo" className="h-[30px] w-[30px]" />
-              </button> 
+              <Link href="/contact">
+                <button className="px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 flex items-center gap-2">
+                  Next Project
+                  <Image
+                                 src="/grl.png" width={24} height={24} alt="Arrow" className="w-6 h-6" />
+                </button>
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-block bg-green-100 text-black px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              Featured Projects
+      {/* PROJECTS SECTION */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 mb-8">
+              <div className="w-2 h-2 rounded-full bg-green-600" />
+              <span className="text-sm text-gray-500 tracking-wider uppercase">Featured Projects</span>
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Support Our Current Initiatives
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-6">
+              Support our current <span className="font-semibold text-green-600">initiatives</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Choose from our carefully selected projects that are making a real difference in communities around the world.
+            <p className="text-xl text-gray-500 max-w-3xl mx-auto font-light">
+              Choose from our carefully selected projects that are making a real difference.
             </p>
           </div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             {projects.slice(currentSlide * 3, currentSlide * 3 + 6).map((project, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
-                <div className="relative w-full  h-48">
-                  <Image
+              <div key={index} className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100">
+                <div className="relative h-64 bg-gray-100">
+                 <Image
+                               width={1}
+                               height={1}
                     src={project.image}
                     alt={project.title}
-                    fill
-                    className=""
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-4 right-4 bg-white rounded-full px-3 py-1 text-sm font-semibold text-green-600">
-                    {project.progress}% Funded
+                  <div className="absolute top-4 right-4 bg-white rounded-full px-4 py-1 text-sm font-light text-green-600">
+                    {project.progress}%
                   </div>
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  <h3 className="text-xl font-light text-gray-900 mb-3">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6">
                     {project.description}
                   </p>
                   
-                  {/* Progress Bar */}
-                  <div className="mb-4">
-                    <div className="flex justify-between text-sm text-gray-600 mb-2">
-                      <span>Raised: {project.raised}</span>
-                      <span>Goal: {project.goal}</span>
+                  {/* Progress */}
+                  <div className="mb-6">
+                    <div className="flex justify-between text-sm text-gray-500 mb-2">
+                      <span>{project.raised}</span>
+                      <span>{project.goal}</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
                       <div 
-                        className="bg-gradient-to-r from-green-500 to-[#369612] h-2 rounded-full transition-all duration-300"
+                        className="h-full bg-green-600 rounded-full transition-all duration-1000"
                         style={{ width: `${project.progress}%` }}
                       ></div>
                     </div>
                   </div>
 
                   {/* Supporters */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-2">
-                      <Users className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm text-gray-600">{project.supporters} supporters</span>
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center gap-2">
+                      <Users className="h-4 w-4 text-gray-400" />
+                      <span className="text-sm text-gray-500">{project.supporters} supporters</span>
                     </div>
                     <div className="flex -space-x-2">
                       {donorImages.slice(0, 3).map((img, i) => (
-                        <Image
+                        <div
                           key={i}
-                          width={50} height={50}
-                          src={img}
-                          alt={`Supporter ${i + 1}`}
-                          className="w-6 h-6 rounded-full border-2 border-white object-cover"
-                        />
+                          className="w-6 h-6 rounded-full border-2 border-white overflow-hidden bg-gray-200"
+                        >
+                          <Image
+                                        width={1}
+                                        height={1}
+                            src={img}
+                            alt={`Supporter ${i + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="flex space-x-3">
-                    <Link href={"/contact"}>
-                    <DonateButton />
+                  <div className="flex gap-3">
+                    <Link href="/contact" className="flex-1">
+                      <button className="w-full px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors">
+                        Support
+                      </button>
                     </Link>
-                    <button className="px-4 py-2 border border-gray-300 rounded-full hover:bg-gray-50 transition-colors">
+                    <button className="px-4 py-3 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors">
                       <Heart className="h-4 w-4 text-gray-500" />
                     </button>
                   </div>
@@ -361,21 +336,21 @@ const CharityProjectsPage = () => {
           </div>
 
           {/* Navigation */}
-          <div className="flex justify-center items-center space-x-4">
+          <div className="flex justify-center items-center gap-4">
             <button
               onClick={prevSlide}
-              className="p-3 bg-white shadow-lg rounded-full hover:bg-green-50 transition-colors border border-gray-200"
+              className="p-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors"
             >
-              <ChevronLeft className="h-6 w-6 text-gray-600" />
+              <ChevronLeft className="h-5 w-5 text-gray-600" />
             </button>
             
-            <div className="flex space-x-2">
+            <div className="flex gap-2">
               {Array.from({ length: Math.ceil(projects.length / 6) }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentSlide ? 'bg-[#369612]' : 'bg-gray-300'
+                  className={`w-2 h-2 rounded-full transition-colors ${
+                    index === currentSlide ? 'bg-green-600 w-8' : 'bg-gray-300'
                   }`}
                 />
               ))}
@@ -383,30 +358,34 @@ const CharityProjectsPage = () => {
 
             <button
               onClick={nextSlide}
-              className="p-3 bg-white shadow-lg rounded-full hover:bg-green-50 transition-colors border border-gray-200"
+              className="p-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors"
             >
-              <ChevronRight className="h-6 w-6 text-gray-600" />
+              <ChevronRight className="h-5 w-5 text-gray-600" />
             </button>
           </div>
         </div>
       </section>
 
-      {/* Call to Action Section */}
-      <section className="py-20 bg-[#1a344b]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Make a Difference?
+      {/* CTA */}
+      <section className="py-32 px-6 bg-green-600 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl md:text-6xl font-light mb-6">
+            Ready to make a <span className="font-semibold">difference?</span>
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Join thousands of supporters who are already making an impact. Every contribution, no matter the size, helps us create positive change in communities worldwide.
+          <p className="text-xl text-green-100 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+            Join thousands of supporters who are already making an impact. Every contribution helps us create positive change.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={"/contact"}><button className="bg-white text-[#1a344b] px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
-              Start Supporting Today
-            </button></Link>
-            <Link href={"/about"}><button className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-[#1a344b] transition-all">
-              Learn More About Us
-            </button></Link>
+            <Link href="/contact">
+              <button className="px-8 py-4 bg-white text-green-600 rounded-full hover:bg-gray-100 transition-all duration-300">
+                Start Supporting Today
+              </button>
+            </Link>
+            <Link href="/about">
+              <button className="px-8 py-4 border-2 border-white/20 text-white rounded-full hover:bg-white/10 transition-all duration-300">
+                Learn More About Us
+              </button>
+            </Link>
           </div>
         </div>
       </section>

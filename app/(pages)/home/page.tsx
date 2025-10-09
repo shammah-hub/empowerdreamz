@@ -1,221 +1,482 @@
 "use client"
-import Image from 'next/image'
-import React from 'react';
-import { GoArrowRight } from "react-icons/go";
-import { Heart, Users, Globe, Award, } from 'lucide-react';
-import HeroSlider from '@/app/components/heroslider';
-import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
+import { Heart, ArrowRight, Users, Globe, TrendingUp, Shield, BookOpen, Droplet, Activity } from 'lucide-react';
+import Image from 'next/image';
 
+const MinimalistCharity = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-const CharityHomepage = () => {
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
- const campaigns = [
-  {
-    id: 1,
-    title: "Help Children Get Education",
-    description: "Supporting education initiatives in underserved communities.",
-    image: "/c5.jpg",
-    raised: 1200,
-    goal: 10000,
-  },
-  {
-    id: 2,
-    title: "Clean Water Project",
-    description: "Providing clean water access to rural communities in need.",
-    image: "/ca.jpg",
-    raised: 1850,
-    goal: 8500,
-  },
-  {
-    id: 3,
-    title: "Medical Care Support",
-    description: "Emergency medical assistance for families in crisis.",
-    image: "/c7.jpg",
-    raised: 2700,
-    goal: 12000,
-  },
-];
+  const causes = [
+    {
+      number: "01",
+      title: "Education Goals",
+      stat: "12,450",
+      label: "Students",
+      image: "/c5.jpg",
+      color: "emerald"
+    },
+    {
+      number: "02",
+      title: "Clean Water Goals",
+      stat: "8,200",
+      label: "Wells Built",
+      image: "/ca.jpg",
+      color: "blue"
+    },
+    {
+      number: "03",
+      title: "Healthcare Goals",
+      stat: "50,000+",
+      label: "Lives Saved",
+      image: "/c7.jpg",
+      color: "rose"
+    }
+    
+  ];
+
+  const features = [
+    {
+      icon: Shield,
+      title: "100% Transparency",
+      description: "Track every dollar and see exactly where your contribution goes."
+    },
+    {
+      icon: Globe,
+      title: "Global Reach",
+      description: "Operating in 25+ countries with local teams on the ground."
+    },
+    {
+      icon: Users,
+      title: "Community Driven",
+      description: "Working alongside communities to create lasting solutions."
+    },
+    {
+      icon: TrendingUp,
+      title: "Proven Impact",
+      description: "Measurable results backed by independent audits and reports."
+    }
+  ];
+
+  const stories = [
+    {
+      name: "Maria Judge",
+      location: "Nigeria",
+      story: "Thanks to your support, our village now has clean water. My children are healthier and can focus on their education.",
+      image: "/1.jpg"
+    },
+    {
+      name: "James Okonkwo",
+      location: "Nigeria",
+      story: "The school program changed everything. Now I'm studying engineering and helping my community build a better future.",
+      image: "/3.jpg"
+    },
+    {
+      name: "Amara Patel",
+      location: "Nigeria",
+      story: "Access to healthcare saved my daughter's life. I'm forever grateful to this organization and its donors.",
+      image: "/6.jpg"
+    }
+  ];
+
+  const impactAreas = [
+    { icon: BookOpen, title: "Education", count: "200+", desc: "Students enrolled", color: "bg-green-600" },
+    { icon: Droplet, title: "Water", count: "3+", desc: "Wells built", color: "bg-green-600" },
+    { icon: Activity, title: "Healthcare", count: "50+", desc: "Patients treated", color: "bg-green-600" },
+    { icon: Users, title: "Community", count: "3+", desc: "Villages empowered", color: "bg-green-600" }
+  ];
 
   return (
-    <>
-      
-      <HeroSlider />
+    <div className="bg-white">
+      {/* MINIMAL HERO */}
+      <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden pb-20">
+        {/* Multi-layered dot pattern background */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Layer 1 - Large dots */}
+          <div 
+            className="absolute inset-0 transition-transform duration-300 ease-out"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(34, 197, 94, 0.12) 2px, transparent 0)',
+              backgroundSize: '40px 40px',
+              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`
+            }} 
+          />
+          {/* Layer 2 - Medium dots */}
+          <div 
+            className="absolute inset-0 transition-transform duration-500 ease-out"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, rgba(34, 197, 94, 0.08) 1.5px, transparent 0)',
+              backgroundSize: '32px 32px',
+              transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`
+            }} 
+          />
+          {/* Layer 3 - Small dots */}
+          <div 
+            className="absolute inset-0 transition-transform duration-700 ease-out"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(34, 197, 94, 0.05) 1px, transparent 0)',
+              backgroundSize: '24px 24px',
+              transform: `translate(${mousePosition.x * 0.008}px, ${mousePosition.y * 0.008}px)`
+            }} 
+          />
+          {/* Layer 4 - Tiny dots */}
+          <div 
+            className="absolute inset-0 transition-transform duration-1000 ease-out"
+            style={{
+              backgroundImage: 'radial-gradient(circle at 0.5px 0.5px, rgba(34, 197, 94, 0.03) 0.5px, transparent 0)',
+              backgroundSize: '16px 16px',
+              transform: `translate(${mousePosition.x * 0.005}px, ${mousePosition.y * 0.005}px)`
+            }} 
+          />
+        </div>
 
-      {/* Belief Section */}
-<section className="py-25 bg-cover bg-white bg-center bg-no-repeat" style={{backgroundImage: "url('/mm.png')"}}>
-  <div className="container mx-auto px-6">
-    <div className="grid md:grid-cols-2 gap-12 items-center">
-      <div className="relative">
-        <Image
-            src="/g.gif"
-            width={30} 
-            height={30}
-            alt="Community help"
-            className="rounded-lg shadow-lg w-full h-96 object-cover"
-        />
-        <div className="absolute inset-0  bg-opacity-40 rounded-lg flex items-center justify-center">
-          {/* <button className="bg-white bg-opacity-20 backdrop-blur-sm p-4 rounded-full hover:bg-opacity-30 transition-all">
-            <Play className="w-8 h-8 text-white" />
-          </button> */}
-        </div>
-      </div>
-      <div>
-        <div className=''>
-        <h2 className="text-5xl font-extrabold text-gray-800 mb-6">
-          We believe we can
-          <br />
-           <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-[#85e065]">
-            save more lives</span>
-        </h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-[#85e065] rounded-full mb-8"></div>
-        </div>
-        <p className="text-gray-600 mb-6">
-          Our dedicated team works tirelessly to provide essential resources, 
-          education, and support to communities that need it most. Every contribution 
-          makes a real difference in someone&apos;s life.
-        </p>
-        <div className="flex items-center space-x-4 mb-6">
-          <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center">
-            <Image src="/nobg.png" width={30} 
-                height={30} alt="Parofund Logo" className="w-auto h-8" />
+        <div className="max-w-6xl mx-auto text-center relative z-10" style={{
+          transform: `translateY(${mousePosition.y * 0.08}px)`,
+          transition: 'transform 0.3s ease-out'
+        }}>
+          {/* Minimalist badge */}
+          <div className="inline-flex items-center gap-2 mb-8 opacity-0 animate-fade-in-down">
+            <div className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
+            <span className="text-sm text-gray-500 tracking-wider uppercase">Since 2010</span>
           </div>
-          <span className="text-gray-700">Compassionate Care</span>
-        </div>
-        <button className="text-green-600 hover:text-green-700 flex items-center space-x-2">
-          <span> <Link href={"/contact"}> Learn More About Us</Link></span>
-          <GoArrowRight className="w-4 h-4" />
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
 
-      {/* Impact Cards */}
-      <section className="bg-gray-50 text-white py-16">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-gray-800 text-white p-8 rounded-lg text-center">
-              <Users className="w-12 text-white h-12 mx-auto mb-4" />
-              <h3 className="text-xl text-white font-semibold mb-2">Community Support</h3>
-              <p className="text-gray-300">Building stronger communities</p>
+          {/* Main headline */}
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-light text-gray-900 mb-6 tracking-tight">
+            <span className="inline-block opacity-0 animate-fade-in-up" style={{animationDelay: '0.1s'}}>Small acts.</span>
+            <br />
+            <span className="font-semibold text-green-600 inline-block opacity-0 animate-fade-in-up" style={{animationDelay: '0.3s'}}>Big change.</span>
+          </h1>
+
+          <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl mx-auto font-light leading-relaxed opacity-0 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
+            Every donation creates ripples of hope across communities worldwide.
+          </p>
+
+          {/* Minimal stats */}
+          <div className="flex flex-wrap justify-center gap-12 mb-16 opacity-0 animate-fade-in-up" style={{animationDelay: '0.7s'}}>
+            <div>
+              <div className="text-4xl font-light text-green-600 mb-1">50+</div>
+              <div className="text-sm text-gray-500 uppercase tracking-wider">Lives Changed</div>
             </div>
-            <div className="bg-gradient-to-r from-[#2d8f00] to-[#5fa347] text-white p-8 rounded-lg text-center">
-              <Globe className="w-12 text-white h-12 mx-auto mb-4" />
-              <h3 className="text-xl text-white font-semibold mb-2">Global Reach</h3>
-              <p className="text-white">Helping communities worldwide</p>
+            <div className="w-px bg-gray-200" />
+            <div>
+              <div className="text-4xl font-light text-green-600 mb-1">2</div>
+              <div className="text-sm text-gray-500 uppercase tracking-wider">Projects Ongoing</div>
             </div>
-            <div className="bg-gray-700 text-white p-8 rounded-lg text-center">
-              <Heart className="w-12 text-white h-12 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Health Care</h3>
-              <p className="text-gray-300">Medical support for all</p>
+            <div className="w-px bg-gray-200" />
+            <div>
+              <div className="text-4xl font-light text-green-600 mb-1">4</div>
+              <div className="text-sm text-gray-500 uppercase tracking-wider">States</div>
             </div>
-            <div className="bg-gray-900 text-white p-8 rounded-lg text-center">
-              <Award className="w-12 text-white h-12 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Education</h3>
-              <p className="text-gray-300">Learning opportunities</p>
+          </div>
+
+          {/* Minimal CTA */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 animate-fade-in-up" style={{animationDelay: '0.9s'}}>
+            <button className="group px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 flex items-center gap-2 hover:scale-105">
+              Start Giving
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button className="px-8 py-4 text-green-600 hover:text-green-700 transition-colors hover:scale-105">
+              Learn Our Story
+            </button>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="mt-16 opacity-0 animate-fade-in" style={{animationDelay: '1.2s'}}>
+            <div className="w-8 h-14 border-2 border-gray-300 rounded-full flex items-start justify-center p-2 mx-auto">
+              <div className="w-1.5 h-3 bg-green-600 rounded-full animate-bounce" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Mission Statement */}
-      <section className="py-16 text-white bg-white bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/l.png')"}}>
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-5xl font-extrabold text-gray-800 mb-6">
-                We inspire and help
-                <br />
-                <span className="text-green-600">them live better</span>
-              </h2>
-               <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-[#85e065] rounded-full mb-8"></div>
+      {/* MINIMAL IMPACT SECTION */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          {/* Section header */}
+          <div className="mb-20">
+            <span className="text-sm text-gray-500 uppercase tracking-wider">Impact</span>
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 mt-4">
+              Where we <span className="font-semibold text-green-600">make a difference</span>
+            </h2>
+          </div>
 
-              <p className="text-gray-600 mb-8">
-                Through sustainable programs and community partnerships, we&apos;re creating 
-                lasting change that empowers individuals and families to build better futures.
-              </p>
-              <Link href={"/contact"}>
-             <button className="gap-2 flex px-6 py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105">                
-                       Get Involved
-                       <Image src="/wb.png" width={30} 
-                height={30} alt="Parofund Logo" className=" h-[30px] w-[30px]" />
-                </button>
-                </Link>
+          {/* Minimal cards grid */}
+          <div className="grid md:grid-cols-3 gap-8">
+            {causes.map((cause, idx) => (
+              <div
+                key={idx}
+                className="group cursor-pointer"
+              >
+                {/* Image */}
+                <div className="relative aspect-[3/4] mb-6 overflow-hidden rounded-2xl bg-gray-100">
+                  <Image
+              width={1}
+              height={1}
+                    src={cause.image}
+                    alt={cause.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  {/* Minimal overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  
+                  {/* Number badge */}
+                  <div className="absolute top-6 left-6">
+                    <span className="text-white/80 text-sm font-light">{cause.number}</span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-light text-gray-900 group-hover:text-green-600 transition-colors">
+                    {cause.title}
+                  </h3>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl font-light text-green-600">{cause.stat}</span>
+                    <span className="text-sm text-gray-500">{cause.label}</span>
+                  </div>
+                  <div className="w-12 h-px bg-green-600 group-hover:w-24 transition-all duration-300" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US SECTION */}
+      <section className="py-32 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-sm text-gray-500 uppercase tracking-wider">Why Choose Us</span>
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 mt-4">
+              Built on <span className="font-semibold text-green-600">trust</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, idx) => (
+              <div key={idx} className="group">
+                <div className="mb-6">
+                  <div className="w-12 h-12 rounded-full bg-green-600/10 flex items-center justify-center group-hover:bg-green-600 transition-all duration-300 group-hover:scale-110">
+                    <feature.icon className="w-6 h-6 text-green-600 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-light text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-500 leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* IMPACT AREAS HORIZONTAL SCROLL */}
+      <section className="py-32 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-3xl mb-16">
+            <span className="text-sm text-gray-500 uppercase tracking-wider">Real Impact</span>
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 mt-4">
+              We don&apos;t just help.
+              <br />
+              <span className="font-semibold text-green-600">We transform.</span>
+            </h2>
+          </div>
+
+          {/* Cards grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {impactAreas.map((area, idx) => (
+              <div key={idx} className="group">
+                <div className="bg-white border border-gray-200 rounded-2xl p-8 h-full hover:border-green-600 transition-all duration-300 hover:shadow-lg">
+                  <div className="w-12 h-12 bg-green-600/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300">
+                    <area.icon className="w-6 h-6 text-green-600 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <div className="text-4xl font-light text-green-600 mb-2">{area.count}</div>
+                  <div className="text-xl font-light text-gray-900 mb-2">{area.title}</div>
+                  <div className="text-gray-500 text-sm">{area.desc}</div>
+                  
+                  {/* Minimal line indicator */}
+                  <div className="mt-6 w-12 h-px bg-green-600 group-hover:w-24 transition-all duration-300" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-32 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-sm text-gray-500 uppercase tracking-wider">Real Stories</span>
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 mt-4">
+              Voices of <span className="font-semibold text-green-600">change</span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {stories.map((story, idx) => (
+              <div key={idx} className="bg-white rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <div className="mb-6">
+                  <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-100 mb-4">
+                    <Image
+              width={1}
+              height={1} src={story.image} alt={story.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <div className="font-light text-gray-900 mb-1">{story.name}</div>
+                    <div className="text-sm text-gray-500">{story.location}</div>
+                  </div>
+                </div>
+                <p className="text-gray-600 leading-relaxed italic">&quot;{story.story}&quot;</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* MINIMAL QUOTE SECTION */}
+      <section className="py-32 px-6 bg-green-600 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <blockquote className="text-3xl md:text-4xl font-light mb-8 leading-relaxed">
+            &quot;The best way to find yourself is to lose yourself in the service of others.&quot;
+          </blockquote>
+          <cite className="text-sm text-green-100 not-italic uppercase tracking-wider">
+            — Mahatma Gandhi
+          </cite>
+        </div>
+      </section>
+
+      {/* MINIMAL STATS SECTION */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            {/* Left - Stats */}
+            <div className="space-y-12">
+              <div>
+                <span className="text-sm text-gray-500 uppercase tracking-wider">Transparency</span>
+                <h2 className="text-4xl md:text-5xl font-light text-gray-900 mt-4">
+                  Every dollar <span className="font-semibold text-green-600">tracked</span>
+                </h2>
+              </div>
+
+              <div className="space-y-8">
+                <div className="flex items-center gap-8">
+                  <div className="text-6xl font-light text-green-600">99%</div>
+                  <div className="flex-1">
+                    <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-full bg-green-600 rounded-full transition-all duration-1000" style={{width: '99%'}} />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-2">Goes directly to programs</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-8">
+                  <div className="text-6xl font-light text-green-600">100%</div>
+                  <div className="flex-1">
+                    <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
+                      <div className="h-full bg-green-600 rounded-full transition-all duration-1000" style={{width: '100%'}} />
+                    </div>
+                    <p className="text-sm text-gray-500 mt-2">Financial transparency</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="relative w-full h-72 rounded-lg shadow-lg overflow-hidden">
+
+            {/* Right - Image */}
+            <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 group">
               <Image
-                src="/c4.jpg"
-                alt="Happy children"
-                fill
-                className="object-cover"
+              width={1}
+              height={1}
+                src="/nnn.jpg"
+                alt="Impact"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Latest Campaigns */}
-      <section className="bg-gray-50 py-16">
-  <div className="container mx-auto px-6">
-    <div className="text-center mb-12">
-      <h2 className="text-5xl font-extrabold text-gray-800 mb-4">
-        Check latest
-        <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-[#85e065]">
-          Campaigns
-          </span>
-      </h2>
-       <div className="w-24 h-1 bg-gradient-to-r from-green-600 to-[#85e065] rounded-full mx-auto mb-8"></div>
-    </div>
-    <div className="grid md:grid-cols-3 gap-8">
-      {campaigns.map((campaign) => (
-        <div key={campaign.id} className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow duration-300">
-           <div className="relative w-full h-48">
-    <Image
-      src={campaign.image}
-      alt={campaign.title}
-      fill
-      className="object-cover object-center"
-    />
-  </div>
-          <div className="p-6">
-            <h3 className="text-xl font-semibold text-gray-800 mb-3">
-              {campaign.title}
-            </h3>
-            <p className="text-gray-600 mb-4">
-              {campaign.description}
-            </p>
-            
-            {/* Progress Bar */}
-            <div className="mb-4">
-              <div className="flex justify-between text-sm text-gray-500 mb-1">
-                <span>Raised</span>
-                <span>{Math.round((campaign.raised / campaign.goal) * 100)}%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className="bg-green-600 h-2 rounded-full transition-all duration-500" 
-                  style={{ width: `${(campaign.raised / campaign.goal) * 100}%` }}
-                ></div>
-              </div>
-            </div>
-
-            <div className="flex justify-between items-center">
-              <span className="text-green-600 font-semibold">
-                ${campaign.raised.toLocaleString()} raised
-              </span>
-              <button className="text-green-600 hover:text-green-700 font-semibold transition-colors duration-200">
-                <Link href={"#"}>Donate →</Link>
-              </button>
-            </div>
+      {/* MINIMAL CTA */}
+      <section className="py-32 px-6 bg-green-600 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl md:text-6xl font-light mb-6">
+            Ready to make an <span className="font-semibold">impact?</span>
+          </h2>
+          <p className="text-xl text-green-100 mb-12 font-light">
+            Join thousands of donors creating change around the world.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button className="group px-8 py-4 bg-white text-green-600 rounded-full hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105">
+              Donate Now
+              <Heart className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            </button>
+            <button className="px-8 py-4 border-2 border-white/20 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
+              Contact Us
+            </button>
           </div>
         </div>
-      ))}
+      </section>
+
+      <style jsx>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        
+        @keyframes fade-in-down {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        .animate-fade-in-down {
+          animation: fade-in-down 0.8s ease-out forwards;
+        }
+        
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out forwards;
+        }
+      `}</style>
     </div>
-  </div>
-</section>
-    </>
   );
 };
 
-export default CharityHomepage;
+export default MinimalistCharity;

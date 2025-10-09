@@ -50,3 +50,5 @@ const Loader = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default Loader;
+
+

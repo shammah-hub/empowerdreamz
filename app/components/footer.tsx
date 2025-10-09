@@ -48,6 +48,13 @@ function Footer() {
         <span className="text-gray-400">/</span>
         <Link href="/contact" className="text-black hover:text-gray-600 font-medium transition-colors">Contact Us</Link>
       </nav>
+      
+      <nav className="flex flex-wrap justify-center items-center gap-4 py-6 px-4">
+        <Link href="/privacy-policy" className="text-black hover:text-gray-600 font-light transition-colors">Privacy-Policy</Link>
+        <span className="text-gray-400">/</span>
+        <Link href="/terms&condition" className="text-black hover:text-gray-600 font-light transition-colors">Terms & Condition</Link>
+        
+      </nav>
 
       {/* Copyright Section - Single Line */}
       <div className="border-t border-gray-200 py-6 text-center">

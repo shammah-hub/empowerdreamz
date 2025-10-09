@@ -1,16 +1,13 @@
 "use client"
-import CounterSection from '@/app/components/counter';
-import CircularProgres from '@/app/components/cprogressbar';
-import { Download } from 'lucide-react';
+import { Download, Heart, Users, Globe } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
-
-
 type TabType = 'mission' | 'values' | 'team';
-const AboutPage = () => {
 
-   const [activeTab, setActiveTab] = useState<TabType>('mission');
+const AboutPage = () => {
+  const [activeTab, setActiveTab] = useState<TabType>('mission');
 
   const content: Record<TabType, {
     title: string;
@@ -23,7 +20,7 @@ const AboutPage = () => {
     mission: {
       title: "Our Mission",
       image: {
-        icon: "/c7.jpg",
+        icon: "/ch.jpeg",
         label: "Mission Focus"
       },
       bullets: [
@@ -81,323 +78,365 @@ const AboutPage = () => {
 
   const currentContent = content[activeTab];
 
-
+  const services = [
+    {
+      title: "Healthcare Support",
+      description: "Providing essential medical assistance and organizing blood drives to support our community health needs.",
+      link: "/projects"
+    },
+    {
+      title: "Nutrition Programs",
+      description: "Combating food insecurity by distributing nutritious meals and groceries to families in need.",
+      link: "/food"
+    },
+    {
+      title: "Clean Water Access",
+      description: "Ensuring communities have reliable access to clean, safe drinking water through sustainable solutions.",
+      link: "/projects"
+    },
+    {
+      title: "Educational Empowerment",
+      description: "Building brighter futures through educational programs, scholarships, and skill development initiatives.",
+      link: "/projects"
+    }
+  ];
 
   return (
-    <div className="min-h-screen pt-12 bg-white ">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-50 to-green-50 py-12 sm:py-16 lg:py-20">
-  <div className="container mx-auto px-4 sm:px-6">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-      {/* Visual elements now on the left */}
-      <div className="relative">
-        <div className="grid grid-cols-2 gap-3 sm:gap-4">
-          <div className="space-y-1 sm:space-y-2">
-            <CircularProgres/>
-
-            <div className="bg-[#1a344b] text-white rounded-lg p-3 sm:p-4">
-                <p className="text-sm sm:text-base">
-                  Together we can turn compassion into action, 
-                  transform lives through kindness, and create lasting change in our world.
-                </p>
-            </div>
+    <div className="bg-white">
+      {/* MINIMAL HERO */}
+      <section className="py-32 px-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Top Section */}
+        <div className="max-w-4xl mb-20">
+          <span className="text-sm text-gray-500 uppercase tracking-wider">About Us</span>
+          <h1 className="text-5xl md:text-7xl font-light text-gray-900 mt-4 mb-8 leading-tight">
+            Creating <span className="font-semibold text-green-600">meaningful change</span> in communities worldwide
+          </h1>
+          <p className="text-xl text-gray-500 font-light leading-relaxed mb-8">
+            We believe in the power of compassion, sustainable development, and meaningful partnerships 
+            to create lasting positive change in the communities we serve.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <Link href="/exist">
+              <button className="px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 hover:scale-105 font-light">
+                Why We Do This 
+              </button>
+            </Link>
+            <Link href="/donate">
+              <button className="px-8 py-4 border border-gray-300 text-gray-700 rounded-full hover:border-green-600 hover:text-green-600 transition-all duration-300 font-light">
+                Support Our Mission
+              </button>
+            </Link>
           </div>
-          <div className="bg-green-100 rounded-lg p-4 sm:p-6 lg:p-8 aspect-square">
-            <div className="w-full h-full bg-gradient-to-br from-green-300 to-green-400 rounded-lg bg-cover bg-top bg-no-repeat" 
-            style={{backgroundImage: "url('/7.jpg')"}}>
+        </div>
 
-            </div>
+        {/* Image Grid */}
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="md:col-span-2 relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100">
+            <Image
+            width={1}
+            height={1}
+              src="/7.jpg"
+              alt="Our community work"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+          <div className="relative aspect-square md:aspect-auto rounded-2xl overflow-hidden bg-gray-100">
+            <Image
+            width={1000}
+            height={1}
+              src="/c7.jpg"
+              alt="Community impact"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Stats Bar */}
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-b border-gray-200">
+          <div>
+            <div className="text-4xl font-light text-green-600 mb-2">160+</div>
+            <div className="text-sm text-gray-500">Families Helped</div>
+          </div>
+          <div>
+            <div className="text-4xl font-light text-green-600 mb-2">13</div>
+            <div className="text-sm text-gray-500">Active Volunteers</div>
+          </div>
+          <div>
+            <div className="text-4xl font-light text-green-600 mb-2">4</div>
+            <div className="text-sm text-gray-500">Communities</div>
+          </div>
+          <div>
+            <div className="text-4xl font-light text-green-600 mb-2">3+</div>
+            <div className="text-sm text-gray-500">Years Experience</div>
           </div>
         </div>
       </div>
-      {/* Text and button now on the right */}
-      <div>
-        <p className="font-medium mb-3 text-black sm:mb-4 text-sm sm:text-base">About Our Organization</p>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1a344b] mb-4 sm:mb-6 leading-tight">
-          Transforming Lives
-          <br />
-          <span className="text-green-600">Together</span>
-        </h1>
-        <p className="text-gray-600 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
-          Building stronger communities through compassion, dedication, and sustainable impact.
-        </p>
-       <Link href={"/projects"}> <button className="gap-2 flex px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl shadow-[#1F610A4D] hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">                
-           Learn Our Story
-        </button>
-        </Link>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-      {/* Our Services Section */}
-      <section className="py-20 bg-white">
-  <div className="container mx-auto px-6">
-    <div className="text-center mb-16">
-      <h2 className="text-5xl font-extrabold text-gray-900 mb-4">What We Do</h2>
-      <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-        Our comprehensive approach addresses multiple aspects of community wellbeing
-      </p>
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {/* Medical & Blood */}
-      <div className="bg-white rounded-xl p-8 shadow-lg">
-        <h3 className="text-xl text-gray-900  font-semibold mb-4">Healthcare Support</h3>
-        <p className="text-gray-600 text-sm mb-6">
-          Providing essential medical assistance and organizing blood drives to support our community health needs.
-        </p>
-        <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-          <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-          </svg>
-        </div>
-        <Link href="/projects" className="text-sm text-green-600 font-medium hover:text-green-700">
-          Learn More →
-        </Link>
-      </div>
-
-      {/* Food Donation */}
-      <div className="bg-[#1a344b] rounded-xl p-8 shadow-lg text-white">
-        <h3 className="text-xl font-semibold mb-4">Nutrition Programs</h3>
-        <p className="text-white text-opacity-90 text-sm mb-6">
-          Combating food insecurity by distributing nutritious meals and groceries to families in need.
-        </p>
-        <div className="w-12 h-12 bg-green-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
-          <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
-          </svg>
-        </div>
-        <Link href="/food" className="text-sm text-white font-medium hover:text-gray-200">
-          Learn More →
-        </Link>
-      </div>
-
-      {/* Pure Water */}
-      <div className="bg-white rounded-xl p-8 shadow-lg">
-        <h3 className="text-xl text-gray-900 font-semibold mb-4">Clean Water Access</h3>
-        <p className="text-gray-600 text-sm mb-6">
-          Ensuring communities have reliable access to clean, safe drinking water through sustainable solutions.
-        </p>
-        <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-          <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
-          </svg>
-        </div>
-        <Link href="/projects" className="text-sm text-green-600 font-medium hover:text-green-700">
-          Learn More →
-        </Link>
-      </div>
-
-      {/* Give Education */}
-      <div className="bg-white rounded-xl p-8 shadow-lg">
-        <h3 className="text-xl text-gray-900 font-semibold mb-4">Educational Empowerment</h3>
-        <p className="text-gray-600 text-sm mb-6">
-          Building brighter futures through educational programs, scholarships, and skill development initiatives.
-        </p>
-        <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-6">
-          <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-        </div>
-        <Link href="/projects" className="text-sm text-green-600 font-medium hover:text-green-700">
-          Learn More →
-        </Link>
-      </div>
-    </div>
-  </div>
-</section>
-
-      {/* Our Story Section */}
-       <section className="bg-white py-20">
-      <div className="container mx-auto px-6">
-        <div className="mb-12">
-          <p className="text-green-600 font-medium mb-2 text-center">Our Journey</p>
-          <h2 className="text-5xl font-extrabold text-gray-900 mb-8 text-center">Who We Are</h2>
-          
-          {/* Who We Are Description and 501c3 Download */}
-          <div className="max-w-5xl mx-auto mb-8 text-center">
-            <p className="text-gray-700 text-xl leading-relaxed mb-6">
-              EmpowerDreamz is a registered 501(c)(3) nonprofit organization dedicated to transforming lives and building stronger communities. 
-              We believe in the power of compassion, sustainable development, and meaningful partnerships to create lasting positive change. 
-              Through our various programs and initiatives, we address critical needs in healthcare, education, nutrition, and community development, 
-              touching the lives of hundreds of families across multiple communities.
+      {/* WHAT WE DO */}
+      <section className="py-32 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-20">
+            <span className="text-sm text-gray-500 uppercase tracking-wider">Our Services</span>
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 mt-4 mb-6">
+              What we <span className="font-semibold text-green-600">do</span>
+            </h2>
+            <p className="text-xl text-gray-500 max-w-2xl font-light">
+              Our comprehensive approach addresses multiple aspects of community wellbeing
             </p>
-            <p className="text-gray-700 text-xl leading-relaxed mb-6">
-              As a federally recognized tax-exempt organization, all donations to EmpowerDreamz are tax-deductible to the fullest extent permitted by law. 
-              We are committed to transparency, accountability, and maximizing the impact of every contribution we receive.
-            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, idx) => (
+              <div key={idx} className="group">
+                <div className="bg-white rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+                  <h3 className="text-xl font-light text-gray-900 mb-4 group-hover:text-green-600 transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+                  <Link href={service.link} className="text-green-600 text-sm font-light hover:text-green-700">
+                    Learn More →
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHO WE ARE */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-sm text-gray-500 uppercase tracking-wider">Our Journey</span>
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 mt-4 mb-12">
+              Who we <span className="font-semibold text-green-600">are</span>
+            </h2>
+
+            {/* Description */}
+            <div className="max-w-4xl mx-auto mb-12 space-y-6">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                EmpowerDreamz is a registered 501(c)(3) nonprofit organization dedicated to transforming lives and building stronger communities. 
+                We believe in the power of compassion, sustainable development, and meaningful partnerships to create lasting positive change.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                As a federally recognized tax-exempt organization, all donations to EmpowerDreamz are tax-deductible to the fullest extent permitted by law. 
+                We are committed to transparency, accountability, and maximizing the impact of every contribution we receive.
+              </p>
+            </div>
+
+            {/* Download Button */}
             <a 
               href="/documents/09_24_25_OH_State_Notice_Empowering_Dreamers_Foundation.pdf" 
               download
-              className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 mb-16"
             >
               <Download className="w-5 h-5" />
-              Download 501(c)(3) Determination Letter
+              Download 501(c)(3) Letter
             </a>
-          </div>
-          
-          <div className="flex flex-wrap gap-4 mb-8 justify-center">
-            <button 
-              onClick={() => setActiveTab('mission')}
-              className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                activeTab === 'mission' 
-                  ? 'bg-green-600 shadow-2xl text-white' 
-                  : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              Our Mission
-            </button>
-            <button 
-              onClick={() => setActiveTab('values')}
-              className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                activeTab === 'values' 
-                  ? 'bg-green-600 shadow-2xl text-white' 
-                  : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              Our Values
-            </button>
-            <button 
-              onClick={() => setActiveTab('team')}
-              className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                activeTab === 'team' 
-                  ? 'bg-green-600 shadow-2xl text-white' 
-                  : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
-              }`}
-            >
-              Our Team
-            </button>
-          </div>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div 
-              className="bg-gray-100 rounded-xl p-6 h-80 flex items-center justify-center mb-6 transition-all duration-500 bg-cover bg-center bg-no-repeat relative"
-              style={{ backgroundImage: `url('${currentContent.image.icon}')` }}
-            >
-              <div className="absolute inset-0 bg-opacity-40 rounded-xl"></div>
-              <div className="text-center relative z-10">
-               </div>
-            </div>
-            <div className="space-y-4">
-              {currentContent.bullets.map((bullet, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-center space-x-3 opacity-0 animate-fadeIn"
-                  style={{ animationDelay: `${index * 0.1}s`, animationFillMode: 'forwards' }}
-                >
-                  <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-                  <p className="text-gray-700">{bullet}</p>
-                </div>
-              ))}
+            {/* Tabs */}
+            <div className="flex flex-wrap justify-center gap-4">
+              <button 
+                onClick={() => setActiveTab('mission')}
+                className={`px-8 py-3 rounded-full font-light transition-all duration-300 ${
+                  activeTab === 'mission' 
+                    ? 'bg-green-600 text-white' 
+                    : 'border border-gray-300 text-gray-700 hover:border-green-600'
+                }`}
+              >
+                Our Mission
+              </button>
+              <button 
+                onClick={() => setActiveTab('values')}
+                className={`px-8 py-3 rounded-full font-light transition-all duration-300 ${
+                  activeTab === 'values' 
+                    ? 'bg-green-600 text-white' 
+                    : 'border border-gray-300 text-gray-700 hover:border-green-600'
+                }`}
+              >
+                Our Values
+              </button>
+              <button 
+                onClick={() => setActiveTab('team')}
+                className={`px-8 py-3 rounded-full font-light transition-all duration-300 ${
+                  activeTab === 'team' 
+                    ? 'bg-green-600 text-white' 
+                    : 'border border-gray-300 text-gray-700 hover:border-green-600'
+                }`}
+              >
+                Our Team
+              </button>
             </div>
           </div>
-          
-          <div className="bg-green-500 rounded-xl p-8 text-white h-80 flex items-center transition-all duration-500">
+
+          {/* Tab Content */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            {/* Image */}
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
+              <Image
+            width={1000}
+            height={1}
+                src={currentContent.image.icon} 
+                alt={currentContent.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Content */}
             <div>
-              <h3 className="text-2xl font-bold mb-4">{currentContent.description}</h3>
-              <p className="text-white text-opacity-90 mb-6">
+              <h3 className="text-3xl font-light text-gray-900 mb-6">
+                {currentContent.description}
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-8">
                 {currentContent.story}
               </p>
-              <div className="flex items-center space-x-4">
+
+              {/* Bullets */}
+              <div className="space-y-4 mb-8">
+                {currentContent.bullets.map((bullet, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 bg-green-600 rounded-full mt-2 flex-shrink-0" />
+                    <p className="text-gray-600">{bullet}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Stats */}
+              <div className="flex gap-8">
                 {currentContent.stats.map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-2xl font-bold">{stat.number}</div>
-                    <div className="text-sm opacity-90">{stat.label}</div>
+                  <div key={index}>
+                    <div className="text-3xl font-light text-green-600 mb-1">{stat.number}</div>
+                    <div className="text-sm text-gray-500">{stat.label}</div>
                   </div>
                 ))}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.6s ease-out;
-        }
-      `}</style>
-    </section>
+      {/* IMPACT STATS */}
+      <section className="py-32 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-sm text-gray-500 uppercase tracking-wider">Our Impact</span>
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 mt-4">
+              Making a <span className="font-semibold text-green-600">difference</span>
+            </h2>
+          </div>
 
-      {/* Our Impact Section */}
-      <CounterSection />
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-6xl font-light text-green-600 mb-2">160+</div>
+              <div className="text-gray-600">Families Helped</div>
+            </div>
+            <div className="text-center">
+              <div className="text-6xl font-light text-green-600 mb-2">13</div>
+              <div className="text-gray-600">Active Volunteers</div>
+            </div>
+            <div className="text-center">
+              <div className="text-6xl font-light text-green-600 mb-2">4</div>
+              <div className="text-gray-600">Communities Served</div>
+            </div>
+            <div className="text-center">
+              <div className="text-6xl font-light text-green-600 mb-2">3+</div>
+              <div className="text-gray-600">Years Experience</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Join Us Section */}
-      <section className="bg-[#f9fafb] py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center text-[#17364b] mb-16">
-            <h2 className="text-5xl font-extrabold mb-4">Be Part of Our Story</h2>
-            <p className="text-[#17364b] text-lg max-w-2xl mx-auto">
-              Every person who joins our mission adds another chapter to our story of community transformation. 
-              Discover how you can contribute to creating lasting positive change.
+      {/* JOIN US */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20">
+            <span className="text-sm text-gray-500 uppercase tracking-wider">Get Involved</span>
+            <h2 className="text-5xl md:text-6xl font-light text-gray-900 mt-4 mb-6">
+              Be part of our <span className="font-semibold text-green-600">story</span>
+            </h2>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto font-light">
+              Every person who joins our mission adds another chapter to our story of community transformation.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 text-[#17364b]">
-              <div className="w-12 h-12 bg-green-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                </svg>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Support */}
+            <div className="bg-white rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+              <div className="w-12 h-12 rounded-full bg-green-600/10 flex items-center justify-center mb-6">
+                <Heart className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Support Our Work</h3>
-              <p className="text-[#17364b] mb-6">
+              <h3 className="text-xl font-light text-gray-900 mb-4">Support Our Work</h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
                 Your contributions help us expand our programs and reach more families in need across our communities.
               </p>
-              <Link href="/donate" className="inline-flex items-center text-white font-medium hover:text-green-200">
-                Make a Donation
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+              <Link href="/donate" className="text-green-600 text-sm font-light hover:text-green-700 inline-flex items-center gap-1">
+                Make a Donation →
               </Link>
             </div>
 
-            <div className="bg-[#17364b] bg-opacity-10 backdrop-blur-sm rounded-xl p-8 text-[#17364b]">
-              <div className="w-12 h-12 bg-green-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+            {/* Volunteer */}
+            <div className="bg-white rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+              <div className="w-12 h-12 rounded-full bg-green-600/10 flex items-center justify-center mb-6">
+                <Users className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-xl text-white font-semibold mb-4">Join Our Team</h3>
-              <p className="text-white mb-6">
+              <h3 className="text-xl font-light text-gray-900 mb-4">Join Our Team</h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
                 Become a volunteer and experience the joy of directly impacting lives while building meaningful connections.
               </p>
-              <Link href="/volunteer" className="inline-flex items-center text-white font-medium hover:text-green-200">
-                Start Volunteering
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+              <Link href="/contact" className="text-green-600 text-sm font-light hover:text-green-700 inline-flex items-center gap-1">
+                Start Volunteering →
               </Link>
             </div>
 
-            <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 text-[#17364b]">
-              <div className="w-12 h-12 bg-green-100 bg-opacity-20 rounded-lg flex items-center justify-center mb-6">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z" />
-                </svg>
+            {/* Share */}
+            <div className="bg-white rounded-2xl p-8 hover:shadow-lg transition-all duration-300">
+              <div className="w-12 h-12 rounded-full bg-green-600/10 flex items-center justify-center mb-6">
+                <Globe className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold mb-4">Share Our Mission</h3>
-              <p className="text-[#17364b] mb-6">
+              <h3 className="text-xl font-light text-gray-900 mb-4">Share Our Mission</h3>
+              <p className="text-gray-600 leading-relaxed mb-6">
                 Help us reach more people by sharing our story and connecting us with others who share our values.
               </p>
-              <Link href="/contact" className="inline-flex items-center text-white font-medium hover:text-green-200">
-                Get Connected
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+              <Link href="/contact" className="text-green-600 text-sm font-light hover:text-green-700 inline-flex items-center gap-1">
+                Get Connected →
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-32 px-6 bg-green-600 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-5xl md:text-6xl font-light mb-6">
+            Ready to make an <span className="font-semibold">impact?</span>
+          </h2>
+          <p className="text-xl text-green-100 mb-12 font-light">
+            Join us in creating lasting change in communities that need it most.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/donate">
+              <button className="flex items-center justify-center gap-2 px-8 py-4 bg-[#ffffff] text-green-600 rounded-full hover:bg-gray-100 transition-all duration-300">
+                Donate Now
+                <Image 
+                    src="/wb.png" 
+                    width={30} 
+                    height={30} 
+                    alt="Parofund Logo" 
+                    className="h-[30px] w-[30px]" 
+                  /> 
+              </button>
+            </Link>
+            <Link href="/contact">
+              <button className="px-8 py-4 border-2 border-white/20 text-white rounded-full hover:bg-white/10 transition-all duration-300">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
       </section>
