@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Heart, ArrowRight, Users, Globe, TrendingUp, Shield, BookOpen, Droplet, Activity } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const MinimalistCharity = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -96,7 +97,7 @@ const MinimalistCharity = () => {
   return (
     <div className="bg-white">
       {/* MINIMAL HERO */}
-      <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden pb-20">
+      <section className="min-h-screen flex items-center justify-center px-6  relative overflow-hidden pb-20">
         {/* Multi-layered dot pattern background */}
         <div className="absolute inset-0 pointer-events-none">
           {/* Layer 1 - Large dots */}
@@ -144,7 +145,7 @@ const MinimalistCharity = () => {
           {/* Minimalist badge */}
           <div className="inline-flex items-center gap-2 mb-8 opacity-0 animate-fade-in-down">
             <div className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
-            <span className="text-sm text-gray-500 tracking-wider uppercase">Since 2010</span>
+            <span className="text-sm text-gray-500 tracking-wider uppercase">Since 2023</span>
           </div>
 
           {/* Main headline */}
@@ -178,13 +179,22 @@ const MinimalistCharity = () => {
 
           {/* Minimal CTA */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 animate-fade-in-up" style={{animationDelay: '0.9s'}}>
+            <Link
+              href="/donate"
+            >
+            
             <button className="group px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 flex items-center gap-2 hover:scale-105">
               Start Giving
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
+            </Link>
+            <Link
+              href="/about"
+            >
             <button className="px-8 py-4 text-green-600 hover:text-green-700 transition-colors hover:scale-105">
               Learn Our Story
             </button>
+            </Link>
           </div>
 
           {/* Scroll indicator */}
@@ -412,13 +422,17 @@ const MinimalistCharity = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/donate">
             <button className="group px-8 py-4 bg-white text-green-600 rounded-full hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105">
               Donate Now
               <Heart className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </button>
+            </Link>
+            <Link href="/contact">
             <button className="px-8 py-4 border-2 border-white/20 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105">
               Contact Us
             </button>
+            </Link>
           </div>
         </div>
       </section>

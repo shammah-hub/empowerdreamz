@@ -6,8 +6,6 @@ import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import DonateButton from "./donateButton";
 
-
-
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
@@ -31,12 +29,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="
-      fixed top-0 inset-x-0
-      bg-white/95 backdrop-blur-sm border-b border-gray-100
-      px-6 md:px-12 py-6
-      w-full mx-auto z-50
-    ">
+    <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-100 px-6 md:px-12 py-6 w-full mx-auto">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center">
