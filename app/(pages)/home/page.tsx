@@ -17,8 +17,8 @@ const MinimalistCharity = () => {
   const causes = [
     {
       number: "01",
-      title: "Education Goals",
-      stat: "12,450",
+      title: "Education",
+      stat: "75+",
       label: "Students",
       image: "/c5.jpg",
       color: "emerald"
@@ -26,15 +26,15 @@ const MinimalistCharity = () => {
     {
       number: "02",
       title: "Clean Water Goals",
-      stat: "8,200",
+      stat: "2+",
       label: "Wells Built",
       image: "/ca.jpg",
       color: "blue"
     },
     {
       number: "03",
-      title: "Healthcare Goals",
-      stat: "50,000+",
+      title: "Healthcare",
+      stat: "50+",
       label: "Lives Saved",
       image: "/c7.jpg",
       color: "rose"
