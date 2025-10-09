@@ -104,7 +104,7 @@ const AboutPage = () => {
   return (
     <div className="bg-[#fafffa]">
       {/* MINIMAL HERO */}
-      <section className="py-3 px-6">
+      <section className="py-10 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Top Section */}
         <div className="max-w-4xl mb-20">
@@ -210,20 +210,20 @@ const AboutPage = () => {
       {/* WHO WE ARE */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-left mb-20">
             <span className="text-sm text-gray-500 uppercase tracking-wider">Our Journey</span>
             <h2 className="text-5xl md:text-6xl font-light text-gray-900 mt-4 mb-12">
               Who we <span className="font-semibold text-green-600">are</span>
             </h2>
 
             {/* Description */}
-            <div className="max-w-4xl mx-auto mb-12 space-y-6">
+            <div className="max-w-4xl mb-12 space-y-6">
               <p className="text-lg text-gray-600 leading-relaxed">
                 EmpowerDreamz is a registered 501(c)(3) nonprofit organization dedicated to transforming lives and building stronger communities. 
                 We believe in the power of compassion, sustainable development, and meaningful partnerships to create lasting positive change.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                As a federally recognized tax-exempt organization, all donations to EmpowerDreamz are tax-deductible to the fullest extent permitted by law. 
+                As a federally recognized tax-exempt organization (EIN: 39-2554171), all donations to EmpowerDreamz are tax-deductible to the fullest extent permitted by law. 
                 We are committed to transparency, accountability, and maximizing the impact of every contribution we receive.
               </p>
             </div>

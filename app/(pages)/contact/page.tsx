@@ -10,7 +10,7 @@ export default function CharityContactPage() {
   return (
     <div className="bg-white">
       {/* HERO */}
-      <section className="relative pb-20 px-6 overflow-hidden">
+      <section className="relative mt-10 pb-20 px-6 overflow-hidden">
         {/* Subtle background */}
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="absolute inset-0" style={{
@@ -38,13 +38,19 @@ export default function CharityContactPage() {
               {/* Social Links */}
               <div className="flex gap-4">
                 <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center cursor-pointer hover:bg-green-100 transition-colors border border-green-100">
+                  <Link href="https://www.facebook.com/profile.php?id=61580065550604" className="w-12 h-12 flex items-center justify-center">
                   <span className="text-green-600 font-semibold">f</span>
+                  </Link>
                 </div>
                 <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center cursor-pointer hover:bg-green-100 transition-colors border border-green-100">
+                  <Link href="https://x.com/EmpowerDreamz" className="w-12 h-12 flex items-center justify-center">
                   <span className="text-green-600 font-semibold">t</span>
+                  </Link>
                 </div>
                 <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center cursor-pointer hover:bg-green-100 transition-colors border border-green-100">
+                  <Link href="https://www.instagram.com/empowerdreamz/" className="w-12 h-12 flex items-center justify-center">
                   <span className="text-green-600 font-semibold">in</span>
+                  </Link>
                 </div>
               </div>
             </div>

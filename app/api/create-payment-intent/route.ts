@@ -32,11 +32,26 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    // IMPORTANT: Return clientSecret, not url
     return NextResponse.json({
       clientSecret: paymentIntent.client_secret,
     });
   } catch (error) {
     console.error('Error creating payment intent:', error);
+    
+    // Better error logging
+    if (error instanceof Stripe.errors.StripeError) {
+      console.error('Stripe error details:', {
+        message: error.message,
+        code: error.code,
+        type: error.type,
+      });
+      return NextResponse.json(
+        { error: error.message || 'Payment setup failed' },
+        { status: 400 }
+      );
+    }
+    
     return NextResponse.json(
       { error: 'Failed to create payment intent' },
       { status: 500 }

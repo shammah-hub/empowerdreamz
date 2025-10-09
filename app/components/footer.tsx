@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from "next/link"
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin,} from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram} from 'react-icons/fa';
 
 function Footer() {
   return (
@@ -22,18 +22,18 @@ function Footer() {
 
       {/* Social Media Icons - Centered */}
       <div className="flex space-x-4 justify-center py-4">
-        <a href="#" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+        <a href="https://www.facebook.com/profile.php?id=61580065550604" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
           <FaFacebook size={18} />
         </a>
-        <a href="#" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+        <a href="https://x.com/EmpowerDreamz" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
           <FaTwitter size={18} />
         </a>
-        <a href="#" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+        <a href="https://www.instagram.com/empowerdreamz/" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
           <FaInstagram size={18} />
         </a>
-        <a href="#" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+        {/* <a href="#" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
           <FaLinkedin size={18} />
-        </a>
+        </a> */}
       </div>
 
       {/* Navigation Links - Horizontal */}
