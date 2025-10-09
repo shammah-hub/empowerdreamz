@@ -1,138 +1,59 @@
 import Image from 'next/image'
 import Link from "next/link"
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
-import {  Phone, Mail, MapPin, } from 'lucide-react';
-import DonateButton from './donateButton';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin,} from 'react-icons/fa';
 
 function Footer() {
   return (
-    <footer className="w-full border-gray-200 bg-white pl-9 pr-9 sm:py-8 mt-8 sm:mt-16">
+    <footer className="w-full bg-white mt-8 sm:mt-16">
       {/* Logo Container */}
-      <div className="w-full flex justify-center items-center mb-6 sm:mb-8 px-4">
+      <div className="w-full flex justify-center items-center pt-8 pb-6 px-4">
         <div className="relative">
           <Image 
             src="/Ad.png" alt="Parofund Logo" 
             width={2000}  
             height={2000} 
             className="w-auto max-w-[250px] sm:max-w-none"
-            priority // Add this if it's above the fold
-/>
-          {/* Non-absolute blur effect - using a div with background gradient */}
+            priority
+          />
           <div className="h-15 w-full bg-gradient-to-t from-gray-600 to-transparent -mt-6 blur-lg"></div>
         </div>
       </div>
-      
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {/* Logo and Sign In Section */}
-          <div className="flex flex-col space-y-4 text-center sm:text-left">
-            <div className="flex items-center justify-center sm:justify-start">
-              {/* <Image src="/Ad.png" width={30} 
-                height={30} alt="Parofund Logo" className='h-[25px] sm:h-[30px] w-auto max-w-[200px] sm:w-[250px]'/> */}
-            </div>
-            <div className="flex flex-col sm:flex-row pt-4 sm:pt-[20px] space-y-2 sm:space-y-0 sm:space-x-2">
-              <Link href={"/about"}>
-              <button className="px-4 py-2 rounded-lg font-extrabold border border-gray-300 hover:border-green-300 hover:shadow-xl transition-colors">
-                Learn More
-              </button>
-              </Link>
-              <DonateButton />
-              
-            </div>
-            
-            {/* Social Media Icons */}
-            <div className="flex space-x-4 mt-2 justify-center sm:justify-start">
-              <a href="#" className="text-gray-600 hover:text-gray-900 text-lg sm:text-base">
-                <FaFacebook />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900 text-lg sm:text-base">
-                <FaTwitter />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900 text-lg sm:text-base">
-                <FaInstagram />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900 text-lg sm:text-base">
-                <FaLinkedin />
-              </a>
-              <a href="#" className="text-gray-600 hover:text-gray-900 text-lg sm:text-base">
-                <FaYoutube />
-              </a>
-            </div>
-          </div>
 
-          {/* Quick Links Section */}
-          <div className="text-center sm:text-left">
-            <h4 className="text-xl font-extrabold mb-4 sm:mb-6">Quick Links</h4>
-            <ul className="space-y-2 sm:space-y-3">
-              <li><a href="/about" className="text-black text-xl font-bold hover:text-gray-500 transition-colors">About Us</a></li>
-              <li><a href="/projects" className="text-black text-xl font-bold hover:text-gray-500 transition-colors">Our Causes</a></li>
-              <li><a href="/contact" className="text-black text-xl font-bold hover:text-gray-500 transition-colors">Get Involved</a></li>
-              <li><a href="/projects" className="text-black text-xl font-bold hover:text-gray-500 transition-colors">Events</a></li>
-              {/* <li><a href="#" className="text-black hover:text-gray-500 transition-colors">News</a></li> */}
-            </ul>
-          </div>
+      {/* Social Media Icons - Centered */}
+      <div className="flex space-x-4 justify-center py-4">
+        <a href="#" className="bg-[#7fe97d] hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+          <FaFacebook size={18} />
+        </a>
+        <a href="#" className="bg-[#7fe97d] hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+          <FaTwitter size={18} />
+        </a>
+        <a href="#" className="bg-[#7fe97d] hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+          <FaInstagram size={18} />
+        </a>
+        <a href="#" className="bg-[#7fe97d] hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+          <FaLinkedin size={18} />
+        </a>
+      </div>
 
-          {/* Contact Information Section */}
-          <div className="text-center sm:text-left">
-            <h4 className="text-xl font-extrabold mb-4 sm:mb-6">Contact Info</h4>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3 justify-center sm:justify-start">
-                <Phone className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-black font-bold text-xl">+1 330-862-4221</span>
-              </div>
-              <div className="flex items-center space-x-3 justify-center sm:justify-start">
-                <Mail className="w-5 h-5 text-black flex-shrink-0" />
-                <span className="text-black font-bold text-xl break-all sm:break-normal">support@empowerdreamz.org</span>
-              </div>
-              <div className="flex  space-x-3 justify-center sm:justify-start">
-                <MapPin className="w-5 h-5 text-gray-800 flex-shrink-0" />
-                <span className="text-black font-bold text-xl sm:text-base">6545 Market Ave. North STE 100, North Canton, OH 44721 USA
-                  <br /> <br/>Mailing Address: 6545 Market Ave. North STE 100, North Canton, OH 44721 USA
-                </span>
-              </div>
-            </div>
-          </div>
+      {/* Navigation Links - Horizontal */}
+      <nav className="flex flex-wrap justify-center items-center gap-4 py-6 px-4">
+        <Link href="/" className="text-black hover:text-gray-600 font-medium transition-colors">Home</Link>
+        <span className="text-gray-400">/</span>
+        <Link href="/about" className="text-black hover:text-gray-600 font-medium transition-colors">About Us</Link>
+        <span className="text-gray-400">/</span>
+        <Link href="/team" className="text-black hover:text-gray-600 font-medium transition-colors">Our Team</Link>
+        <span className="text-gray-400">/</span>
+        <Link href="/projects" className="text-black hover:text-gray-600 font-medium transition-colors">What We Do</Link>
+        <span className="text-gray-400">/</span>
+        <Link href="/contact" className="text-black hover:text-gray-600 font-medium transition-colors">Contact Us</Link>
+      </nav>
 
-          <div className="text-center font-bold sm:text-left">
-            <h4 className="text-xl font-extrabold text-black mb-4 sm:mb-6">EmpowerDreamz</h4>
-            <p className="text-black mb-4 text-xl sm:text-base">
-              Subscribe to making the world a better place by helping others
-            </p>
-            
-          </div>
-        </div>
-
-          {/* Newsletter Section
-          <div className="text-center sm:text-left">
-            <h4 className="text-lg font-semibold mb-4 sm:mb-6">Newsletter</h4>
-            <p className="text-black mb-4 text-sm sm:text-base">
-              Subscribe to get updates on our latest campaigns and impact stories.
-            </p>
-            <div className="pt-4 sm:pt-[25px]">
-              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="bg-gray-200 text-black px-4 py-2 rounded-lg sm:rounded-l-lg sm:rounded-r-none flex-1 focus:outline-none focus:ring-2 focus:ring-green-200"
-                />
-                <button className="flex gap-2 bg-gradient-to-r from-[#2d8f00] text-white to-[#85e065] font-bold px-8 py-2 rounded-lg sm:rounded-r-lg sm:rounded-l-none hover:shadow-lg transition-shadow">
-                  Subscribe
-                  <Image src="/wb.png"
-                    width={30} 
-                    height={30} 
-                    alt="empowerdreamz logo" 
-                    className="h-6 w-6" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div> */}
-        
-        {/* Copyright Section */}
-        <div className="border-t border-gray-200 mt-8 sm:mt-12 pt-6 sm:pt-8 text-center text-gray-400">
-          <p className="text-sm sm:text-base">&copy; 2024 EmpowerDreamz. All rights reserved.</p>
-        </div>
+      {/* Copyright Section - Single Line */}
+      <div className="border-t border-gray-200 py-6 text-center">
+        <p className="text-gray-600 text-sm">
+          Copyright ©2025 Leaders Hub Foundation . All rights reserved. Powered by WordPress & Designed by Bizberg Themes
+        </p>
       </div>
     </footer>
   );

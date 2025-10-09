@@ -1,6 +1,7 @@
 "use client"
 import CounterSection from '@/app/components/counter';
 import CircularProgres from '@/app/components/cprogressbar';
+import { Download } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -210,10 +211,32 @@ const AboutPage = () => {
        <section className="bg-white py-20">
       <div className="container mx-auto px-6">
         <div className="mb-12">
-          <p className="text-green-600 font-medium mb-2">Our Journey</p>
-          <h2 className="text-5xl font-extrabold text-gray-900 mb-8">Who We Are</h2>
+          <p className="text-green-600 font-medium mb-2 text-center">Our Journey</p>
+          <h2 className="text-5xl font-extrabold text-gray-900 mb-8 text-center">Who We Are</h2>
           
-          <div className="flex flex-wrap gap-4 mb-8">
+          {/* Who We Are Description and 501c3 Download */}
+          <div className="max-w-5xl mx-auto mb-8 text-center">
+            <p className="text-gray-700 text-xl leading-relaxed mb-6">
+              EmpowerDreamz is a registered 501(c)(3) nonprofit organization dedicated to transforming lives and building stronger communities. 
+              We believe in the power of compassion, sustainable development, and meaningful partnerships to create lasting positive change. 
+              Through our various programs and initiatives, we address critical needs in healthcare, education, nutrition, and community development, 
+              touching the lives of hundreds of families across multiple communities.
+            </p>
+            <p className="text-gray-700 text-xl leading-relaxed mb-6">
+              As a federally recognized tax-exempt organization, all donations to EmpowerDreamz are tax-deductible to the fullest extent permitted by law. 
+              We are committed to transparency, accountability, and maximizing the impact of every contribution we receive.
+            </p>
+            <a 
+              href="/documents/09_24_25_OH_State_Notice_Empowering_Dreamers_Foundation.pdf" 
+              download
+              className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <Download className="w-5 h-5" />
+              Download 501(c)(3) Determination Letter
+            </a>
+          </div>
+          
+          <div className="flex flex-wrap gap-4 mb-8 justify-center">
             <button 
               onClick={() => setActiveTab('mission')}
               className={`px-6 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${

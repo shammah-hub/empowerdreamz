@@ -11,21 +11,21 @@ const HeroSlider = () => {
   const slides = [
     {
       id: 1,
-      image: "/1.jpg",
+      image: "/c7.jpg",
       title: "Help the Poor",
       subtitle: "in Need",
       description: "Together we can make a difference in the lives of those who need it most. Join our mission to bring hope and support to communities worldwide."
     },
     {
       id: 2,
-      image: "/3.jpg",
+      image: "/c8.jpg",
       title: "Clean Water",
       subtitle: "for All",
       description: "Providing access to clean, safe drinking water for communities that need it most. Every drop counts in saving lives."
     },
     {
       id: 3,
-      image: "/10.jpg",
+      image: "/c9.jpg",
       title: "Education",
       subtitle: "Changes Lives",
       description: "Empowering children and adults through education initiatives that create lasting impact in underserved communities."
@@ -70,7 +70,7 @@ const HeroSlider = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   return (
     <section className="bg-white py-20 h-screen mb-20 text-gray-800 ">
@@ -119,7 +119,7 @@ const HeroSlider = () => {
                         fill
                         priority={index === 0}
                         alt={slide.title}
-                        className="object-cover object-top" // Added object-top
+                        className="object-cover " // Added object-top
                         sizes="(max-width: 768px) 100vw, 50vw"
                         quality={90}
                       />
