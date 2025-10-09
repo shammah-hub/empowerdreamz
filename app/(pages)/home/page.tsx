@@ -26,7 +26,7 @@ const MinimalistCharity = () => {
     },
     {
       number: "02",
-      title: "Clean Water Goals",
+      title: "Clean Water",
       stat: "2+",
       label: "Wells Built",
       image: "/ca.jpg",
@@ -95,8 +95,8 @@ const MinimalistCharity = () => {
   ];
 
   return (
-    <div className="bg-white">
-      {/* MINIMAL HERO */}
+    <div className="bg-[#fafffa]">
+      {/*  HERO */}
        <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-hidden pb-12 sm:pb-20">
       {/* Multi-layered dot pattern background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -201,7 +201,7 @@ const MinimalistCharity = () => {
       </div>
     </section>
 
-      {/* MINIMAL IMPACT SECTION */}
+      {/*  IMPACT SECTION */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Section header */}
@@ -222,8 +222,8 @@ const MinimalistCharity = () => {
                 {/* Image */}
                 <div className="relative aspect-[3/4] mb-6 overflow-hidden rounded-2xl bg-gray-100">
                   <Image
-              width={1}
-              height={1}
+              width={1000}
+              height={1000}
                     src={cause.image}
                     alt={cause.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -255,7 +255,7 @@ const MinimalistCharity = () => {
       </section>
 
       {/* WHY CHOOSE US SECTION */}
-      <section className="py-32 px-6 bg-gray-50">
+      <section className="py-32 px-6 bg-[#fafffa]">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <span className="text-sm text-gray-500 uppercase tracking-wider">Why Choose Us</span>
@@ -280,7 +280,7 @@ const MinimalistCharity = () => {
         </div>
       </section>
 
-      {/* IMPACT AREAS HORIZONTAL SCROLL */}
+      {/*  AREAS HORIZONTAL SCROLL */}
       <section className="py-32 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mb-16">
@@ -329,8 +329,9 @@ const MinimalistCharity = () => {
                 <div className="mb-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-100 mb-4">
                     <Image
-              width={1}
-              height={1} src={story.image} alt={story.name} className="w-full h-full object-cover" />
+              width={1000}
+              height={1000}
+               src={story.image} alt={story.name} className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <div className="font-light text-gray-900 mb-1">{story.name}</div>
@@ -395,8 +396,8 @@ const MinimalistCharity = () => {
             {/* Right - Image */}
             <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 group">
               <Image
-              width={1}
-              height={1}
+              width={1000}
+              height={1000}
                 src="/nnn.jpg"
                 alt="Impact"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

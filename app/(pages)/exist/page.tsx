@@ -57,8 +57,8 @@ const WhyWeExistPage = () => {
   ];
 
   return (
-    <div className="bg-white">
-      {/* MINIMAL HERO with your original grid */}
+    <div className="bg-[#fafffa]">
+      {/*  HERO Section */}
       <section className="min-h-screen flex items-center justify-center px-6 py-20 relative overflow-hidden">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-[0.02]">
@@ -87,7 +87,7 @@ const WhyWeExistPage = () => {
             <div className="relative h-80 rounded-2xl overflow-hidden bg-gray-100 group">
               <Image
                 width={1000}
-                height={1}
+                height={1000}
               src="/c3.jpg" 
               alt="Education" 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -99,8 +99,8 @@ const WhyWeExistPage = () => {
             </div>
             <div className="relative h-80 rounded-2xl overflow-hidden bg-gray-100 md:mt-8 group">
               <Image
-                width={1}
-                height={1}
+                width={1000}
+                height={1000}
                 src="/c9.jpg" alt="Healthcare" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-white">
@@ -110,8 +110,8 @@ const WhyWeExistPage = () => {
             </div>
             <div className="relative h-80 rounded-2xl overflow-hidden bg-gray-100 group">
               <Image
-              width={1}
-              height={1}
+              width={1000}
+              height={1000}
                src="/cf.jpg" alt="Development" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-white">
@@ -224,8 +224,8 @@ const WhyWeExistPage = () => {
             {impactStories.map((story, index) => (
               <div key={index} className="group relative overflow-hidden rounded-2xl bg-gray-100 h-96">
                 <Image
-              width={1}
-              height={1}
+              width={1000}
+              height={1000}
                   src={story.image} 
                   alt={story.label} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 

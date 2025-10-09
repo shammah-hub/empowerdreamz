@@ -102,7 +102,7 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#fafffa]">
       {/* MINIMAL HERO */}
       <section className="py-3 px-6">
       <div className="max-w-7xl mx-auto">
@@ -134,8 +134,8 @@ const AboutPage = () => {
         <div className="grid md:grid-cols-3 gap-6">
           <div className="md:col-span-2 relative aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100">
             <Image
-            width={1}
-            height={1}
+            width={1000}
+            height={1000}
               src="/7.jpg"
               alt="Our community work"
               className="w-full h-full object-cover object-top"
@@ -144,7 +144,7 @@ const AboutPage = () => {
           <div className="relative aspect-square md:aspect-auto rounded-2xl overflow-hidden bg-gray-100">
             <Image
             width={1000}
-            height={1}
+            height={1000}
               src="/c7.jpg"
               alt="Community impact"
               className="w-full h-full object-cover"

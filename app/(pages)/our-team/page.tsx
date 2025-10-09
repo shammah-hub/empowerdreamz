@@ -112,7 +112,7 @@ const TeamPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#fafffa]">
       {/* HERO - Different Layout */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
         {/* Subtle background */}

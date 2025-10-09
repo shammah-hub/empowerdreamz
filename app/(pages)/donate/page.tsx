@@ -187,7 +187,7 @@ const DonatePage: React.FC = () => {
 
   if (paymentSuccess) {
     return (
-      <div className="min-h-screen bg-white pt-20 sm:pt-32 pb-16 px-4 sm:px-6">
+      <div className="min-h-screen bg-[#fafffa] pt-20 sm:pt-32 pb-16 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
           <div className="mb-6 sm:mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-600/10 mb-4 sm:mb-6">
@@ -271,11 +271,11 @@ const DonatePage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white pt-20 sm:pt-32 pb-16 px-4 sm:px-6">
+    <div className="min-h-screen bg-[#fafffa] pt-20 sm:pt-32 pb-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12 sm:mb-20">
-          <span className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider">Donate</span>
+          <span className="text-xs sm:text-sm text-gray-500 font-bold uppercase tracking-wider">Donate</span>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-light text-gray-900 mt-3 sm:mt-4 mb-4 sm:mb-6 px-4">
             Make a <span className="font-semibold text-green-600">difference</span>
           </h1>
@@ -284,27 +284,7 @@ const DonatePage: React.FC = () => {
           </p>
         </div>
 
-        {/* Tech Donation Banner */}
-        <div className="mb-12 sm:mb-20">
-          <div className="bg-green-600 rounded-xl sm:rounded-2xl p-6 sm:p-12 relative overflow-hidden">
-            <div className="relative z-10 max-w-3xl">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl text-white mb-3 sm:mb-4">
-                Donate Your <span className="font-bold">Technology</span>
-              </h2>
-              <p className="text-green-100 text-sm sm:text-lg mb-4 sm:mb-6 font-light leading-relaxed">
-                Your old computers and laptops can transform lives. Many students lack access to essential technology. Help bridge the digital divide.
-              </p>
-              <a 
-                href="tel:+13308624221"
-                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white text-green-600 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 text-sm sm:text-base"
-              >
-                Call +1 330-862-4221
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-            <div className="absolute top-0 right-0 w-32 h-32 sm:w-64 sm:h-64 bg-white rounded-full opacity-5"></div>
-          </div>
-        </div>
+        
 
         <div className="grid lg:grid-cols-3 gap-8 sm:gap-12">
           {/* Main Form */}
@@ -455,6 +435,28 @@ const DonatePage: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Tech Donation Banner */}
+        <div className="mt-12 sm:mt-20">
+          <div className="bg-green-600 rounded-xl sm:rounded-2xl p-6 sm:p-12 relative overflow-hidden">
+            <div className="relative z-10 max-w-3xl">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl text-white mb-3 sm:mb-4">
+                Donate Your <span className="font-bold">Technology</span>
+              </h2>
+              <p className="text-green-100 text-sm sm:text-lg mb-4 sm:mb-6 font-light leading-relaxed">
+                Your old computers and laptops can transform lives. Many students lack access to essential technology. Help bridge the digital divide.
+              </p>
+              <a 
+                href="tel:+13308624221"
+                className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white text-green-600 rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+              >
+                Call +1 330-862-4221
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+            <div className="absolute top-0 right-0 w-32 h-32 sm:w-64 sm:h-64 bg-white rounded-full opacity-5"></div>
           </div>
         </div>
       </div>

@@ -54,8 +54,8 @@ const CharityProjectsPage = () => {
   ];
 
   return (
-    <div className="bg-white">
-      {/* HERO - Keeping your grid layout but minimalist */}
+    <div className="bg-[#fafffa]">
+      {/* HERO Section */}
       <section className="min-h-screen flex items-center px-6 py-20 relative overflow-hidden">
         {/* Subtle background */}
         <div className="absolute inset-0 opacity-[0.02]">
@@ -91,8 +91,8 @@ const CharityProjectsPage = () => {
                         className="relative w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-gray-200"
                       >
                         <Image
-                                        width={1}
-                                        height={1}
+                          width={1000}
+                          height={1000}
                           src={img}
                           alt={`Donor ${i + 1}`}
                           className="w-full h-full object-cover"
@@ -124,13 +124,19 @@ const CharityProjectsPage = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100">
                     <Image
-                                    width={1}
-                                    height={1} src="/c1.jpg" alt="Community" className="w-full h-full object-cover" />
+                        width={1000}
+                        height={1000}
+                        src="/c1.jpg" 
+                        alt="Community" 
+                        className="w-full h-full object-cover" />
                   </div>
                   <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100 mt-8">
                     <Image
-                                    width={1}
-                                    height={1} src="/c2.jpg" alt="Education" className="w-full h-full object-cover" />
+                      width={1000}
+                      height={1000} 
+                      src="/c2.jpg" 
+                      alt="Education"
+                      className="w-full h-full object-cover" />
                   </div>
                 </div>
 
@@ -138,15 +144,19 @@ const CharityProjectsPage = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100">
                     <Image
-                                  width={1}
-                                  height={1}
-                                   src="/c9.jpg" alt="Volunteers" className="w-full h-full object-cover" />
+                      width={1000}
+                      height={1000}
+                        src="/c9.jpg" 
+                        alt="Volunteers" 
+                        className="w-full h-full object-cover" />
                   </div>
                   <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100 mt-8">
                     <Image
-                                  width={1}
-                                  height={1} 
-                    src="/cf.jpg" alt="Impact" className="w-full h-full object-cover" />
+                      width={1000}
+                      height={1000} 
+                      src="/cf.jpg" 
+                      alt="Impact"
+                      className="w-full h-full object-cover" />
                   </div>
                 </div>
 
@@ -154,14 +164,19 @@ const CharityProjectsPage = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100 mt-4">
                     <Image
-                                    width={1}
-                                    height={1}
-                                     src="/c3.jpg" alt="Healthcare" className="w-full h-full object-cover" />
+                      width={1000}
+                      height={1000}
+                        src="/c3.jpg" 
+                        alt="Healthcare" 
+                        className="w-full h-full object-cover" />
                   </div>
                   <div className="relative h-40 rounded-2xl overflow-hidden bg-gray-100">
                     <Image
-                                    width={1}
-                                    height={1} src="/c4.jpg" alt="Development" className="w-full h-full object-cover" />
+                      width={1000}
+                      height={1000} 
+                      src="/c4.jpg" 
+                      alt="Development" 
+                      className="w-full h-full object-cover" />
                   </div>
                 </div>
               </div>
@@ -190,13 +205,19 @@ const CharityProjectsPage = () => {
             <div className="grid grid-cols-2 gap-6">
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100">
                 <Image
-                              width={1}
-                              height={1} src="/6.jpg" alt="Volunteers" className="w-full h-full object-cover" />
+                  width={1000}
+                  height={1000} 
+                  src="/6.jpg" 
+                  alt="Volunteers" 
+                  className="w-full h-full object-cover" />
               </div>
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100 mt-8">
                 <Image
-                              width={1}
-                              height={1} src="/cf.jpg" alt="Community" className="w-full h-full object-cover" />
+                  width={1000}
+                  height={1000} 
+                  src="/cf.jpg"                           
+                  alt="Community"
+                  className="w-full h-full object-cover" />
               </div>
             </div>
 
@@ -263,8 +284,8 @@ const CharityProjectsPage = () => {
               <div key={index} className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100">
                 <div className="relative h-64 bg-gray-100">
                  <Image
-                               width={1}
-                               height={1}
+                    width={1000}
+                    height={1000}
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
