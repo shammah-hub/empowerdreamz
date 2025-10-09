@@ -42,7 +42,7 @@ function Footer() {
         <span className="text-gray-400">/</span>
         <Link href="/about" className="text-black hover:text-gray-600 font-medium transition-colors">About Us</Link>
         <span className="text-gray-400">/</span>
-        <Link href="/team" className="text-black hover:text-gray-600 font-medium transition-colors">Our Team</Link>
+        <Link href="/our-team" className="text-black hover:text-gray-600 font-medium transition-colors">Our Team</Link>
         <span className="text-gray-400">/</span>
         <Link href="/projects" className="text-black hover:text-gray-600 font-medium transition-colors">What We Do</Link>
         <span className="text-gray-400">/</span>

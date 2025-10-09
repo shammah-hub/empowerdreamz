@@ -29,7 +29,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-100 px-6 md:px-12 py-6 w-full mx-auto">
+    <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-100 px-6 md:px-12 py-6 w-full mx-auto fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center">
@@ -78,7 +78,7 @@ export default function Navbar() {
             <li key={link.path} className="relative">
               {link.hasDropdown ? (
                 <div
-                  className="relative"
+                  className="relative z-50"
                   onMouseEnter={() => setAboutDropdownOpen(true)}
                   onMouseLeave={() => setAboutDropdownOpen(false)}
                 >
@@ -95,7 +95,7 @@ export default function Navbar() {
 
                   {/* Dropdown Menu */}
                   <div
-                    className={`absolute top-full left-0 mt-2 w-48 bg-white border border-gray-100 rounded-2xl shadow-lg overflow-hidden transition-all duration-200 ${
+                    className={`absolute top-full left-0 mt-2 w-48 bg-white border border-gray-100 rounded-2xl shadow-lg overflow-hidden transition-all duration-200 z-50 ${
                       aboutDropdownOpen
                         ? "opacity-100 visible translate-y-0"
                         : "opacity-0 invisible -translate-y-2"

@@ -33,11 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable}`}>
-      <body className={`bg-white ${nunitoSans.className}`} data-cjcrx="addYes"  cz-shortcut-listen="true" >
+      <body className={`bg-white ${nunitoSans.className}`} data-cjcrx="addYes" cz-shortcut-listen="true">
         <Loader>
           <>
             <Navbar />
-            {children}
+            <main className="pt-[100px]">
+              {children}
+            </main>
             <Footer />
           </>
         </Loader>

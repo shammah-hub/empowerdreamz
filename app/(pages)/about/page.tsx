@@ -104,7 +104,7 @@ const AboutPage = () => {
   return (
     <div className="bg-white">
       {/* MINIMAL HERO */}
-      <section className="py-32 px-6">
+      <section className="py-3 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Top Section */}
         <div className="max-w-4xl mb-20">

@@ -97,114 +97,109 @@ const MinimalistCharity = () => {
   return (
     <div className="bg-white">
       {/* MINIMAL HERO */}
-      <section className="min-h-screen flex items-center justify-center px-6  relative overflow-hidden pb-20">
-        {/* Multi-layered dot pattern background */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Layer 1 - Large dots */}
-          <div 
-            className="absolute inset-0 transition-transform duration-300 ease-out"
-            style={{
-              backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(34, 197, 94, 0.12) 2px, transparent 0)',
-              backgroundSize: '40px 40px',
-              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`
-            }} 
-          />
-          {/* Layer 2 - Medium dots */}
-          <div 
-            className="absolute inset-0 transition-transform duration-500 ease-out"
-            style={{
-              backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, rgba(34, 197, 94, 0.08) 1.5px, transparent 0)',
-              backgroundSize: '32px 32px',
-              transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`
-            }} 
-          />
-          {/* Layer 3 - Small dots */}
-          <div 
-            className="absolute inset-0 transition-transform duration-700 ease-out"
-            style={{
-              backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(34, 197, 94, 0.05) 1px, transparent 0)',
-              backgroundSize: '24px 24px',
-              transform: `translate(${mousePosition.x * 0.008}px, ${mousePosition.y * 0.008}px)`
-            }} 
-          />
-          {/* Layer 4 - Tiny dots */}
-          <div 
-            className="absolute inset-0 transition-transform duration-1000 ease-out"
-            style={{
-              backgroundImage: 'radial-gradient(circle at 0.5px 0.5px, rgba(34, 197, 94, 0.03) 0.5px, transparent 0)',
-              backgroundSize: '16px 16px',
-              transform: `translate(${mousePosition.x * 0.005}px, ${mousePosition.y * 0.005}px)`
-            }} 
-          />
+       <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-hidden pb-12 sm:pb-20">
+      {/* Multi-layered dot pattern background */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Layer 1 - Large dots */}
+        <div 
+          className="absolute inset-0 transition-transform duration-300 ease-out"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(34, 197, 94, 0.12) 2px, transparent 0)',
+            backgroundSize: '40px 40px',
+            transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`
+          }} 
+        />
+        {/* Layer 2 - Medium dots */}
+        <div 
+          className="absolute inset-0 transition-transform duration-500 ease-out"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1.5px 1.5px, rgba(34, 197, 94, 0.08) 1.5px, transparent 0)',
+            backgroundSize: '32px 32px',
+            transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`
+          }} 
+        />
+        {/* Layer 3 - Small dots */}
+        <div 
+          className="absolute inset-0 transition-transform duration-700 ease-out"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(34, 197, 94, 0.05) 1px, transparent 0)',
+            backgroundSize: '24px 24px',
+            transform: `translate(${mousePosition.x * 0.008}px, ${mousePosition.y * 0.008}px)`
+          }} 
+        />
+        {/* Layer 4 - Tiny dots */}
+        <div 
+          className="absolute inset-0 transition-transform duration-1000 ease-out"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 0.5px 0.5px, rgba(34, 197, 94, 0.03) 0.5px, transparent 0)',
+            backgroundSize: '16px 16px',
+            transform: `translate(${mousePosition.x * 0.005}px, ${mousePosition.y * 0.005}px)`
+          }} 
+        />
+      </div>
+
+      <div className="max-w-6xl mx-auto text-center relative z-10" style={{
+        transform: `translateY(${mousePosition.y * 0.08}px)`,
+        transition: 'transform 0.3s ease-out'
+      }}>
+        {/* Minimalist badge */}
+        <div className="inline-flex items-center gap-2 mb-6 sm:mb-8 opacity-0 animate-fade-in-down">
+          <div className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
+          <span className="text-xs sm:text-sm text-gray-500 tracking-wider uppercase">Since 2023</span>
         </div>
 
-        <div className="max-w-6xl mx-auto text-center relative z-10" style={{
-          transform: `translateY(${mousePosition.y * 0.08}px)`,
-          transition: 'transform 0.3s ease-out'
-        }}>
-          {/* Minimalist badge */}
-          <div className="inline-flex items-center gap-2 mb-8 opacity-0 animate-fade-in-down">
-            <div className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
-            <span className="text-sm text-gray-500 tracking-wider uppercase">Since 2023</span>
+        {/* Main headline */}
+        <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-light text-gray-900 mb-4 sm:mb-6 tracking-tight px-4">
+          <span className="inline-block opacity-0 animate-fade-in-up" style={{animationDelay: '0.1s'}}>Small acts.</span>
+          <br />
+          <span className="font-semibold text-green-600 inline-block opacity-0 animate-fade-in-up" style={{animationDelay: '0.3s'}}>Big change.</span>
+        </h1>
+
+        <p className="text-base sm:text-xl md:text-2xl text-gray-500 mb-8 sm:mb-12 max-w-2xl mx-auto font-light leading-relaxed opacity-0 animate-fade-in-up px-4" style={{animationDelay: '0.5s'}}>
+          Every donation creates ripples of hope across communities worldwide.
+        </p>
+
+        {/* Minimal stats */}
+        <div className="flex flex-wrap justify-center gap-6 sm:gap-12 mb-12 sm:mb-16 opacity-0 animate-fade-in-up px-4" style={{animationDelay: '0.7s'}}>
+          <div>
+            <div className="text-3xl sm:text-4xl font-light text-green-600 mb-1">50+</div>
+            <div className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider">Lives Changed</div>
           </div>
-
-          {/* Main headline */}
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-light text-gray-900 mb-6 tracking-tight">
-            <span className="inline-block opacity-0 animate-fade-in-up" style={{animationDelay: '0.1s'}}>Small acts.</span>
-            <br />
-            <span className="font-semibold text-green-600 inline-block opacity-0 animate-fade-in-up" style={{animationDelay: '0.3s'}}>Big change.</span>
-          </h1>
-
-          <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl mx-auto font-light leading-relaxed opacity-0 animate-fade-in-up" style={{animationDelay: '0.5s'}}>
-            Every donation creates ripples of hope across communities worldwide.
-          </p>
-
-          {/* Minimal stats */}
-          <div className="flex flex-wrap justify-center gap-12 mb-16 opacity-0 animate-fade-in-up" style={{animationDelay: '0.7s'}}>
-            <div>
-              <div className="text-4xl font-light text-green-600 mb-1">50+</div>
-              <div className="text-sm text-gray-500 uppercase tracking-wider">Lives Changed</div>
-            </div>
-            <div className="w-px bg-gray-200" />
-            <div>
-              <div className="text-4xl font-light text-green-600 mb-1">2</div>
-              <div className="text-sm text-gray-500 uppercase tracking-wider">Projects Ongoing</div>
-            </div>
-            <div className="w-px bg-gray-200" />
-            <div>
-              <div className="text-4xl font-light text-green-600 mb-1">4</div>
-              <div className="text-sm text-gray-500 uppercase tracking-wider">States</div>
-            </div>
+          <div className="w-px bg-gray-200" />
+          <div>
+            <div className="text-3xl sm:text-4xl font-light text-green-600 mb-1">2</div>
+            <div className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider">Projects Ongoing</div>
           </div>
+          <div className="w-px bg-gray-200" />
+          <div>
+            <div className="text-3xl sm:text-4xl font-light text-green-600 mb-1">4</div>
+            <div className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider">States</div>
+          </div>
+        </div>
 
-          {/* Minimal CTA */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 animate-fade-in-up" style={{animationDelay: '0.9s'}}>
-            <Link
-              href="/donate"
-            >
-            
-            <button className="group px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 flex items-center gap-2 hover:scale-105">
+        {/* Minimal CTA */}
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center opacity-0 animate-fade-in-up px-4" style={{animationDelay: '0.9s'}}>
+          <Link href="/donate">
+            <button className="group px-6 sm:px-8 py-3 sm:py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 flex items-center gap-2 hover:scale-105 text-sm sm:text-base w-full sm:w-auto justify-center">
               Start Giving
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-            </Link>
-            <Link
-              href="/about"
-            >
-            <button className="px-8 py-4 text-green-600 hover:text-green-700 transition-colors hover:scale-105">
+          </Link>
+          <Link href="/about">
+            <button className="px-6 sm:px-8 py-3 sm:py-4 text-green-600 hover:text-green-700 transition-colors hover:scale-105 text-sm sm:text-base w-full sm:w-auto">
               Learn Our Story
             </button>
-            </Link>
-          </div>
+          </Link>
+        </div>
 
-          {/* Scroll indicator */}
-          <div className="mt-16 opacity-0 animate-fade-in" style={{animationDelay: '1.2s'}}>
-            <div className="w-8 h-14 border-2 border-gray-300 rounded-full flex items-start justify-center p-2 mx-auto">
-              <div className="w-1.5 h-3 bg-green-600 rounded-full animate-bounce" />
-            </div>
+        {/* Scroll indicator */}
+        <div className="mt-12 sm:mt-16 opacity-0 animate-fade-in" style={{animationDelay: '1.2s'}}>
+          <div className="w-6 h-10 sm:w-8 sm:h-14 border-2 border-gray-300 rounded-full flex items-start justify-center p-1.5 sm:p-2 mx-auto">
+            <div className="w-1 h-2 sm:w-1.5 sm:h-3 bg-green-600 rounded-full animate-bounce" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* MINIMAL IMPACT SECTION */}
       <section className="py-32 px-6">

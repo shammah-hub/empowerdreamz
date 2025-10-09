@@ -243,61 +243,61 @@ const WhyWeExistPage = () => {
       </section>
 
       {/* VISION */}
-      <section className="py-32 px-6 bg-green-600 text-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6">
-              <span className="text-sm text-green-100 uppercase tracking-wider">Our Vision</span>
-              <h2 className="text-5xl md:text-6xl font-light leading-tight">
-                A world where everyone <span className="font-semibold">thrives</span>
-              </h2>
-              <p className="text-xl text-green-50 leading-relaxed font-light">
-                We envision a world where every child receives quality education, every family has access to clean water and healthcare, and every community has the tools to build sustainable prosperity.
-              </p>
-              <p className="text-xl text-green-50 leading-relaxed font-light">
-                This isn&apos;t just a dream—it&apos;s a mission we&apos;re actively pursuing every single day, one community at a time.
-              </p>
+      <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-green-600 text-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+          <div className="space-y-4 sm:space-y-6">
+            <span className="text-xs sm:text-sm text-green-100 uppercase tracking-wider">Our Vision</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
+              A world where everyone <span className="font-semibold">thrives</span>
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-green-50 leading-relaxed font-light">
+              We envision a world where every child receives quality education, every family has access to clean water and healthcare, and every community has the tools to build sustainable prosperity.
+            </p>
+            <p className="text-base sm:text-lg md:text-xl text-green-50 leading-relaxed font-light">
+              This isn&apos;t just a dream—it&apos;s a mission we&apos;re actively pursuing every single day, one community at a time.
+            </p>
 
-              <div className="flex items-center gap-4 pt-6">
-                <Image 
-                  src="/wb.png" 
-                  width={50} 
-                  height={50} 
-                  alt="Logo" 
-                  className="rounded-full"
-                />
-                <div>
-                  <p className="font-light text-2xl">Together, We Can Do This</p>
-                  <p className="text-green-100 text-sm">Join us in creating lasting change</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-white rounded-2xl p-8 text-gray-900">
-                <TrendingUp className="w-10 h-10 text-green-600 mb-4" />
-                <p className="text-5xl font-light text-green-600 mb-2">2X</p>
-                <p className="text-gray-600">Growth in 2 Years</p>
-              </div>
-              <div className="bg-white rounded-2xl p-8 text-gray-900 mt-8">
-                <Shield className="w-10 h-10 text-green-600 mb-4" />
-                <p className="text-5xl font-light text-green-600 mb-2">100%</p>
-                <p className="text-gray-600">Transparency</p>
-              </div>
-              <div className="bg-white rounded-2xl p-8 text-gray-900">
-                <Globe className="w-10 h-10 text-green-600 mb-4" />
-                <p className="text-5xl font-light text-green-600 mb-2">2+</p>
-                <p className="text-gray-600">Active Projects</p>
-              </div>
-              <div className="bg-white rounded-2xl p-8 text-gray-900 mt-8">
-                <Heart className="w-10 h-10 text-green-600 mb-4" />
-                <p className="text-5xl font-light text-green-600 mb-2">20+</p>
-                <p className="text-gray-600">Donors</p>
+            <div className="flex items-center gap-3 sm:gap-4 pt-4 sm:pt-6">
+              <Image 
+                src="/wb.png" 
+                width={40} 
+                height={40} 
+                alt="Logo" 
+                className="rounded-full sm:w-[50px] sm:h-[50px]"
+              />
+              <div>
+                <p className="font-light text-lg sm:text-xl md:text-2xl">Together, We Can Do This</p>
+                <p className="text-green-100 text-xs sm:text-sm">Join us in creating lasting change</p>
               </div>
             </div>
           </div>
+
+          <div className="grid grid-cols-2 gap-4 sm:gap-6">
+            <div className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 text-gray-900">
+              <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 text-green-600 mb-3 sm:mb-4" />
+              <p className="text-3xl sm:text-4xl md:text-5xl font-light text-green-600 mb-1 sm:mb-2">2X</p>
+              <p className="text-sm sm:text-base text-gray-600">Growth in 2 Years</p>
+            </div>
+            <div className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 text-gray-900 mt-6 sm:mt-8">
+              <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-green-600 mb-3 sm:mb-4" />
+              <p className="text-3xl sm:text-4xl md:text-5xl font-light text-green-600 mb-1 sm:mb-2">100%</p>
+              <p className="text-sm sm:text-base text-gray-600">Transparency</p>
+            </div>
+            <div className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 text-gray-900">
+              <Globe className="w-8 h-8 sm:w-10 sm:h-10 text-green-600 mb-3 sm:mb-4" />
+              <p className="text-3xl sm:text-4xl md:text-5xl font-light text-green-600 mb-1 sm:mb-2">2+</p>
+              <p className="text-sm sm:text-base text-gray-600">Active Projects</p>
+            </div>
+            <div className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 text-gray-900 mt-6 sm:mt-8">
+              <Heart className="w-8 h-8 sm:w-10 sm:h-10 text-green-600 mb-3 sm:mb-4" />
+              <p className="text-3xl sm:text-4xl md:text-5xl font-light text-green-600 mb-1 sm:mb-2">20+</p>
+              <p className="text-sm sm:text-base text-gray-600">Donors</p>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* CTA */}
       <section className="py-32 px-6">
