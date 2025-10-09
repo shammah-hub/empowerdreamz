@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { CheckCircle, AlertCircle, Heart, HeartPulse, Share2, Link } from 'lucide-react';
+import { CheckCircle, AlertCircle, Heart, HeartPulse, Share2 } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import Link from 'next/link';
 
 // Load Stripe outside of component to avoid recreating on each render
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
@@ -87,8 +88,17 @@ const DonatePage: React.FC = () => {
   const [error, setError] = useState<string>('');
   const [showPaymentForm, setShowPaymentForm] = useState<boolean>(false);
   const [paymentSuccess, setPaymentSuccess] = useState<boolean>(false);
+  const [isCardLoading, setIsCardLoading] = useState<boolean>(true);
 
   const quickAmounts = [5, 10, 25, 50, 100, 250];
+
+  // Card loading effect
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsCardLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -258,7 +268,7 @@ const DonatePage: React.FC = () => {
               </button>
               <Link
                 href="/"
-                className="px-6 py-3 border-2 border-gray-300 text-gray-700 font-bold rounded-lg hover:border-green-600 hover:text-green-600 transition-all duration-300"
+                className="px-6 py-3 border-2 border-gray-300 text-gray-700 font-bold rounded-lg hover:border-green-600 hover:text-green-600 transition-all duration-300 flex items-center justify-center"
               >
                 Return to Home
               </Link>
@@ -285,181 +295,154 @@ const DonatePage: React.FC = () => {
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Your generous donation helps us continue our mission to empower communities and transform lives.
           </p>
-
-          {/* Share Icons */}
-          <div className="flex items-center justify-center gap-3 mt-6">
-            <span className="text-sm text-gray-600 font-medium">Share:</span>
-            <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#1877f2] hover:bg-[#166fe5] text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-110"
-            >
-              <FaFacebook size={18} />
-            </a>
-            <a
-              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#1da1f2] hover:bg-[#1a91da] text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-110"
-            >
-              <FaTwitter size={18} />
-            </a>
-            <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#0077b5] hover:bg-[#006399] text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-110"
-            >
-              <FaLinkedin size={18} />
-            </a>
-            <a
-              href={`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#25d366] hover:bg-[#20bd5a] text-white rounded-full w-10 h-10 flex items-center justify-center transition-all duration-300 hover:scale-110"
-            >
-              <FaWhatsapp size={18} />
-            </a>
-          </div>
-        </div>
+        </div> 
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Donation Form */}
           <div className="lg:col-span-2">
             <div className="bg-white rounded-2xl shadow-2xl p-8">
-              {/* Step Indicator */}
-              <div className="mb-8">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className={`flex items-center justify-center w-10 h-10 rounded-full font-bold ${!showPaymentForm ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-600'}`}>
-                      1
-                    </div>
-                    <div>
-                      <p className={`font-bold ${!showPaymentForm ? 'text-green-600' : 'text-gray-400'}`}>
-                        Select Amount
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex-1 h-1 mx-4 bg-gray-200">
-                    <div className={`h-full ${showPaymentForm ? 'bg-green-600' : 'bg-gray-200'} transition-all duration-300`}></div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className={`flex items-center justify-center w-10 h-10 rounded-full font-bold ${showPaymentForm ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-600'}`}>
-                      2
-                    </div>
-                    <div>
-                      <p className={`font-bold ${showPaymentForm ? 'text-green-600' : 'text-gray-400'}`}>
-                        Payment Details
-                      </p>
-                    </div>
-                  </div>
+              {isCardLoading ? (
+                // Loader inside the card
+                <div className="flex flex-col items-center justify-center py-32">
+                  <div className="inline-block animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-600 mb-4"></div>
+                  <p className="text-lg font-semibold text-gray-700">Loading donation form...</p>
                 </div>
-              </div>
-
-              {!showPaymentForm ? (
-                <>
-                  <div className="mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Select Donation Amount</h2>
-                    <p className="text-gray-600">Choose a preset amount or enter your own</p>
-                  </div>
-                  
-                  {/* Quick Amount Buttons */}
-                  <div className="mb-6">
-                    <label className="block text-base font-bold text-gray-700 mb-3">
-                      Quick Select
-                    </label>
-                    <div className="grid grid-cols-3 gap-3">
-                    {quickAmounts.map((quickAmount) => (
-                      <button
-                        key={quickAmount}
-                        onClick={() => handleQuickAmount(quickAmount)}
-                        className={`py-4 px-4 rounded-lg border-2 transition-all font-bold text-lg ${
-                          amount === quickAmount.toString()
-                            ? 'border-green-600 bg-green-50 text-green-600 shadow-lg'
-                            : 'border-gray-300 hover:border-green-400 text-gray-700 hover:shadow-md'
-                        }`}
-                      >
-                        ${quickAmount}
-                      </button>
-                    ))}
-                  </div>
-                  </div>
-
-                  {/* Custom Amount */}
-                  <div className="mb-6">
-                    <label className="block text-base font-bold text-gray-700 mb-3">
-                      Or Enter Custom Amount
-                    </label>
-                    <div className="relative">
-                      <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 text-3xl font-bold">
-                        $
-                      </span>
-                      <input
-                        type="text"
-                        value={amount}
-                        onChange={handleAmountChange}
-                        placeholder="0.00"
-                        className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-lg focus:border-green-600 focus:outline-none text-3xl font-bold text-gray-900 placeholder:text-gray-400"
-                      />
-                    </div>
-                    {error && (
-                      <div className="flex items-center gap-2 mt-3 text-red-600">
-                        <AlertCircle className="w-5 h-5" />
-                        <p className="text-sm font-medium">{error}</p>
-                      </div>
-                    )}
-                    <p className="text-gray-500 text-sm mt-2">Minimum donation: $5.00</p>
-                  </div>
-
-                  <button
-                    onClick={handleContinue}
-                    disabled={!amount}
-                    className="w-full font-bold gap-2 flex items-center justify-center px-6 py-4 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-lg"
-                  >
-                    Continue to Payment
-                    <Image 
-                      src="/wb.png" 
-                      width={28} 
-                      height={28} 
-                      alt="Continue Icon" 
-                      className="h-[28px] w-[28px]" 
-                    />
-                  </button>
-                </>
               ) : (
                 <>
-                  <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900">Payment Details</h2>
-                    <button
-                      onClick={() => setShowPaymentForm(false)}
-                      className="text-gray-600 hover:text-gray-900 font-medium"
-                    >
-                      ← Back
-                    </button>
-                  </div>
-
-                  <div className="bg-green-50 rounded-lg p-4 mb-6">
-                    <p className="text-gray-700">
-                      Donation Amount: <span className="font-bold text-green-600 text-2xl">${amount}</span>
-                    </p>
-                  </div>
-
-                  {error && (
-                    <div className="flex items-center gap-2 mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <AlertCircle className="w-5 h-5 text-red-600" />
-                      <p className="text-sm font-medium text-red-600">{error}</p>
+                  {/* Step Indicator */}
+                  <div className="mb-8">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className={`flex items-center justify-center w-10 h-10 rounded-full font-bold ${!showPaymentForm ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-600'}`}>
+                          1
+                        </div>
+                        <div>
+                          <p className={`font-bold ${!showPaymentForm ? 'text-green-600' : 'text-gray-400'}`}>
+                            Select Amount
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex-1 h-1 mx-4 bg-gray-200">
+                        <div className={`h-full ${showPaymentForm ? 'bg-green-600' : 'bg-gray-200'} transition-all duration-300`}></div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className={`flex items-center justify-center w-10 h-10 rounded-full font-bold ${showPaymentForm ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-600'}`}>
+                          2
+                        </div>
+                        <div>
+                          <p className={`font-bold ${showPaymentForm ? 'text-green-600' : 'text-gray-400'}`}>
+                            Payment Details
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  )}
+                  </div>
 
-                  {clientSecret && (
-                    <Elements stripe={stripePromise} options={options}>
-                      <CheckoutForm 
-                        amount={amount} 
-                        onSuccess={handlePaymentSuccess}
-                        onError={handlePaymentError}
-                      />
-                    </Elements>
+                  {!showPaymentForm ? (
+                    <>
+                      <div className="mb-6">
+                        <h2 className="text-2xl font-bold text-gray-900 mb-2">Select Donation Amount</h2>
+                        <p className="text-gray-600">Choose a preset amount or enter your own</p>
+                      </div>
+                      
+                      {/* Quick Amount Buttons */}
+                      <div className="mb-6">
+                        <label className="block text-base font-bold text-gray-700 mb-3">
+                          Quick Select
+                        </label>
+                        <div className="grid grid-cols-3 gap-3">
+                        {quickAmounts.map((quickAmount) => (
+                          <button
+                            key={quickAmount}
+                            onClick={() => handleQuickAmount(quickAmount)}
+                            className={`py-4 px-4 rounded-lg border-2 transition-all font-bold text-lg ${
+                              amount === quickAmount.toString()
+                                ? 'border-green-600 bg-green-50 text-green-600 shadow-lg'
+                                : 'border-gray-300 hover:border-green-400 text-gray-700 hover:shadow-md'
+                            }`}
+                          >
+                            ${quickAmount}
+                          </button>
+                        ))}
+                      </div>
+                      </div>
+
+                      {/* Custom Amount */}
+                      <div className="mb-6">
+                        <label className="block text-base font-bold text-gray-700 mb-3">
+                          Or Enter Custom Amount
+                        </label>
+                        <div className="relative">
+                          <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 text-3xl font-bold">
+                            $
+                          </span>
+                          <input
+                            type="text"
+                            value={amount}
+                            onChange={handleAmountChange}
+                            placeholder="0.00"
+                            className="w-full pl-12 pr-4 py-4 border-2 border-gray-300 rounded-lg focus:border-green-600 focus:outline-none text-3xl font-bold text-gray-900 placeholder:text-gray-400"
+                          />
+                        </div>
+                        {error && (
+                          <div className="flex items-center gap-2 mt-3 text-red-600">
+                            <AlertCircle className="w-5 h-5" />
+                            <p className="text-sm font-medium">{error}</p>
+                          </div>
+                        )}
+                        <p className="text-gray-500 text-sm mt-2">Minimum donation: $5.00</p>
+                      </div>
+
+                      <button
+                        onClick={handleContinue}
+                        disabled={!amount}
+                        className="w-full font-bold gap-2 flex items-center justify-center px-6 py-4 rounded-lg text-white bg-gradient-to-r from-[#2d8f00] to-[#85e065] shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-lg"
+                      >
+                        Continue to Payment
+                        <Image 
+                          src="/wb.png" 
+                          width={28} 
+                          height={28} 
+                          alt="Continue Icon" 
+                          className="h-[28px] w-[28px]" 
+                        />
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <div className="flex items-center justify-between mb-6">
+                        <h2 className="text-2xl font-bold text-gray-900">Payment Details</h2>
+                        <button
+                          onClick={() => setShowPaymentForm(false)}
+                          className="text-gray-600 hover:text-gray-900 font-medium"
+                        >
+                          ← Back
+                        </button>
+                      </div>
+
+                      <div className="bg-green-50 rounded-lg p-4 mb-6">
+                        <p className="text-gray-700">
+                          Donation Amount: <span className="font-bold text-green-600 text-2xl">${amount}</span>
+                        </p>
+                      </div>
+
+                      {error && (
+                        <div className="flex items-center gap-2 mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                          <AlertCircle className="w-5 h-5 text-red-600" />
+                          <p className="text-sm font-medium text-red-600">{error}</p>
+                        </div>
+                      )}
+
+                      {clientSecret && (
+                        <Elements stripe={stripePromise} options={options}>
+                          <CheckoutForm 
+                            amount={amount} 
+                            onSuccess={handlePaymentSuccess}
+                            onError={handlePaymentError}
+                          />
+                        </Elements>
+                      )}
+                    </>
                   )}
                 </>
               )}
