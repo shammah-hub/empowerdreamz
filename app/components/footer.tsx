@@ -22,16 +22,16 @@ function Footer() {
 
       {/* Social Media Icons - Centered */}
       <div className="flex space-x-4 justify-center py-4">
-        <a href="#" className="bg-[#7fe97d] hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+        <a href="#" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
           <FaFacebook size={18} />
         </a>
-        <a href="#" className="bg-[#7fe97d] hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+        <a href="#" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
           <FaTwitter size={18} />
         </a>
-        <a href="#" className="bg-[#7fe97d] hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+        <a href="#" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
           <FaInstagram size={18} />
         </a>
-        <a href="#" className="bg-[#7fe97d] hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+        <a href="#" className="bg-green-600 hover:bg-[#53f050] text-white rounded-full w-10 h-10 flex items-center justify-center transition-colors">
           <FaLinkedin size={18} />
         </a>
       </div>

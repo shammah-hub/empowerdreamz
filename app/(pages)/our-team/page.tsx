@@ -114,7 +114,7 @@ const TeamPage: React.FC = () => {
   return (
     <div className="bg-[#fafffa]">
       {/* HERO - Different Layout */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+      <section className="relative pb-20 px-6 overflow-hidden">
         {/* Subtle background */}
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="absolute inset-0" style={{
