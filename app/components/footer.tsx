@@ -59,7 +59,7 @@ function Footer() {
       {/* Copyright Section - Single Line */}
       <div className="border-t border-gray-200 py-6 text-center">
         <p className="text-gray-600 text-sm">
-          Copyright ©2025 Leaders Hub Foundation . All rights reserved. Powered by WordPress & Designed by Bizberg Themes
+          Copyright ©2025 Empower Dreamers Foundation. All rights reserved. 
         </p>
       </div>
     </footer>

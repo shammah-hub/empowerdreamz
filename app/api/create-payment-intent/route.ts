@@ -1,5 +1,7 @@
 // app/api/create-payment-intent/route.ts
 
+ // app/api/create-payment-intent/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
@@ -38,7 +40,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     console.error('Error creating payment intent:', error);
-    
+
     // Better error logging
     if (error instanceof Stripe.errors.StripeError) {
       console.error('Stripe error details:', {
@@ -51,7 +53,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    
+
     return NextResponse.json(
       { error: 'Failed to create payment intent' },
       { status: 500 }
