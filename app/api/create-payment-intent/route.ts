@@ -1,10 +1,12 @@
 // app/api/create-payment-intent/route.ts
+
+ // app/api/create-payment-intent/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2025-09-30.clover', // Stable version for live production
-  typescript: true, // Ensure TypeScript support (if needed)
+  apiVersion: '2025-09-30.clover',
 });
 
 export async function POST(request: NextRequest) {
@@ -19,13 +21,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create PaymentIntent with automatic payment methods
+    // Create a PaymentIntent for embedded payment form
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: 'usd',
       automatic_payment_methods: {
         enabled: true,
-        allow_redirects: 'never', // Prevent redirects for wallets
       },
       metadata: {
         type: 'donation',
@@ -33,12 +34,14 @@ export async function POST(request: NextRequest) {
       },
     });
 
+    // IMPORTANT: Return clientSecret, not url
     return NextResponse.json({
       clientSecret: paymentIntent.client_secret,
     });
   } catch (error) {
     console.error('Error creating payment intent:', error);
 
+    // Better error logging
     if (error instanceof Stripe.errors.StripeError) {
       console.error('Stripe error details:', {
         message: error.message,
