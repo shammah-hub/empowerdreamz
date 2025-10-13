@@ -20,95 +20,35 @@ const TeamPage: React.FC = () => {
 
   const teamMembers: TeamMember[] = [
     {
-      name: "Sarah Johnson",
+      name: "Felix Abraham",
       role: "Executive Director",
-      image: "/t9.jpg",
-      bio: "With over 15 years of experience in humanitarian work, Sarah leads our organization with passion and dedication to creating lasting change.",
-      email: "sarah@parofund.org",
+      image: "/f.jpg",
+      bio: "With over 6 years of experience in humanitarian work, Mr. Abraham leads our organization with passion and dedication to creating lasting change.",
+      email: "",
       linkedin: "#",
       twitter: "#",
       quote: "Every life we touch is a step towards a better world.",
     },
     {
-      name: "Michael Chen",
-      role: "Director of Operations",
-      image: "/t1.jpg",
-      bio: "Michael ensures our projects run efficiently and effectively, bringing 12 years of project management expertise to our mission.",
-      email: "michael@parofund.org",
+      name: "Eugene Oyango",
+      role: "Program Director",
+      image: "/ff.jpg",
+      bio: "Mr. Eugene shapes our program vision and execution, leveraging 4 years of experience to maximize outcomes and drive organizational growth.",
+      email: "",
       linkedin: "#",
       twitter: "#",
       quote: "Excellence in execution creates excellence in impact.",
     },
     {
-      name: "Aisha Okonkwo",
-      role: "Community Outreach Manager",
-      image: "/t2.jpg",
-      bio: "Aisha builds bridges between communities and our organization, ensuring local voices guide our initiatives.",
-      email: "aisha@parofund.org",
+      name: "Ifeayin Orji",
+      role: "Head of Fundraising",
+      image: "/fff.jpg",
+      bio: "Mr. Ifeayin secures funding through strategic partnerships and donor engagement, empowering our organization to expand its impact.",
+      email: "",
       linkedin: "#",
       twitter: "#",
       quote: "True change comes from listening to those we serve.",
     },
-    {
-      name: "David Rodriguez",
-      role: "Head of Fundraising",
-      image: "/t3.jpg",
-      bio: "David's innovative fundraising strategies have helped us secure over $10M in donations to support our critical programs.",
-      email: "david@parofund.org",
-      linkedin: "#",
-      twitter: "#",
-      quote: "Generosity multiplied creates miracles.",
-    },
-    {
-      name: "Emily Thompson",
-      role: "Program Director",
-      image: "/t4.jpg",
-      bio: "Emily designs and oversees all our programs, ensuring they meet the highest standards of effectiveness and sustainability.",
-      email: "emily@parofund.org",
-      linkedin: "#",
-      twitter: "#",
-      quote: "Sustainable programs create sustainable change.",
-    },
-    {
-      name: "James Okafor",
-      role: "Field Coordinator",
-      image: "/t5.jpg",
-      bio: "James works on the ground with local teams, ensuring our projects deliver real results where they're needed most.",
-      email: "james@parofund.org",
-      linkedin: "#",
-      twitter: "#",
-      quote: "The field is where dreams become reality.",
-    },
-    {
-      name: "Maria Santos",
-      role: "Communications Director",
-      image: "/tt1.jpg",
-      bio: "Maria shares our stories with the world, inspiring others to join our mission and creating awareness about critical issues.",
-      email: "maria@parofund.org",
-      linkedin: "#",
-      twitter: "#",
-      quote: "Every story has the power to inspire action.",
-    },
-    {
-      name: "Robert Kim",
-      role: "Finance Director",
-      image: "/tt2.jpg",
-      bio: "Robert ensures financial transparency and accountability, managing our resources to maximize impact for those we serve.",
-      email: "robert@parofund.org",
-      linkedin: "#",
-      twitter: "#",
-      quote: "Transparency builds trust, trust enables impact.",
-    },
-    {
-      name: "Fatima Hassan",
-      role: "Education Programs Lead",
-      image: "/t8.jpg",
-      bio: "Fatima develops educational initiatives that empower children and adults with knowledge and skills for a brighter future.",
-      email: "fatima@parofund.org",
-      linkedin: "#",
-      twitter: "#",
-      quote: "Education is the foundation of all progress.",
-    }
   ];
 
   return (
@@ -137,13 +77,12 @@ const TeamPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Team Preview Images - 4 Column Layout */}
-          <div className="grid md:grid-cols-4 gap-6 mb-16">
+          {/* Team Preview Images - 3 Column Layout Centered */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 max-w-5xl mx-auto">
             {[
-              { img: "/t5.jpg", name: "Sarah Johnson" },
-              { img: "/tt2.jpg", name: "Michael Chen" },
-              { img: "/t1.jpg", name: "Aisha Okonkwo" },
-              { img: "/t9.jpg", name: "David Rodriguez" }
+              { img: "/f.jpg", name: "Felix Abraham" },
+              { img: "/ff.jpg", name: "Eugene Oyango" },
+              { img: "/fff.jpg", name: "Ifeayin Orji" },
             ].map((member, i) => (
               <div key={i} className="group relative">
                 <div className="relative h-80 rounded-2xl overflow-hidden bg-gray-100 border border-gray-100 hover:shadow-lg transition-all duration-300">
@@ -166,7 +105,7 @@ const TeamPage: React.FC = () => {
           <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 max-w-4xl mx-auto">
             <div className="grid grid-cols-3 gap-8 text-center">
               <div>
-                <div className="text-4xl font-light text-green-600 mb-1">9</div>
+                <div className="text-4xl font-light text-green-600 mb-1">3</div>
                 <div className="text-sm text-gray-500">Team Members</div>
               </div>
               <div>
@@ -325,44 +264,53 @@ const TeamPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Modal for member details */}
+     {/* Modal for member details - No Scrollbar, Larger Image */}
       {selectedMember && (
         <div 
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedMember(null)}
         >
           <div 
-            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-2xl max-w-3xl w-full"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative h-64">
+            {/* Even Larger Image Section */}
+            <div className="relative h-[600px] w-full">
               <Image
                 src={selectedMember.image}
                 alt={selectedMember.name}
                 fill
-                className="object-cover"
+                className="object-cover rounded-t-2xl"
+                sizes="(max-width: 768px) 100vw, 896px"
+                priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent rounded-t-2xl"></div>
+              
+              {/* Name and Role Overlay on Image */}
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                <h3 className="text-4xl font-light mb-2">{selectedMember.name}</h3>
+                <p className="text-green-300 font-light text-xl">{selectedMember.role}</p>
+              </div>
+              
+              {/* Close Button */}
               <button
                 onClick={() => setSelectedMember(null)}
-                className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-white/30 transition-colors"
+                className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-white/30 transition-colors text-2xl leading-none font-light"
               >
                 ×
               </button>
             </div>
 
+            {/* Compact Content Section */}
             <div className="p-8">
-              <h3 className="text-3xl font-light text-gray-900 mb-2">{selectedMember.name}</h3>
-              <p className="text-green-600 font-light text-lg mb-6">{selectedMember.role}</p>
-
               <div className="bg-green-50 border-l-4 border-green-600 p-4 mb-6 rounded-r-lg">
                 <div className="flex items-start space-x-3">
                   <Quote className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
-                  <p className="text-gray-700 italic">&quot;{selectedMember.quote}&quot;</p>
+                  <p className="text-gray-700 italic leading-relaxed">&quot;{selectedMember.quote}&quot;</p>
                 </div>
               </div>
 
-              <p className="text-gray-600 mb-6 leading-relaxed">{selectedMember.bio}</p>
+              <p className="text-gray-600 leading-relaxed">{selectedMember.bio}</p>
             </div>
           </div>
         </div>

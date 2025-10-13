@@ -199,7 +199,7 @@ const MinimalistCharity = () => {
           </div>
         </div>
       </div>
-    </section>
+      </section>
 
       {/*  IMPACT SECTION */}
       <section className="py-32 px-6">
@@ -409,29 +409,29 @@ const MinimalistCharity = () => {
 
       {/* MINIMAL CTA */}
       <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-green-600 text-white">
-  <div className="max-w-4xl mx-auto text-center">
-    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4 sm:mb-6">
-      Ready to make an <span className="font-semibold">impact?</span>
-    </h2>
-    <p className="text-base sm:text-lg md:text-xl text-green-100 mb-8 sm:mb-10 md:mb-12 font-light px-4">
-      Join thousands of donors creating change around the world.
-    </p>
-    
-    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-      <Link href="/donate">
-        <button className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-green-600 rounded-full hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 text-sm sm:text-base">
-          Donate Now
-          <Heart className="w-4 h-4 group-hover:scale-110 transition-transform" />
-        </button>
-      </Link>
-      <Link href="/contact">
-        <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/20 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105 text-sm sm:text-base">
-          Contact Us
-        </button>
-      </Link>
-    </div>
-  </div>
-</section>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-4 sm:mb-6">
+              Ready to make an <span className="font-semibold">impact?</span>
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-green-100 mb-8 sm:mb-10 md:mb-12 font-light px-4">
+              Join thousands of donors creating change around the world.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+              <Link href="/donate">
+                <button className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-green-600 rounded-full hover:bg-gray-100 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 text-sm sm:text-base">
+                  Donate Now
+                  <Heart className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                </button>
+              </Link>
+              <Link href="/contact">
+                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-white/20 text-white rounded-full hover:bg-white/10 transition-all duration-300 hover:scale-105 text-sm sm:text-base">
+                  Contact Us
+                </button>
+              </Link>
+            </div>
+          </div>
+        </section>
 
       <style jsx>{`
         .hide-scrollbar::-webkit-scrollbar {

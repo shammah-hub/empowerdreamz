@@ -223,7 +223,7 @@ const AboutPage = () => {
                 We believe in the power of compassion, sustainable development, and meaningful partnerships to create lasting positive change.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                As a federally recognized tax-exempt organization (EIN: 39-2554171), all donations to EmpowerDreamz are tax-deductible to the fullest extent permitted by law. 
+                As a federally recognized tax-exempt organization, all donations to EmpowerDreamz are tax-deductible to the fullest extent permitted by law. 
                 We are committed to transparency, accountability, and maximizing the impact of every contribution we receive.
               </p>
             </div>
@@ -433,7 +433,7 @@ const AboutPage = () => {
       </Link>
     </div>
   </div>
-</section>
+     </section>
     </div>
   );
 };
