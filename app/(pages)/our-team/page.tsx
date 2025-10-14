@@ -275,7 +275,7 @@ const TeamPage: React.FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Even Larger Image Section */}
-            <div className="relative h-[600px] w-full">
+            <div className="relative h-[500px] w-full">
               <Image
                 src={selectedMember.image}
                 alt={selectedMember.name}
