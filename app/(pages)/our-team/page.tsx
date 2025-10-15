@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import React, { useState } from 'react';
-import { Heart, Quote, Award, Target, ChevronRight } from 'lucide-react';
+import { Heart, Quote, Award, Target, } from 'lucide-react';
 import Link from 'next/link';
 
 interface TeamMember {
@@ -25,7 +25,7 @@ const TeamPage: React.FC = () => {
       image: "/f.jpg",
       bio: "With over 6 years of experience in humanitarian work, Mr. Abraham leads our organization with passion and dedication to creating lasting change.",
       email: "",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/felix-abraham-84740a158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       twitter: "#",
       quote: "Every life we touch is a step towards a better world.",
     },
@@ -35,17 +35,17 @@ const TeamPage: React.FC = () => {
       image: "/ff.jpg",
       bio: "Mr. Eugene shapes our program vision and execution, leveraging 4 years of experience to maximize outcomes and drive organizational growth.",
       email: "",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/eugene-onyango-mba-51491814a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       twitter: "#",
       quote: "Excellence in execution creates excellence in impact.",
     },
     {
-      name: "Ifeayin Orji",
+      name: "Ifeayi Orji",
       role: "Head of Fundraising",
       image: "/fff.jpg",
       bio: "Mr. Ifeayin secures funding through strategic partnerships and donor engagement, empowering our organization to expand its impact.",
       email: "",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/ifeanyi-orji001?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
       twitter: "#",
       quote: "True change comes from listening to those we serve.",
     },
@@ -82,7 +82,7 @@ const TeamPage: React.FC = () => {
             {[
               { img: "/f.jpg", name: "Felix Abraham" },
               { img: "/ff.jpg", name: "Eugene Oyango" },
-              { img: "/fff.jpg", name: "Ifeayin Orji" },
+              { img: "/fff.jpg", name: "Ifeayi Orji" },
             ].map((member, i) => (
               <div key={i} className="group relative">
                 <div className="relative h-80 rounded-2xl overflow-hidden bg-gray-100 border border-gray-100 hover:shadow-lg transition-all duration-300">
@@ -201,38 +201,43 @@ const TeamPage: React.FC = () => {
             {teamMembers.map((member, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 cursor-pointer"
-                onClick={() => setSelectedMember(member)}
+                className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 relative group"
               >
-                <div className="relative">
-                  <div className="relative w-full h-80">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div className="relative h-[500px]">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  
+                  {/* Name and Role Overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <h3 className="text-2xl font-light mb-1">{member.name}</h3>
-                    <p className="text-green-300 font-light">{member.role}</p>
+                    <p className="text-sm font-light mb-2 opacity-90">{member.role}</p>
+                    <h3 className="text-2xl font-semibold mb-6">{member.name}</h3>
+                    
+                    {/* Buttons */}
+                    <div className="flex gap-3">
+                      <button 
+                        onClick={() => setSelectedMember(member)}
+                        className="flex-1 bg-white/20 backdrop-blur-sm text-white py-2.5 px-4 rounded-full hover:bg-white/30 transition-all duration-300 font-light border border-white/30"
+                      >
+                        Read bio
+                      </button>
+                      <a
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="bg-white/20 backdrop-blur-sm text-white p-2.5 rounded-full hover:bg-white/30 transition-all duration-300 flex items-center justify-center border border-white/30 w-11 h-11"
+                      >
+                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-                </div>
-
-                <div className="p-6">
-                  <p className="text-gray-600 mb-4 line-clamp-3">{member.bio}</p>
-
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setSelectedMember(member);
-                    }}
-                    className="w-full bg-green-50 text-green-600 py-2 px-4 rounded-lg hover:bg-green-100 transition-colors font-light flex items-center justify-center space-x-2"
-                  >
-                    <span>View Profile</span>
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
                 </div>
               </div>
             ))}
@@ -280,7 +285,7 @@ const TeamPage: React.FC = () => {
                 src={selectedMember.image}
                 alt={selectedMember.name}
                 fill
-                className="object-cover rounded-t-2xl"
+                className="object-contain rounded-t-2xl bg-gray-100"
                 sizes="(max-width: 768px) 100vw, 896px"
                 priority
               />
@@ -295,7 +300,7 @@ const TeamPage: React.FC = () => {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedMember(null)}
-                className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-white/30 transition-colors text-2xl leading-none font-light"
+                className="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-sm text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-gray-900 transition-colors text-2xl leading-none font-light shadow-lg border border-white/20"
               >
                 ×
               </button>
