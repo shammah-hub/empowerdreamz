@@ -201,6 +201,62 @@ const MinimalistCharity = () => {
       </div>
       </section>
 
+
+      {/* PARTNERS SECTION */}
+      <section className="py-16 sm:py-20 px-6 border-y border-gray-200">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center ">
+            <span className="text-xs font-bold sm:text-lg text-gray-500 uppercase tracking-wider">Our</span>
+          </div>
+          <div className="text-center mb-10 sm:mb-12">
+            <span className="text-xs font-bold sm:text-lg text-gray-500 uppercase tracking-wider">Trusted Partners</span>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16">
+            {/* Grow with Google */}
+            <a 
+              href="https://grow.google" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group cursor-pointer transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                <Image
+                  src="/grow-with-google-logo.png"
+                  alt="Grow with Google"
+                  width={160}
+                  height={60}
+                  className="h-10 sm:h-12 w-auto"
+                />
+              </div>
+            </a>
+
+            {/* Divider */}
+            <div className="hidden sm:block w-px h-12 bg-gray-200" />
+            <div className="sm:hidden w-12 h-px bg-gray-200" />
+
+            {/* TechSoup */}
+            <a 
+              href="https://www.techsoup.org" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group cursor-pointer transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                <Image
+                  src="/TechSoup-US-Logo.png"
+                  alt="TechSoup"
+                  width={160}
+                  height={60}
+                  className="h-10 sm:h-12 w-auto"
+                />
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+
       {/*  IMPACT SECTION */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
