@@ -230,6 +230,27 @@ const MinimalistCharity = () => {
                 />
               </div>
             </a>
+                 
+            {/* Divider */}
+                 <div className="hidden sm:block w-px h-12 bg-gray-200" />
+            <div className="sm:hidden w-12 h-px bg-gray-200" />
+
+           <a 
+              href="https://goodstack.org/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group cursor-pointer transition-all duration-300 hover:scale-105"
+            >
+              <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100">
+                <Image
+                  src="/60.png"
+                  alt="GoodStack"
+                  width={160}
+                  height={60}
+                  className="h-10 sm:h-12 w-auto"
+                />
+              </div>
+            </a>
 
             {/* Divider */}
             <div className="hidden sm:block w-px h-12 bg-gray-200" />
@@ -253,8 +274,11 @@ const MinimalistCharity = () => {
               </div>
             </a>
           </div>
+
         </div>
       </section>
+
+
 
 
       {/*  IMPACT SECTION */}
