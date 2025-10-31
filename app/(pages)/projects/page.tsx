@@ -1,48 +1,58 @@
 "use client"
 import React, { useState } from 'react';
-import { Heart, ChevronLeft, ChevronRight, Users, } from 'lucide-react';
+import { Heart, ChevronLeft, ChevronRight, Users, Droplet, GraduationCap, UtensilsCrossed } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const CharityProjectsPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const projects = [
+   const projects = [
     {
-      image: "/11.jpg",
-      title: "Build Schools for Needy Kids",
-      description: "Providing quality education infrastructure for underprivileged children in rural communities. Our goal is to build sustainable learning environments.",
-      raised: "$1,000",
-      goal: "$75,000",
-      progress: 6,
-      supporters: 324
-    },
-    {
-      image: "/nnn.jpg", 
-      title: "Clean Water for Rural Communities",
-      description: "Installing water pumps and purification systems in remote villages to ensure access to clean, safe drinking water for families.",
-      raised: "$2,800",
+      image: "/drpp.png",
+      icon: Droplet,
+      title: "Drops of Hope",
+      subtitle: "Together for Change",
+      description: "Help us provide clean water access for rural communities in Nigeria.",
+      tagline: "Empowering Lives with Water",
+      callToAction: "Donate to make a difference",
+      raised: "$1,300",
       goal: "$50,000",
-      progress: 12,
-      supporters: 189
+      progress: 3,
+      supporters: 4,
+      tag: "Ongoing Initiative",
+      isLive: true
     },
     {
-      image: "/7.jpg",
-      title: "Emergency Food Relief Program", 
-      description: "Providing nutritious meals and food packages to families affected by natural disasters and economic hardship.",
-      raised: "$6,300",
-      goal: "$80,000",
-      progress: 20,
-      supporters: 456
+      image: "/ma.jpg", 
+      icon: GraduationCap,
+      title: "Education Sponsorship Program",
+      description: "Sponsor a child's education by providing school supplies, uniforms, and tuition fees. Give them the gift of knowledge and a brighter future.",
+      raised: "$700",
+      goal: "$65,000",
+      progress: 2,
+      supporters: 4,
+      tag: "Education"
+    },
+    {
+      image: "/sig.jpg",
+      icon: UtensilsCrossed,
+      title: "Monthly Food Support for Families", 
+      description: "Provide monthly food packages containing essential nutrition to struggling families. Each package feeds a family of 5 for an entire month.",
+      raised: "$2,000",
+      goal: "$40,000",
+      progress: 2,
+      supporters: 4,
+      tag: "Food Security"
     },
   ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.ceil(projects.length / 3));
+    setCurrentSlide((prev) => (prev + 1) % projects.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + Math.ceil(projects.length / 3)) % Math.ceil(projects.length / 3));
+    setCurrentSlide((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
   const donorImages = [
@@ -57,7 +67,6 @@ const CharityProjectsPage = () => {
     <div className="bg-[#fafffa]">
       {/* HERO Section */}
       <section className="min-h-screen flex items-center px-6 py-20 relative overflow-hidden">
-        {/* Subtle background */}
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="absolute inset-0" style={{
             backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(22 163 74) 1px, transparent 0)',
@@ -117,7 +126,7 @@ const CharityProjectsPage = () => {
               </Link>
             </div>
 
-            {/* Right - Image Grid (keeping your structure) */}
+            {/* Right - Image Grid */}
             <div className="relative">
               <div className="space-y-4">
                 {/* Top Row */}
@@ -262,127 +271,248 @@ const CharityProjectsPage = () => {
         </div>
       </section>
 
-      {/* PROJECTS SECTION */}
+      {/* PROJECTS SECTION - REDESIGNED */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 mb-8">
-              <div className="w-2 h-2 rounded-full bg-green-600" />
-              <span className="text-sm text-gray-500 tracking-wider uppercase">Featured Projects</span>
+            <div className="flex flex-col items-center gap-6 mb-8">
+              <div className="inline-flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-green-600" />
+                <span className="text-sm text-gray-500 tracking-wider uppercase">Ongoing Initiatives</span>
+              </div>
+              <div className="relative w-24 h-24">
+                <Image
+                  src="/nobg.png"
+                  alt="Empowering Dreamers Foundation"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
             <h2 className="text-5xl md:text-6xl font-light text-gray-900 mb-6">
-              Support our current <span className="font-semibold text-green-600">initiatives</span>
+              Drops of <span className="font-semibold text-green-600">Hope</span>
             </h2>
             <p className="text-xl text-gray-500 max-w-3xl mx-auto font-light">
-              Choose from our carefully selected projects that are making a real difference.
+              Together for change. Each project represents a promise to communities in need.
             </p>
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {projects.slice(currentSlide * 3, currentSlide * 3 + 6).map((project, index) => (
-              <div key={index} className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100">
-                <div className="relative h-64 bg-gray-100">
-                 <Image
-                    width={1000}
-                    height={1000}
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
+          {/* Featured Project Showcase */}
+          <div className="mb-20">
+            <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100">
+              <div className="grid lg:grid-cols-2">
+                {/* Image Side */}
+                <div className="relative h-[500px] lg:h-auto bg-gray-100">
+                  <Image
+                    fill
+                    src={projects[currentSlide].image}
+                    alt={projects[currentSlide].title}
+                    className="object-cover"
                   />
-                  <div className="absolute top-4 right-4 bg-white rounded-full px-4 py-1 text-sm font-light text-green-600">
-                    {project.progress}%
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  
+                  {/* Category Tag */}
+                  <div className="absolute top-6 left-6 flex items-center gap-3">
+                    {/* Live Indicator - Made More Prominent */}
+                    {projects[currentSlide].isLive && (
+                      <div className="bg-red-600 rounded-full px-5 py-2.5 flex items-center gap-2 shadow-lg border-2 border-white">
+                        <div className="relative flex h-3 w-3">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
+                        </div>
+                        <span className="text-sm font-semibold text-white uppercase tracking-wide">LIVE NOW</span>
+                      </div>
+                    )}
+                    
+                    <div className="bg-white/95 backdrop-blur-sm rounded-full px-4 py-2 flex items-center gap-2">
+                      {React.createElement(projects[currentSlide].icon, { className: "h-4 w-4 text-green-600" })}
+                      <span className="text-sm font-light text-gray-900">{projects[currentSlide].tag}</span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-light text-gray-900 mb-3">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-                  
-                  {/* Progress */}
-                  <div className="mb-6">
-                    <div className="flex justify-between text-sm text-gray-500 mb-2">
-                      <span>{project.raised}</span>
-                      <span>{project.goal}</span>
+                {/* Content Side */}
+                <div className="p-10 lg:p-12 flex flex-col justify-between">
+                  <div>
+                    <div className="mb-6">
+                      <h3 className="text-5xl md:text-6xl font-light text-gray-900 mb-3 leading-tight uppercase tracking-wide">
+                        {projects[currentSlide].title}
+                      </h3>
+                      {projects[currentSlide].subtitle && (
+                        <p className="text-xl md:text-2xl font-light text-green-600 uppercase tracking-wide">
+                          {projects[currentSlide].subtitle}
+                        </p>
+                      )}
                     </div>
-                    <div className="h-1 bg-gray-100 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-green-600 rounded-full transition-all duration-1000"
-                        style={{ width: `${project.progress}%` }}
-                      ></div>
+
+                    <p className="text-lg md:text-xl text-gray-600 font-light leading-relaxed mb-8">
+                      {projects[currentSlide].description}
+                    </p>
+
+                    {projects[currentSlide].tagline && (
+                      <div className="mb-10">
+                        <p className="text-2xl md:text-3xl font-light text-gray-900 leading-relaxed">
+                          {projects[currentSlide].tagline}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Stats Grid */}
+                    <div className="grid grid-cols-2 gap-6 mb-8">
+                      <div className="bg-gray-50 rounded-2xl p-6">
+                        <div className="text-sm text-gray-500 mb-1">Raised</div>
+                        <div className="text-3xl font-light text-green-600">{projects[currentSlide].raised}</div>
+                      </div>
+                      <div className="bg-gray-50 rounded-2xl p-6">
+                        <div className="text-sm text-gray-500 mb-1">Goal</div>
+                        <div className="text-3xl font-light text-gray-900">{projects[currentSlide].goal}</div>
+                      </div>
+                    </div>
+
+                    {/* Progress Bar */}
+                    <div className="mb-8">
+                      <div className="flex justify-between items-center mb-3">
+                        <span className="text-sm text-gray-500">Campaign Progress</span>
+                        <span className="text-sm font-light text-green-600">{projects[currentSlide].progress}%</span>
+                      </div>
+                      <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div 
+                          className="h-full bg-green-600 rounded-full transition-all duration-1000"
+                          style={{ width: `${projects[currentSlide].progress}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Supporters */}
+                    <div className="flex items-center gap-4 mb-8 pb-8 border-b border-gray-100">
+                      <div className="flex -space-x-2">
+                        {donorImages.slice(0, 4).map((img, i) => (
+                          <div
+                            key={i}
+                            className="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-gray-200"
+                          >
+                            <Image
+                              width={1}
+                              height={1}
+                              src={img}
+                              alt={`Supporter ${i + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      <div>
+                        <p className="text-sm font-light text-gray-900">{projects[currentSlide].supporters} supporters</p>
+                        <p className="text-xs text-gray-500">Join them in making a difference</p>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Supporters */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-2">
-                      <Users className="h-4 w-4 text-gray-400" />
-                      <span className="text-sm text-gray-500">{project.supporters} supporters</span>
-                    </div>
-                    <div className="flex -space-x-2">
-                      {donorImages.slice(0, 3).map((img, i) => (
-                        <div
-                          key={i}
-                          className="w-6 h-6 rounded-full border-2 border-white overflow-hidden bg-gray-200"
-                        >
-                          <Image
-                                        width={1}
-                                        height={1}
-                            src={img}
-                            alt={`Supporter ${i + 1}`}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Link href="/contact" className="flex-1">
-                      <button className="w-full px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors">
-                        Support
+                  {/* Action Buttons */}
+                  <div className="space-y-4">
+                    {projects[currentSlide].callToAction && (
+                      <p className="text-base font-light text-gray-600 uppercase tracking-wide">
+                        {projects[currentSlide].callToAction}
+                      </p>
+                    )}
+                    <div className="flex gap-4">
+                      <Link href="/contact" className="flex-1">
+                        <button className="w-full px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 font-light">
+                          Support This Project
+                        </button>
+                      </Link>
+                      <button className="px-6 py-4 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors">
+                        <Heart className="h-5 w-5 text-gray-500" />
                       </button>
-                    </Link>
-                    <button className="px-4 py-3 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors">
-                      <Heart className="h-4 w-4 text-gray-500" />
-                    </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Navigation Controls */}
+            <div className="flex justify-center items-center gap-6 mt-8">
+              <button
+                onClick={prevSlide}
+                className="p-4 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-all duration-300 hover:border-green-600 group"
+              >
+                <ChevronLeft className="h-5 w-5 text-gray-600 group-hover:text-green-600" />
+              </button>
+              
+              <div className="flex gap-3">
+                {projects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`transition-all duration-300 rounded-full ${
+                      index === currentSlide 
+                        ? 'bg-green-600 w-12 h-2' 
+                        : 'bg-gray-300 w-2 h-2 hover:bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={nextSlide}
+                className="p-4 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-all duration-300 hover:border-green-600 group"
+              >
+                <ChevronRight className="h-5 w-5 text-gray-600 group-hover:text-green-600" />
+              </button>
+            </div>
           </div>
 
-          {/* Navigation */}
-          <div className="flex justify-center items-center gap-4">
-            <button
-              onClick={prevSlide}
-              className="p-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors"
-            >
-              <ChevronLeft className="h-5 w-5 text-gray-600" />
-            </button>
-            
-            <div className="flex gap-2">
-              {Array.from({ length: Math.ceil(projects.length / 6) }).map((_, index) => (
+          {/* All Projects Grid */}
+          <div>
+            <h3 className="text-2xl font-light text-gray-900 mb-8">All Active Projects</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              {projects.map((project, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
-                    index === currentSlide ? 'bg-green-600 w-8' : 'bg-gray-300'
+                  className={`text-left bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 border ${
+                    index === currentSlide ? 'border-green-600 shadow-md' : 'border-gray-100'
                   }`}
-                />
+                >
+                  <div className="relative h-48 bg-gray-100">
+                    <Image
+                      fill
+                      src={project.image}
+                      alt={project.title}
+                      className="object-cover"
+                    />
+                    <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-light text-green-600">
+                      {project.progress}% funded
+                    </div>
+                    
+                    {/* Live Badge for grid - More Visible */}
+                    {project.isLive && (
+                      <div className="absolute top-4 left-4 bg-red-600 rounded-full px-3 py-1.5 flex items-center gap-1.5 shadow-md border border-white">
+                        <div className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                        </div>
+                        <span className="text-xs font-semibold text-white uppercase">LIVE</span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      {React.createElement(project.icon, { className: "h-4 w-4 text-green-600" })}
+                      <span className="text-xs text-gray-500 uppercase tracking-wider">{project.tag}</span>
+                    </div>
+                    <h4 className="text-lg font-light text-gray-900 mb-2 leading-tight">
+                      {project.title}
+                    </h4>
+                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <Users className="h-4 w-4" />
+                      <span>{project.supporters} supporters</span>
+                    </div>
+                  </div>
+                </button>
               ))}
             </div>
-
-            <button
-              onClick={nextSlide}
-              className="p-3 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition-colors"
-            >
-              <ChevronRight className="h-5 w-5 text-gray-600" />
-            </button>
           </div>
         </div>
       </section>
