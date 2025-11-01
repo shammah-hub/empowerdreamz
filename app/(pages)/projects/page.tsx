@@ -416,7 +416,7 @@ const CharityProjectsPage = () => {
                       </p>
                     )}
                     <div className="flex gap-4">
-                      <Link href="/contact" className="flex-1">
+                      <Link href="/donate" className="flex-1">
                         <button className="w-full px-8 py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 font-light">
                           Support This Project
                         </button>
