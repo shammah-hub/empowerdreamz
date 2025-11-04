@@ -21,36 +21,34 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, onSuccess, onError 
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!stripe || !elements) {
-    return;
-  }
-
-  setIsProcessing(true);
-
-  try {
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: `${window.location.origin}/donate/success`,
-        // Ensure billing details are submitted
-        receipt_email: 'auto', // Stripe will use the email from PaymentElement
-      },
-      redirect: 'if_required',
-    });
-
-    if (error) {
-      onError(error.message || 'An error occurred while processing your payment.');
-      setIsProcessing(false);
-    } else {
-      onSuccess();
+    if (!stripe || !elements) {
+      return;
     }
-  } catch (err) {
-    onError(`${err} Please try again.`);
-    setIsProcessing(false);
-  }
-};
+
+    setIsProcessing(true);
+
+    try {
+      const { error } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          return_url: `${window.location.origin}/donate/success`,
+        },
+        redirect: 'if_required',
+      });
+
+      if (error) {
+        onError(error.message || 'An error occurred while processing your payment.');
+        setIsProcessing(false);
+      } else {
+        onSuccess();
+      }
+    } catch (err) {
+      onError(`${err} Please try again.`);
+      setIsProcessing(false);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
