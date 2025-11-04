@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/footer";
 import Loader from "./components/loader";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable}`}>
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className={`bg-white ${nunitoSans.className}`} data-cjcrx="addYes" cz-shortcut-listen="true">
         <Loader>
           <>
