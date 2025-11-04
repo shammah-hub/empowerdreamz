@@ -1,11 +1,12 @@
 "use client";
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle, Share2 } from 'lucide-react';
 import { FaFacebook, FaTwitter, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import Link from 'next/link';
 
-export default function DonateSuccessPage() {
+function SuccessContent() {
   const searchParams = useSearchParams();
   const amount = searchParams.get('amount') || '0';
 
@@ -42,56 +43,38 @@ export default function DonateSuccessPage() {
             <span className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider">Share</span>
           </div>
           <div className="flex justify-center gap-2 sm:gap-3">
-            <a
-              href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
-            >
+            <a href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300">
               <FaFacebook size={16} />
             </a>
-            <a
-              href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
-            >
+            <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300">
               <FaTwitter size={16} />
             </a>
-            <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
-            >
+            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300">
               <FaLinkedin size={16} />
             </a>
-            <a
-              href={`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
-            >
+            <a href={`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`} target="_blank" rel="noopener noreferrer" className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300">
               <FaWhatsapp size={16} />
             </a>
           </div>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-          <Link
-            href="/donate"
-            className="px-6 sm:px-8 py-3 sm:py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 hover:scale-105 font-light text-sm sm:text-base"
-          >
+          <Link href="/donate" className="px-6 sm:px-8 py-3 sm:py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 hover:scale-105 font-light text-sm sm:text-base">
             Make Another Donation
           </Link>
-          <Link
-            href="/"
-            className="px-6 sm:px-8 py-3 sm:py-4 text-green-600 hover:text-green-700 transition-colors font-light text-sm sm:text-base"
-          >
+          <Link href="/" className="px-6 sm:px-8 py-3 sm:py-4 text-green-600 hover:text-green-700 transition-colors font-light text-sm sm:text-base">
             Return to Home
           </Link>
         </div>
       </div>
     </div>
+  );
+}
+
+export default function DonateSuccessPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#fafffa] pt-20 sm:pt-32 pb-16 px-4 sm:px-6 flex items-center justify-center"><div className="text-center"><div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-600/10 mb-4"><CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600 animate-pulse" /></div><p className="text-gray-500">Loading...</p></div></div>}>
+      <SuccessContent />
+    </Suspense>
   );
 }

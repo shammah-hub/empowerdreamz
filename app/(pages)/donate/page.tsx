@@ -53,7 +53,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, onSuccess, onError 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200">
-        <PaymentElement options={{ fields: { billingDetails: { email: 'never' } } }} />
+        <PaymentElement />
       </div>
 
       <button
