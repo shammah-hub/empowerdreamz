@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { loadStripe, StripeElementsOptions } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { CheckCircle, AlertCircle, Heart, ArrowRight, Share2 } from 'lucide-react';
-import { FaFacebook, FaTwitter, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
-import Link from 'next/link';
+import { CheckCircle, AlertCircle, Heart, ArrowRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
@@ -33,7 +33,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, onSuccess, onError 
       const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-          return_url: `${window.location.origin}/donate/success`,
+          return_url: `${window.location.origin}/donate/success?amount=${amount}`,
         },
         redirect: 'if_required',
       });
@@ -53,7 +53,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, onSuccess, onError 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="bg-white rounded-lg p-4 sm:p-6 border border-gray-200">
-        <PaymentElement />
+        <PaymentElement options={{ fields: { billingDetails: { email: 'never' } } }} />
       </div>
 
       <button
@@ -75,11 +75,11 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ amount, onSuccess, onError 
 };
 
 const DonatePage: React.FC = () => {
+  const router = useRouter(); 
   const [amount, setAmount] = useState<string>('');
   const [clientSecret, setClientSecret] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [showPaymentForm, setShowPaymentForm] = useState<boolean>(false);
-  const [paymentSuccess, setPaymentSuccess] = useState<boolean>(false);
   const [isCardLoading, setIsCardLoading] = useState<boolean>(true);
 
   const quickAmounts = [5, 10, 25, 50, 100, 250];
@@ -131,10 +131,13 @@ const DonatePage: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to create payment intent');
+        const errorData = await response.json().catch(() => ({}));
+        console.error('API Error Response:', response.status, errorData);
+        throw new Error(errorData.error || `Server error: ${response.status}`);
       }
 
       const data = await response.json();
+      console.log('Payment Intent Created:', data);
 
       if (data.clientSecret) {
         setClientSecret(data.clientSecret);
@@ -150,24 +153,12 @@ const DonatePage: React.FC = () => {
   };
 
   const handlePaymentSuccess = () => {
-    setPaymentSuccess(true);
-    setShowPaymentForm(false);
+    router.push(`/donate/success?amount=${amount}`);
   };
 
   const handlePaymentError = (errorMessage: string) => {
     setError(errorMessage);
   };
-
-  const handleNewDonation = () => {
-    setAmount('');
-    setClientSecret('');
-    setShowPaymentForm(false);
-    setPaymentSuccess(false);
-    setError('');
-  };
-
-  const shareUrl = typeof window !== 'undefined' ? window.location.origin + '/donate' : '';
-  const shareText = 'Support our charity and help transform lives in our communities!';
 
   const options: StripeElementsOptions = {
     clientSecret,
@@ -185,91 +176,6 @@ const DonatePage: React.FC = () => {
     },
   };
 
-  if (paymentSuccess) {
-    return (
-      <div className="min-h-screen bg-[#fafffa] pt-20 sm:pt-32 pb-16 px-4 sm:px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="mb-6 sm:mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-600/10 mb-4 sm:mb-6">
-              <CheckCircle className="w-8 h-8 sm:w-10 sm:h-10 text-green-600" />
-            </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 mb-3 sm:mb-4">
-              Thank <span className="font-semibold text-green-600">you</span>
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-500 mb-2 px-4">
-              Your donation of <span className="font-semibold text-green-600">${amount}</span> has been received
-            </p>
-            <p className="text-xs sm:text-sm text-gray-400 px-4">
-              You will receive a confirmation email shortly
-            </p>
-          </div>
-
-          <div className="mb-8 sm:mb-12 py-6 sm:py-8 border-t border-b border-gray-200">
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-xl mx-auto px-4">
-              Your support helps us continue our mission to transform lives and build stronger communities.
-            </p>
-          </div>
-
-          <div className="mb-8 sm:mb-12">
-            <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
-              <Share2 className="w-4 h-4 text-gray-500" />
-              <span className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider">Share</span>
-            </div>
-            <div className="flex justify-center gap-2 sm:gap-3">
-              <a
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
-              >
-                <FaFacebook size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </a>
-              <a
-                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
-              >
-                <FaTwitter size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </a>
-              <a
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
-              >
-                <FaLinkedin size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </a>
-              <a
-                href={`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 hover:bg-green-600 text-gray-600 hover:text-white flex items-center justify-center transition-all duration-300"
-              >
-                <FaWhatsapp size={16} className="sm:w-[18px] sm:h-[18px]" />
-              </a>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <button
-              onClick={handleNewDonation}
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-green-600 text-white rounded-full hover:bg-green-700 transition-all duration-300 hover:scale-105 font-light text-sm sm:text-base"
-            >
-              Make Another Donation
-            </button>
-            <Link
-              href="/"
-              className="px-6 sm:px-8 py-3 sm:py-4 text-green-600 hover:text-green-700 transition-colors font-light text-sm sm:text-base"
-            >
-              Return to Home
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-[#fafffa] pt-20 sm:pt-32 pb-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
@@ -283,8 +189,6 @@ const DonatePage: React.FC = () => {
             Your generous donation helps us continue our mission to empower communities
           </p>
         </div>
-
-        
 
         <div className="grid lg:grid-cols-3 gap-8 sm:gap-12">
           {/* Main Form */}
