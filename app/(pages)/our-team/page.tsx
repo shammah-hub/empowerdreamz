@@ -93,7 +93,7 @@ const TeamPage: React.FC = () => {
               { img: "/f.jpg", name: "Felix Abraham" },
               { img: "/ff.jpg", name: "Eugene Oyango" },
               { img: "/fff.jpg", name: "Ifeayi Orji" },
-              { img: "/image.jpg", name: "Ifeayi Orji" },
+              { img: "/image.jpg", name: "John Hunwi" },
             ].map((member, i) => (
               <div key={i} className="group relative">
                 <div className="relative h-80 rounded-2xl overflow-hidden bg-gray-100 border border-gray-100 hover:shadow-lg transition-all duration-300">
@@ -116,7 +116,7 @@ const TeamPage: React.FC = () => {
           <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100 max-w-4xl mx-auto">
             <div className="grid grid-cols-3 gap-8 text-center">
               <div>
-                <div className="text-4xl font-light text-green-600 mb-1">3</div>
+                <div className="text-4xl font-light text-green-600 mb-1">4</div>
                 <div className="text-sm text-gray-500">Team Members</div>
               </div>
               <div>
