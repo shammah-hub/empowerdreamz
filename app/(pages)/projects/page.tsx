@@ -1,51 +1,124 @@
 "use client"
-import React, { useState } from 'react';
-import { Heart, ChevronLeft, ChevronRight, Users, Droplet, GraduationCap, UtensilsCrossed } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Heart, ChevronLeft, ChevronRight, Users, Droplet, GraduationCap, UtensilsCrossed, Loader2, LucideIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { collection, query, where, onSnapshot, orderBy } from 'firebase/firestore';
+import { db } from '@/lib/firebase'; // Adjust path to your firebase config
+
+interface Project {
+  id: string;
+  image: string;
+  icon: LucideIcon;
+  title: string;
+  subtitle: string;
+  description: string;
+  tagline: string;
+  callToAction: string;
+  raised: number;
+  goal: number;
+  progress: number;
+  supporters: number;
+  tag: string;
+  isLive: boolean;
+  category: string;
+}
 
 const CharityProjectsPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [isLiveData, setIsLiveData] = useState(false);
 
-   const projects = [
-    {
-      image: "/drpp.png",
-      icon: Droplet,
-      title: "Drops of Hope",
-      subtitle: "Together for Change",
-      description: "Help us provide clean water access for rural communities in Nigeria.",
-      tagline: "Empowering Lives with Water",
-      callToAction: "Donate to make a difference",
-      raised: "$1,300",
-      goal: "$50,000",
-      progress: 3,
-      supporters: 4,
-      tag: "Ongoing Initiative",
-      isLive: true
-    },
-    {
-      image: "/ma.jpg", 
-      icon: GraduationCap,
-      title: "Education Sponsorship Program",
-      description: "Sponsor a child's education by providing school supplies, uniforms, and tuition fees. Give them the gift of knowledge and a brighter future.",
-      raised: "$700",
-      goal: "$65,000",
-      progress: 2,
-      supporters: 4,
-      tag: "Education"
-    },
-    {
-      image: "/sig.jpg",
-      icon: UtensilsCrossed,
-      title: "Monthly Food Support for Families", 
-      description: "Provide monthly food packages containing essential nutrition to struggling families. Each package feeds a family of 5 for an entire month.",
-      raised: "$2,000",
-      goal: "$40,000",
-      progress: 2,
-      supporters: 4,
-      tag: "Food Security"
-    },
-  ];
+  // Fetch projects from Firestore with real-time updates
+  useEffect(() => {
+    const projectsRef = collection(db, 'projects');
+    const q = query(
+      projectsRef,
+      where('isActive', '==', true),
+      orderBy('createdAt', 'desc')
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const projectsData = snapshot.docs.map(doc => {
+        const data = doc.data();
+        return {
+          id: doc.id,
+          image: data.image || "/drpp.png",
+          icon: data.category === 'water' ? Droplet : 
+                data.category === 'education' ? GraduationCap : 
+                UtensilsCrossed,
+          title: data.title || "Project",
+          subtitle: data.subtitle || "",
+          description: data.description || "",
+          tagline: data.tagline || "",
+          callToAction: data.callToAction || "Donate to make a difference",
+          raised: data.raised || 0,
+          goal: data.goal || 50000,
+          progress: data.goal > 0 ? Math.round((data.raised / data.goal) * 100) : 0,
+          supporters: data.supporters || 0,
+          tag: data.tag || "Ongoing Initiative",
+          isLive: data.isLive || false,
+          category: data.category || 'general'
+        };
+      });
+
+      // Always set projects data (use Firestore data if available, otherwise fallback)
+      if (projectsData.length === 0) {
+        setIsLiveData(false);
+        setProjects([
+          {
+            id: 'default-1',
+            image: "/drpp.png",
+            icon: Droplet,
+            title: "Drops of Hope",
+            subtitle: "Together for Change",
+            description: "Help us provide clean water access for rural communities in Nigeria.",
+            tagline: "Empowering Lives with Water",
+            callToAction: "Donate to make a difference",
+            raised: 0,
+            goal: 50000,
+            progress: 0,
+            supporters: 0,
+            tag: "Ongoing Initiative",
+            isLive: true,
+            category: 'water'
+          }
+        ]);
+      } else {
+        setIsLiveData(true);
+        setProjects(projectsData);
+      }
+      
+      setLoading(false);
+    }, (error) => {
+      console.error('Error fetching projects:', error);
+      // Even on error, show fallback data
+      setIsLiveData(false);
+      setProjects([
+        {
+          id: 'default-1',
+          image: "/drpp.png",
+          icon: Droplet,
+          title: "Drops of Hope",
+          subtitle: "Together for Change",
+          description: "Help us provide clean water access for rural communities in Nigeria.",
+          tagline: "Empowering Lives with Water",
+          callToAction: "Donate to make a difference",
+          raised: 0,
+          goal: 50000,
+          progress: 0,
+          supporters: 0,
+          tag: "Ongoing Initiative",
+          isLive: true,
+          category: 'water'
+        }
+      ]);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % projects.length);
@@ -62,6 +135,29 @@ const CharityProjectsPage = () => {
     "/dd.jpg",
     "/ca.jpg",
   ];
+
+  // Format currency
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#fafffa] flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 text-green-600 animate-spin mx-auto mb-4" />
+          <p className="text-gray-600 font-light">Loading projects...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Remove the "no projects" check - always show the page with fallback data
 
   return (
     <div className="bg-[#fafffa]">
@@ -271,7 +367,7 @@ const CharityProjectsPage = () => {
         </div>
       </section>
 
-      {/* PROJECTS SECTION - REDESIGNED */}
+      {/* PROJECTS SECTION - WITH LIVE DATA */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
@@ -295,6 +391,14 @@ const CharityProjectsPage = () => {
             <p className="text-xl text-gray-500 max-w-3xl mx-auto font-light">
               Together for change. Each project represents a promise to communities in need.
             </p>
+            
+            {/* Data Source Indicator */}
+            <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-200">
+              <div className={`w-2 h-2 rounded-full ${isLiveData ? 'bg-green-600' : 'bg-orange-500'}`}></div>
+              <span className="text-xs text-gray-600">
+                {isLiveData ? '🔴 Live Data from Firestore' : '📦 Demo Data (Add project to Firestore)'}
+              </span>
+            </div>
           </div>
 
           {/* Featured Project Showcase */}
@@ -313,7 +417,7 @@ const CharityProjectsPage = () => {
                   
                   {/* Category Tag */}
                   <div className="absolute top-6 left-6 flex items-center gap-3">
-                    {/* Live Indicator - Made More Prominent */}
+                    {/* Live Indicator */}
                     {projects[currentSlide].isLive && (
                       <div className="bg-red-600 rounded-full px-5 py-2.5 flex items-center gap-2 shadow-lg border-2 border-white">
                         <div className="relative flex h-3 w-3">
@@ -361,11 +465,15 @@ const CharityProjectsPage = () => {
                     <div className="grid grid-cols-2 gap-6 mb-8">
                       <div className="bg-gray-50 rounded-2xl p-6">
                         <div className="text-sm text-gray-500 mb-1">Raised</div>
-                        <div className="text-3xl font-light text-green-600">{projects[currentSlide].raised}</div>
+                        <div className="text-3xl font-light text-green-600">
+                          {formatCurrency(projects[currentSlide].raised)}
+                        </div>
                       </div>
                       <div className="bg-gray-50 rounded-2xl p-6">
                         <div className="text-sm text-gray-500 mb-1">Goal</div>
-                        <div className="text-3xl font-light text-gray-900">{projects[currentSlide].goal}</div>
+                        <div className="text-3xl font-light text-gray-900">
+                          {formatCurrency(projects[currentSlide].goal)}
+                        </div>
                       </div>
                     </div>
 
@@ -468,7 +576,7 @@ const CharityProjectsPage = () => {
             <div className="grid md:grid-cols-3 gap-6">
               {projects.map((project, index) => (
                 <button
-                  key={index}
+                  key={project.id}
                   onClick={() => setCurrentSlide(index)}
                   className={`text-left bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 border ${
                     index === currentSlide ? 'border-green-600 shadow-md' : 'border-gray-100'
@@ -485,7 +593,7 @@ const CharityProjectsPage = () => {
                       {project.progress}% funded
                     </div>
                     
-                    {/* Live Badge for grid - More Visible */}
+                    {/* Live Badge */}
                     {project.isLive && (
                       <div className="absolute top-4 left-4 bg-red-600 rounded-full px-3 py-1.5 flex items-center gap-1.5 shadow-md border border-white">
                         <div className="relative flex h-2 w-2">

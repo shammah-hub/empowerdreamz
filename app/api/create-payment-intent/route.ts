@@ -1,7 +1,5 @@
 // app/api/create-payment-intent/route.ts
 
- // app/api/create-payment-intent/route.ts
-
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
@@ -9,7 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 export async function POST(request: NextRequest) {
   try {
-    const { amount } = await request.json();
+    const { amount, projectId} = await request.json();
 
     // Validate amount
     if (!amount || typeof amount !== 'number' || amount < 500) {
@@ -29,6 +27,7 @@ export async function POST(request: NextRequest) {
       metadata: {
         type: 'donation',
         organization: 'EmpowerDreamz',
+        projectId: projectId || 'drops-of-hope',
       },
     });
 

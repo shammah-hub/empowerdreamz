@@ -127,6 +127,7 @@ const DonatePage: React.FC = () => {
         },
         body: JSON.stringify({
           amount: amountInCents,
+          projectId: 'drops-of-hope',
         }),
       });
 
