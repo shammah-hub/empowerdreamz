@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Nunito_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/footer";
 import Loader from "./components/loader";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 
@@ -37,16 +35,13 @@ export default function RootLayout({
       <head>
         <GoogleAnalytics />
       </head>
+    
       <body className={`bg-white ${nunitoSans.className}`} data-cjcrx="addYes" cz-shortcut-listen="true">
+        
         <Loader>
-          <>
-            <Navbar />
-            <main className="pt-[100px]">
-              {children}
-            </main>
-            <Footer />
-          </>
+          {children}
         </Loader>
+          
       </body>
     </html>
   );
