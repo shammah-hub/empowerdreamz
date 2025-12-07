@@ -36,7 +36,8 @@ export default function RootLayout({
         <GoogleAnalytics />
       </head>
     
-      <body className={`bg-white ${nunitoSans.className}`} data-cjcrx="addYes" cz-shortcut-listen="true">
+   <body className={`bg-white ${nunitoSans.className}`} data-cjcrx="addYes" cz-shortcut-listen="true">
+
         
         <Loader>
           {children}
