@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Webhook error' }, { status: 400 });
   }
 
-  // Handle successful payment
+  // Handle successful payment (INCOME)
   if (event.type === 'payment_intent.succeeded') {
     const paymentIntent = event.data.object as Stripe.PaymentIntent;
     
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
           updatedAt: admin.firestore.FieldValue.serverTimestamp(),
         });
 
-        // Store individual donation record
+        // Store individual donation record (shows as INCOME on ledger)
         await db.collection('donations').add({
           projectId: projectDoc.id,
           amount: amountInDollars,
@@ -74,11 +74,92 @@ export async function POST(request: NextRequest) {
           createdAt: admin.firestore.FieldValue.serverTimestamp(),
         });
 
-        console.log(`✅ Updated project ${projectDoc.id}: +$${amountInDollars}`);
+        console.log(`✅ INCOME: Donation of $${amountInDollars}`);
       }
     } catch (error) {
       console.error('❌ Error updating Firestore:', error);
       return NextResponse.json({ error: 'Database update failed' }, { status: 500 });
+    }
+  }
+
+  // Handle payout to bank account (EXPENSE - money leaving Stripe)
+  if (event.type === 'payout.paid') {
+    const payout = event.data.object as Stripe.Payout;
+    
+    const amountInDollars = payout.amount / 100;
+    
+    try {
+      // Record this as an EXPENSE since money is leaving Stripe
+      await db.collection('expenses').add({
+        category: 'bank-transfer',
+        description: `Payout to bank account (${payout.destination || 'default bank'})`,
+        amount: amountInDollars,
+        project: 'General',
+        payoutId: payout.id,
+        arrivalDate: payout.arrival_date ? new Date(payout.arrival_date * 1000).toISOString() : null,
+        bankAccount: payout.destination || 'default',
+        status: payout.status,
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+
+      console.log(`✅ EXPENSE: Payout of $${amountInDollars} to bank`);
+    } catch (error) {
+      console.error('❌ Error recording payout:', error);
+      return NextResponse.json({ error: 'Payout recording failed' }, { status: 500 });
+    }
+  }
+
+  // Handle refunds (EXPENSE - money going back to donor)
+  if (event.type === 'charge.refunded') {
+    const charge = event.data.object as Stripe.Charge;
+    
+    // Get the refund amount (could be partial refund)
+    const refund = charge.refunds?.data[0];
+    const amountInDollars = refund ? refund.amount / 100 : charge.amount_refunded / 100;
+    
+    try {
+      // Record this as an EXPENSE since money is leaving
+      await db.collection('expenses').add({
+        category: 'refund',
+        description: `Refund to ${charge.billing_details?.email || 'donor'} - ${refund?.reason || 'requested_by_customer'}`,
+        amount: amountInDollars,
+        project: 'General',
+        chargeId: charge.id,
+        refundId: refund?.id,
+        refundReason: refund?.reason || 'requested_by_customer',
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+
+      // Also reduce the raised amount from the project if we can identify it
+      // Try to find the original donation
+      const donationsRef = db.collection('donations');
+      const donationSnapshot = await donationsRef
+        .where('paymentIntentId', '==', charge.payment_intent)
+        .limit(1)
+        .get();
+
+      if (!donationSnapshot.empty) {
+        const donationDoc = donationSnapshot.docs[0];
+        const donationData = donationDoc.data();
+        
+        // Update the project to reduce raised amount
+        const projectRef = db.collection('projects').doc(donationData.projectId);
+        const projectDoc = await projectRef.get();
+        
+        if (projectDoc.exists) {
+          const projectData = projectDoc.data();
+          await projectRef.update({
+            raised: Math.max(0, (projectData?.raised || 0) - amountInDollars),
+            supporters: Math.max(0, (projectData?.supporters || 1) - 1),
+            updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+          });
+        }
+      }
+
+      console.log(`✅ EXPENSE: Refund of $${amountInDollars}`);
+    } catch (error) {
+      console.error('❌ Error recording refund:', error);
+      return NextResponse.json({ error: 'Refund recording failed' }, { status: 500 });
     }
   }
 

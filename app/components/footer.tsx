@@ -46,6 +46,8 @@ function Footer() {
         <span className="text-gray-400">/</span>
         <Link href="/projects" className="text-black hover:text-gray-600 font-medium transition-colors">What We Do</Link>
         <span className="text-gray-400">/</span>
+        <Link href="/ledger" className="text-black hover:text-gray-600 font-medium transition-colors">Ledger</Link>
+        <span className="text-gray-400">/</span>
         <Link href="/contact" className="text-black hover:text-gray-600 font-medium transition-colors">Contact Us</Link>
       </nav>
       
