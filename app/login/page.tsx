@@ -80,15 +80,24 @@ export default function LoginPage() {
 
     try {
       const user = auth.currentUser;
-      if (user) {
-        await sendEmailVerification(user);
-        setVerificationSent(true);
-      } else {
+      
+      if (!user) {
         setError("Please log in again to send verification email.");
+        setLoading(false);
+        return;
       }
+
+      await sendEmailVerification(user);
+      setVerificationSent(true);
     } catch (err) {
       console.error("Send verification error:", err);
-      setError("Failed to send verification email. Please try again.");
+      
+      if (err instanceof Error) {
+        const firebaseError = err as { code?: string; message?: string };
+        setError(`Failed to send verification email: ${firebaseError.message}`);
+      } else {
+        setError("Failed to send verification email. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
@@ -100,15 +109,20 @@ export default function LoginPage() {
 
     try {
       const user = auth.currentUser;
-      if (user) {
-        // Reload user to get updated emailVerified status
-        await user.reload();
-        
-        if (user.emailVerified) {
-          router.push("/dashboard");
-        } else {
-          setError("Email not verified yet. Please check your inbox and click the verification link.");
-        }
+      
+      if (!user) {
+        setError("Please log in again.");
+        setLoading(false);
+        return;
+      }
+
+      // Reload user to get updated emailVerified status
+      await user.reload();
+      
+      if (user.emailVerified) {
+        router.push("/dashboard");
+      } else {
+        setError("Email not verified yet. Please check your inbox (and spam folder) and click the verification link.");
       }
     } catch (err) {
       console.error("Check verification error:", err);
@@ -160,7 +174,7 @@ export default function LoginPage() {
                       ✓ Verification email sent to <strong>{email}</strong>
                     </p>
                     <p className="text-xs text-green-700">
-                      Check your inbox (and spam folder) for the verification link.
+                      Check your inbox and spam folder for the verification link.
                     </p>
                   </div>
 
