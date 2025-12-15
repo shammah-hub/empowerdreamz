@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { TrendingUp, TrendingDown, DollarSign, Calendar, Search, Download, ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { DollarSign, Calendar, Search, Download, ArrowUpRight, ArrowDownRight } from 'lucide-react';
 import { db } from '@/lib/firebase';
 import { collection, query, orderBy, getDocs } from 'firebase/firestore';
 
@@ -61,10 +61,23 @@ export default function LedgerPage() {
 
       expensesSnapshot.forEach((doc) => {
         const data = doc.data();
+        
+        // Better date handling
+        let expenseDate;
+        if (data.createdAt?.toDate) {
+          expenseDate = data.createdAt.toDate().toISOString();
+        } else if (data.createdAt?.seconds) {
+          expenseDate = new Date(data.createdAt.seconds * 1000).toISOString();
+        } else if (data.date) {
+          expenseDate = data.date;
+        } else {
+          expenseDate = new Date().toISOString();
+        }
+        
         allTransactions.push({
           id: doc.id,
           type: 'expense',
-          date: data.createdAt?.toDate?.()?.toISOString?.() || data.date || new Date().toISOString(),
+          date: expenseDate,
           category: data.category || 'general',
           description: data.description || 'Expense',
           amount: data.amount || 0,
@@ -316,6 +329,12 @@ export default function LedgerPage() {
                         <span className="font-light">
                           {transaction.project.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
                         </span>
+                        {transaction.category && (
+                          <>
+                            <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+                            <span className="font-light capitalize">{transaction.category.replace(/-/g, ' ')}</span>
+                          </>
+                        )}
                         {transaction.paymentMethod && (
                           <>
                             <span className="w-1 h-1 bg-gray-300 rounded-full"></span>

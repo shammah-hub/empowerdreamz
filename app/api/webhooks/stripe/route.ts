@@ -26,6 +26,7 @@ export async function POST(request: NextRequest) {
   const signature = request.headers.get('stripe-signature');
 
   if (!signature) {
+    console.error('❌ No signature found in request');
     return NextResponse.json({ error: 'No signature' }, { status: 400 });
   }
 
@@ -37,9 +38,10 @@ export async function POST(request: NextRequest) {
       signature,
       process.env.STRIPE_WEBHOOK_SECRET!
     );
+    console.log(`📨 Webhook received: ${event.type}`);
   } catch (err) {
     const error = err as Error;
-    console.error(`Webhook signature verification failed: ${error.message}`);
+    console.error(`❌ Webhook signature verification failed: ${error.message}`);
     return NextResponse.json({ error: 'Webhook error' }, { status: 400 });
   }
 
@@ -66,7 +68,7 @@ export async function POST(request: NextRequest) {
         });
 
         // Store individual donation record (shows as INCOME on ledger)
-        await db.collection('donations').add({
+        const donationRef = await db.collection('donations').add({
           projectId: projectDoc.id,
           amount: amountInDollars,
           paymentIntentId: paymentIntent.id,
@@ -74,7 +76,9 @@ export async function POST(request: NextRequest) {
           createdAt: admin.firestore.FieldValue.serverTimestamp(),
         });
 
-        console.log(`✅ INCOME: Donation of $${amountInDollars}`);
+        console.log(`✅ INCOME: Donation of $${amountInDollars} saved with ID: ${donationRef.id}`);
+      } else {
+        console.warn('⚠️ No active project found for donation');
       }
     } catch (error) {
       console.error('❌ Error updating Firestore:', error);
@@ -88,9 +92,11 @@ export async function POST(request: NextRequest) {
     
     const amountInDollars = payout.amount / 100;
     
+    console.log(`💸 Processing payout: $${amountInDollars} to ${payout.destination || 'default bank'}`);
+    
     try {
       // Record this as an EXPENSE since money is leaving Stripe
-      await db.collection('expenses').add({
+      const expenseData = {
         category: 'bank-transfer',
         description: `Payout to bank account (${payout.destination || 'default bank'})`,
         amount: amountInDollars,
@@ -100,11 +106,15 @@ export async function POST(request: NextRequest) {
         bankAccount: payout.destination || 'default',
         status: payout.status,
         createdAt: admin.firestore.FieldValue.serverTimestamp(),
-      });
+      };
 
-      console.log(`✅ EXPENSE: Payout of $${amountInDollars} to bank`);
+      const expenseRef = await db.collection('expenses').add(expenseData);
+
+      console.log(`✅ EXPENSE: Payout of $${amountInDollars} saved with ID: ${expenseRef.id}`);
+      console.log(`📋 Expense data:`, JSON.stringify(expenseData, null, 2));
     } catch (error) {
       console.error('❌ Error recording payout:', error);
+      console.error('Error details:', error);
       return NextResponse.json({ error: 'Payout recording failed' }, { status: 500 });
     }
   }
@@ -117,9 +127,11 @@ export async function POST(request: NextRequest) {
     const refund = charge.refunds?.data[0];
     const amountInDollars = refund ? refund.amount / 100 : charge.amount_refunded / 100;
     
+    console.log(`🔄 Processing refund: $${amountInDollars}`);
+    
     try {
       // Record this as an EXPENSE since money is leaving
-      await db.collection('expenses').add({
+      const expenseRef = await db.collection('expenses').add({
         category: 'refund',
         description: `Refund to ${charge.billing_details?.email || 'donor'} - ${refund?.reason || 'requested_by_customer'}`,
         amount: amountInDollars,
@@ -129,6 +141,8 @@ export async function POST(request: NextRequest) {
         refundReason: refund?.reason || 'requested_by_customer',
         createdAt: admin.firestore.FieldValue.serverTimestamp(),
       });
+
+      console.log(`✅ EXPENSE: Refund of $${amountInDollars} saved with ID: ${expenseRef.id}`);
 
       // Also reduce the raised amount from the project if we can identify it
       // Try to find the original donation
@@ -153,10 +167,9 @@ export async function POST(request: NextRequest) {
             supporters: Math.max(0, (projectData?.supporters || 1) - 1),
             updatedAt: admin.firestore.FieldValue.serverTimestamp(),
           });
+          console.log(`✅ Project updated after refund`);
         }
       }
-
-      console.log(`✅ EXPENSE: Refund of $${amountInDollars}`);
     } catch (error) {
       console.error('❌ Error recording refund:', error);
       return NextResponse.json({ error: 'Refund recording failed' }, { status: 500 });

@@ -9,6 +9,7 @@ import DonateButton from "./donateButton";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [projectDropdownOpen, setProjectDropdownOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const pathname = usePathname();
 
@@ -23,13 +24,18 @@ export default function Navbar() {
         { name: "Why We Exist", path: "/exist" }
       ]
     },
-    { name: "Projects", path: "/projects" },
+    { name: "Projects", path: "/projects",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Ledger", path: "/ledger" },
+      ]
+     },
     { name: "Our Team", path: "/our-team" },
     { name: "Contact", path: "/contact" },
   ];
 
   return (
-    <nav className="bg-white/95 backdrop-blur-sm border-b border-gray-100 px-6 md:px-12 py-6 w-full mx-auto fixed top-0 left-0 right-0 z-50">
+    <nav className="bg-[#fafffa] backdrop-blur-sm border-b border-gray-100 px-6 md:px-12 py-6 w-full mx-auto fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center">
@@ -79,8 +85,8 @@ export default function Navbar() {
               {link.hasDropdown ? (
                 <div
                   className="relative z-50"
-                  onMouseEnter={() => setAboutDropdownOpen(true)}
-                  onMouseLeave={() => setAboutDropdownOpen(false)}
+                  onMouseEnter={() => link.name === "About" ? setAboutDropdownOpen(true) : setProjectDropdownOpen(true)}
+                  onMouseLeave={() => link.name === "About" ? setAboutDropdownOpen(false) : setProjectDropdownOpen(false)}
                 >
                   <button
                     className={`flex items-center gap-1 font-light transition-colors duration-200 ${
@@ -90,13 +96,13 @@ export default function Navbar() {
                     }`}
                   >
                     {link.name}
-                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${(link.name === "About" ? aboutDropdownOpen : projectDropdownOpen) ? 'rotate-180' : ''}`} />
                   </button>
 
                   {/* Dropdown Menu */}
                   <div
                     className={`absolute top-full left-0 mt-2 w-48 bg-white border border-gray-100 rounded-2xl shadow-lg overflow-hidden transition-all duration-200 z-50 ${
-                      aboutDropdownOpen
+                      (link.name === "About" ? aboutDropdownOpen : projectDropdownOpen)
                         ? "opacity-100 visible translate-y-0"
                         : "opacity-0 invisible -translate-y-2"
                     }`}
